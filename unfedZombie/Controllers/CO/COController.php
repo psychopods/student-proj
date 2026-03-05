@@ -37,7 +37,8 @@ try {
     exit;
 }
 
-function isCO($link, $role_id) {
+function isCO($link, $role_id)
+{
     $query = "SELECT name FROM roles WHERE id = ?";
     $stmt = mysqli_prepare($link, $query);
     mysqli_stmt_bind_param($stmt, "i", $role_id);
@@ -72,14 +73,13 @@ elseif ($route === 'requests/deny' && $method === 'PUT' && $id) { // http://loca
 // View approval history
 elseif ($route === 'requests/approved' && $method === 'GET') { // http://localhost/unfedZombie/Controllers/CO/api/requests/approved
     viewApprovedRequests($link, $user_id);
-}
-
-else {
+} else {
     http_response_code(404);
     echo json_encode(["message" => "Route not found"]);
 }
 
-function viewPendingRequests($link) {
+function viewPendingRequests($link)
+{
     $sql = "SELECT r.id, r.item_id, i.name as item_name, r.quantity_requested, r.status, r.priority, r.purpose, r.request_date, u.name as requested_by
             FROM item_requests r
             JOIN items i ON r.item_id = i.id
@@ -91,7 +91,8 @@ function viewPendingRequests($link) {
     echo json_encode($requests);
 }
 
-function approveRequest($link, $user_id, $request_id) {
+function approveRequest($link, $user_id, $request_id)
+{
     $stmt = mysqli_prepare($link, "UPDATE item_requests SET status = 'approved', approved_by = ?, approved_at = NOW() WHERE id = ? AND status = 'pending'");
     mysqli_stmt_bind_param($stmt, "ii", $user_id, $request_id);
     mysqli_stmt_execute($stmt);
@@ -103,7 +104,8 @@ function approveRequest($link, $user_id, $request_id) {
     }
 }
 
-function denyRequest($link, $user_id, $request_id) {
+function denyRequest($link, $user_id, $request_id)
+{
     $data = json_decode(file_get_contents("php://input"), true);
     $remarks = $data['remarks'] ?? null;
     $stmt = mysqli_prepare($link, "UPDATE item_requests SET status = 'denied', approved_by = ?, approved_at = NOW(), remarks = ? WHERE id = ? AND status = 'pending'");
@@ -117,7 +119,8 @@ function denyRequest($link, $user_id, $request_id) {
     }
 }
 
-function viewApprovedRequests($link, $user_id) {
+function viewApprovedRequests($link, $user_id)
+{
     $stmt = mysqli_prepare($link, "SELECT r.id, r.item_id, i.name as item_name, r.quantity_requested, r.status, r.priority, r.purpose, r.request_date, r.approved_at, u.name as requested_by
         FROM item_requests r
         JOIN items i ON r.item_id = i.id
@@ -130,4 +133,3 @@ function viewApprovedRequests($link, $user_id) {
     $requests = mysqli_fetch_all($result, MYSQLI_ASSOC);
     echo json_encode($requests);
 }
-?>

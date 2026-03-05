@@ -20,6 +20,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -129,13 +130,40 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
             text-decoration: none;
         }
 
-        .btn-primary { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; }
-        .btn-success { background: var(--success); color: white; }
-        .btn-warning { background: var(--warning); color: #212529; }
-        .btn-danger { background: var(--danger); color: white; }
-        .btn-info { background: var(--info); color: white; }
-        .btn-secondary { background: #6c757d; color: white; }
-        .btn-quartermaster { background: var(--quartermaster-accent); color: white; }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: #212529;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-info {
+            background: var(--info);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-quartermaster {
+            background: var(--quartermaster-accent);
+            color: white;
+        }
 
         .btn-sm {
             padding: 0.4rem 0.8rem;
@@ -211,33 +239,33 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
             border: 1px solid;
         }
 
-        .status-badge.pending { 
-            background: #fef3c7; 
-            color: #92400e; 
+        .status-badge.pending {
+            background: #fef3c7;
+            color: #92400e;
             border-color: #f59e0b;
         }
 
-        .status-badge.approved { 
-            background: #d1fae5; 
-            color: #065f46; 
+        .status-badge.approved {
+            background: #d1fae5;
+            color: #065f46;
             border-color: #10b981;
         }
 
-        .status-badge.authorized { 
-            background: #dbeafe; 
-            color: #1e40af; 
+        .status-badge.authorized {
+            background: #dbeafe;
+            color: #1e40af;
             border-color: #3b82f6;
         }
 
-        .status-badge.dispatched { 
-            background: #ecfdf5; 
-            color: #064e3b; 
+        .status-badge.dispatched {
+            background: #ecfdf5;
+            color: #064e3b;
             border-color: #059669;
         }
 
-        .status-badge.rejected { 
-            background: #fee2e2; 
-            color: #991b1b; 
+        .status-badge.rejected {
+            background: #fee2e2;
+            color: #991b1b;
             border-color: #dc2626;
         }
 
@@ -292,10 +320,25 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .stat-card.ready-requests { --card-bg-1: #667eea; --card-bg-2: #764ba2; }
-        .stat-card.authorized-requests { --card-bg-1: #43e97b; --card-bg-2: #38f9d7; }
-        .stat-card.dispatched-requests { --card-bg-1: #4facfe; --card-bg-2: #00f2fe; }
-        .stat-card.pending-dispatch { --card-bg-1: #f093fb; --card-bg-2: #f5576c; }
+        .stat-card.ready-requests {
+            --card-bg-1: #667eea;
+            --card-bg-2: #764ba2;
+        }
+
+        .stat-card.authorized-requests {
+            --card-bg-1: #43e97b;
+            --card-bg-2: #38f9d7;
+        }
+
+        .stat-card.dispatched-requests {
+            --card-bg-1: #4facfe;
+            --card-bg-2: #00f2fe;
+        }
+
+        .stat-card.pending-dispatch {
+            --card-bg-1: #f093fb;
+            --card-bg-2: #f5576c;
+        }
 
         .stat-value {
             font-size: 2rem;
@@ -351,7 +394,9 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* Modal Styles */
@@ -459,8 +504,8 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .btn-info { 
-            background: #f0f9ff; 
+        .btn-info {
+            background: #f0f9ff;
             color: #0c4a6e;
             border-color: #0ea5e9;
         }
@@ -470,8 +515,8 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
             color: white;
         }
 
-        .btn-success { 
-            background: #f0fdf4; 
+        .btn-success {
+            background: #f0fdf4;
             color: #14532d;
             border-color: #22c55e;
         }
@@ -481,8 +526,8 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
             color: white;
         }
 
-        .btn-warning { 
-            background: #fffbeb; 
+        .btn-warning {
+            background: #fffbeb;
             color: #92400e;
             border-color: #f59e0b;
         }
@@ -524,6 +569,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
         }
     </style>
 </head>
+
 <body>
     <!-- Include Sidebar Component -->
     <?php include '../../dashboard/components/sidebar.php'; ?>
@@ -758,14 +804,13 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
         async function loadAllRequests() {
             try {
                 showAlert('🔄 Loading all requests...', 'info');
-                
+
                 // For now, we'll use mock data since your API endpoint might need adjustment
                 // Once your backend has a general requests endpoint for QuarterMaster, use:
                 // const response = await fetch(`${API_BASE_URL}/api/requests/all`, { headers });
-                
+
                 // Mock data for demonstration
-                requests = [
-                    {
+                requests = [{
                         id: 1,
                         item_id: 101,
                         item_name: 'Office Chairs',
@@ -808,9 +853,9 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
                 filteredRequests = [...requests];
                 displayRequests();
                 updateRequestStats();
-                
+
                 showAlert(`✅ Loaded ${requests.length} requests!`, 'success');
-                
+
             } catch (error) {
                 console.error('❌ Error loading requests:', error);
                 showAlert('❌ Error loading requests: ' + error.message, 'error');
@@ -821,7 +866,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
         async function loadDispatchableRequests() {
             try {
                 console.log('🔗 Calling dispatchable requests API:', `${API_BASE_URL}/api/requests/ready`);
-                
+
                 const response = await fetch(`${API_BASE_URL}/api/requests/ready`, {
                     method: 'GET',
                     headers: headers
@@ -837,22 +882,21 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
 
                 const data = await response.json();
                 dispatchableRequests = Array.isArray(data) ? data : [];
-                
+
                 console.log('✅ Loaded dispatchable requests:', dispatchableRequests);
-                
+
             } catch (error) {
                 console.error('❌ Error loading dispatchable requests:', error);
-                
+
                 if (error.message.includes('404')) {
                     showAlert('⚠️ Dispatchable requests API not found. Using fallback data.', 'warning');
                     console.log('🔧 Expected API endpoint: GET /students-proj/unfedZombie/Controllers/QuarterMaster/api/requests/ready');
                 } else {
                     showAlert('⚠️ Could not load dispatchable requests: ' + error.message, 'warning');
                 }
-                
+
                 // Fallback to mock data
-                dispatchableRequests = [
-                    {
+                dispatchableRequests = [{
                         id: 1,
                         item_id: 101,
                         item_name: 'Office Chairs',
@@ -875,7 +919,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
             console.log('📊 Displaying requests:', filteredRequests);
             const tbody = document.getElementById('requestsTableBody');
             const requestCount = document.getElementById('requestCount');
-            
+
             if (filteredRequests.length === 0) {
                 tbody.innerHTML = `
                     <tr>
@@ -891,7 +935,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
             tbody.innerHTML = filteredRequests.map(request => {
                 const status = getRequestStatus(request);
                 const actions = getRequestActions(request);
-                
+
                 return `
                     <tr ${status.class === 'authorized' ? 'class="dispatch-ready"' : ''}>
                         <td><strong>#${request.id}</strong></td>
@@ -917,11 +961,20 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
         // Get request status for QuarterMaster view
         function getRequestStatus(request) {
             if (request.dispatched || request.dispatched === 1) {
-                return { class: 'dispatched', text: 'Dispatched' };
+                return {
+                    class: 'dispatched',
+                    text: 'Dispatched'
+                };
             } else if (request.authorized || request.authorized === 1) {
-                return { class: 'authorized', text: 'Ready to Dispatch' };
+                return {
+                    class: 'authorized',
+                    text: 'Ready to Dispatch'
+                };
             } else {
-                return { class: 'pending', text: 'Pending Authorization' };
+                return {
+                    class: 'pending',
+                    text: 'Pending Authorization'
+                };
             }
         }
 
@@ -934,7 +987,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
             `;
 
             const status = getRequestStatus(request);
-            
+
             // QuarterMaster can authorize and dispatch
             if (status.class === 'authorized') {
                 actions += `
@@ -977,7 +1030,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
 
             filteredRequests = requests.filter(request => {
                 // Search filter
-                const matchesSearch = !searchTerm || 
+                const matchesSearch = !searchTerm ||
                     request.id.toString().includes(searchTerm) ||
                     (request.requester_name || '').toLowerCase().includes(searchTerm) ||
                     (request.item_name || '').toLowerCase().includes(searchTerm);
@@ -985,7 +1038,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
                 // Status filter
                 const requestStatus = getRequestStatus(request);
                 let matchesStatus = !statusFilter;
-                
+
                 if (statusFilter === 'ready') {
                     matchesStatus = requestStatus.class === 'authorized';
                 } else if (statusFilter) {
@@ -998,8 +1051,8 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
                     const requestDate = new Date(request.created_at);
                     const today = new Date();
                     const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-                    
-                    switch(dateFilter) {
+
+                    switch (dateFilter) {
                         case 'today':
                             matchesDate = requestDate >= todayStart;
                             break;
@@ -1024,7 +1077,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
         // View request details
         function viewRequest(requestId) {
             console.log('👁️ Viewing request details for ID:', requestId);
-            
+
             const request = requests.find(r => parseInt(r.id) === parseInt(requestId));
             if (!request) {
                 showAlert('❌ Request not found!', 'error');
@@ -1032,7 +1085,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
             }
 
             const status = getRequestStatus(request);
-            
+
             const modalBody = document.getElementById('modalBody');
             modalBody.innerHTML = `
                 <div style="display: grid; gap: 1rem;">
@@ -1131,7 +1184,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
         // Show dispatch modal
         function showDispatchModal(requestId) {
             console.log('🚚 Showing dispatch modal for request ID:', requestId);
-            
+
             const request = requests.find(r => parseInt(r.id) === parseInt(requestId));
             if (!request) {
                 showAlert('❌ Request not found!', 'error');
@@ -1190,9 +1243,9 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
         async function confirmDispatch(requestId) {
             try {
                 showAlert('🚚 Dispatching item...', 'info');
-                
+
                 const notes = document.getElementById('dispatchNotes').value;
-                
+
                 // Fixed API endpoint - remove extra /api
                 const response = await fetch(`${API_BASE_URL}/api/dispatch/item`, {
                     method: 'POST',
@@ -1204,35 +1257,38 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
                 });
 
                 console.log('🔗 Dispatch API URL:', `${API_BASE_URL}/api/dispatch/item`);
-                console.log('📤 Request data:', { request_id: requestId, notes: notes });
+                console.log('📤 Request data:', {
+                    request_id: requestId,
+                    notes: notes
+                });
                 console.log('📡 Response status:', response.status);
 
                 if (!response.ok) {
                     const errorText = await response.text();
                     console.log('❌ Error response:', errorText);
-                    
+
                     let errorData;
                     try {
                         errorData = JSON.parse(errorText);
                     } catch (e) {
                         throw new Error(`HTTP ${response.status}: ${errorText}`);
                     }
-                    
+
                     throw new Error(errorData.message || errorData.error || `HTTP ${response.status}`);
                 }
 
                 const result = await response.json();
                 console.log('✅ Dispatch success:', result);
-                
+
                 showAlert('✅ Item dispatched successfully!', 'success');
-                
+
                 closeDispatchModal();
                 loadAllRequests(); // Reload requests
                 loadDispatchableRequests(); // Reload dispatchable requests
 
             } catch (error) {
                 console.error('❌ Error dispatching item:', error);
-                
+
                 // Check if it's a 404 error (API endpoint not found)
                 if (error.message.includes('404') || error.message.includes('Not Found')) {
                     showAlert('⚠️ API endpoint not found. Please check your backend setup.', 'warning');
@@ -1243,7 +1299,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
                 } else {
                     showAlert('❌ Error dispatching item: ' + error.message, 'error');
                 }
-                
+
                 // Fallback: Update local data for demo
                 const request = requests.find(r => r.id === requestId);
                 if (request) {
@@ -1266,10 +1322,12 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
 
             try {
                 showAlert('🔄 Authorizing request...', 'info');
-                
+
                 console.log('🔗 Calling authorize API:', `${API_BASE_URL}/api/requests/authorize`);
-                console.log('📤 Request data:', { request_id: requestId });
-                
+                console.log('📤 Request data:', {
+                    request_id: requestId
+                });
+
                 const response = await fetch(`${API_BASE_URL}/api/requests/authorize`, {
                     method: 'PUT',
                     headers: headers,
@@ -1283,28 +1341,28 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
                 if (!response.ok) {
                     const errorText = await response.text();
                     console.log('❌ Authorize error:', errorText);
-                    
+
                     let errorData;
                     try {
                         errorData = JSON.parse(errorText);
                     } catch (e) {
                         throw new Error(`HTTP ${response.status}: ${errorText}`);
                     }
-                    
+
                     throw new Error(errorData.message || errorData.error || `HTTP ${response.status}`);
                 }
 
                 const result = await response.json();
                 console.log('✅ Authorize success:', result);
-                
+
                 showAlert('🔐 Request authorized successfully!', 'success');
-                
+
                 loadAllRequests(); // Reload requests
                 loadDispatchableRequests(); // Reload dispatchable requests
 
             } catch (error) {
                 console.error('❌ Error authorizing request:', error);
-                
+
                 if (error.message.includes('404')) {
                     showAlert('⚠️ Authorization API not found. Please check your backend setup.', 'warning');
                     console.log('🔧 Expected API endpoint: PUT /students-proj/unfedZombie/Controllers/QuarterMaster/api/requests/authorize');
@@ -1313,7 +1371,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
                 } else {
                     showAlert('❌ Error authorizing request: ' + error.message, 'error');
                 }
-                
+
                 // Fallback: Update local data for demo
                 const request = requests.find(r => r.id === requestId);
                 if (request) {
@@ -1330,28 +1388,28 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
         // View dispatchable requests
         function viewDispatchableRequests() {
             console.log('🚚 Viewing dispatchable requests...');
-            
+
             if (dispatchableRequests.length === 0) {
                 showAlert('📦 No requests ready for dispatch', 'info');
                 return;
             }
-            
+
             // Filter to show only ready-to-dispatch requests
             document.getElementById('statusFilter').value = 'ready';
             filterRequests();
-            
+
             showAlert(`📦 Found ${dispatchableRequests.length} requests ready for dispatch`, 'info');
         }
 
         // Format date
         function formatDate(dateString) {
             if (!dateString) return 'N/A';
-            
+
             try {
                 const date = new Date(dateString);
-                return date.toLocaleDateString('en-US', { 
+                return date.toLocaleDateString('en-US', {
                     year: 'numeric',
-                    month: 'short', 
+                    month: 'short',
                     day: 'numeric',
                     hour: '2-digit',
                     minute: '2-digit'
@@ -1380,7 +1438,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
         // Export requests
         function exportRequests() {
             console.log('📁 Exporting requests...');
-            
+
             const csvContent = [
                 ['Request ID', 'Item Name', 'Requester', 'Quantity', 'Status', 'Created Date', 'Authorized Date', 'Dispatched Date'],
                 ...filteredRequests.map(request => {
@@ -1398,7 +1456,9 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
                 })
             ].map(row => row.join(',')).join('\n');
 
-            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const blob = new Blob([csvContent], {
+                type: 'text/csv'
+            });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -1407,7 +1467,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
             a.click();
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
-            
+
             showAlert('📁 Requests exported successfully!', 'success');
         }
 
@@ -1415,21 +1475,21 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
         function showAlert(message, type = 'info') {
             console.log(`📢 Alert: ${message} (${type})`);
             const alertContainer = document.getElementById('alertContainer');
-            
+
             const alert = document.createElement('div');
             alert.className = `alert ${type}`;
-            
-            const icon = type === 'success' ? 'fa-check-circle' : 
-                        type === 'error' ? 'fa-exclamation-circle' : 
-                        type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
-            
+
+            const icon = type === 'success' ? 'fa-check-circle' :
+                type === 'error' ? 'fa-exclamation-circle' :
+                type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
+
             alert.innerHTML = `
                 <i class="fas ${icon}"></i>
                 <span>${message}</span>
             `;
-            
+
             alertContainer.appendChild(alert);
-            
+
             // Auto remove after 3 seconds
             setTimeout(() => {
                 if (alert.parentNode) {
@@ -1484,11 +1544,12 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'QuarterMaster Name';
         console.log('🔑 JWT Token Status:', token ? 'Present' : 'Missing');
         console.log('👤 Current User Role:', userRole);
         console.log('🆔 User ID:', userId);
-        
+
         // Show welcome message after page loads
         setTimeout(() => {
             showAlert('🏭 QuarterMaster Requests System Ready!', 'success');
         }, 2000);
     </script>
 </body>
+
 </html>

@@ -21,6 +21,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -129,12 +130,35 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             text-decoration: none;
         }
 
-        .btn-primary { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; }
-        .btn-success { background: var(--success); color: white; }
-        .btn-warning { background: var(--warning); color: #212529; }
-        .btn-danger { background: var(--danger); color: white; }
-        .btn-info { background: var(--info); color: white; }
-        .btn-secondary { background: #6c757d; color: white; }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: #212529;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-info {
+            background: var(--info);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
 
         .btn-sm {
             padding: 0.4rem 0.8rem;
@@ -204,10 +228,25 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             text-transform: uppercase;
         }
 
-        .stock-level.high { background: #d4edda; color: #155724; }
-        .stock-level.medium { background: #fff3cd; color: #856404; }
-        .stock-level.low { background: #f8d7da; color: #721c24; }
-        .stock-level.out { background: #e2e3e5; color: #383d41; }
+        .stock-level.high {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .stock-level.medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .stock-level.low {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .stock-level.out {
+            background: #e2e3e5;
+            color: #383d41;
+        }
 
         /* Search and Filter */
         .search-filter-bar {
@@ -260,10 +299,25 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .stat-card.total-items { --card-bg-1: #667eea; --card-bg-2: #764ba2; }
-        .stat-card.low-stock { --card-bg-1: #f093fb; --card-bg-2: #f5576c; }
-        .stat-card.categories { --card-bg-1: #43e97b; --card-bg-2: #38f9d7; }
-        .stat-card.out-stock { --card-bg-1: #4facfe; --card-bg-2: #00f2fe; }
+        .stat-card.total-items {
+            --card-bg-1: #667eea;
+            --card-bg-2: #764ba2;
+        }
+
+        .stat-card.low-stock {
+            --card-bg-1: #f093fb;
+            --card-bg-2: #f5576c;
+        }
+
+        .stat-card.categories {
+            --card-bg-1: #43e97b;
+            --card-bg-2: #38f9d7;
+        }
+
+        .stat-card.out-stock {
+            --card-bg-1: #4facfe;
+            --card-bg-2: #00f2fe;
+        }
 
         .stat-value {
             font-size: 2rem;
@@ -410,20 +464,28 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         @keyframes slideInUp {
-            from { 
+            from {
                 opacity: 0;
                 transform: translateY(30px);
             }
-            to { 
+
+            to {
                 opacity: 1;
                 transform: translateY(0);
             }
@@ -461,6 +523,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         }
     </style>
 </head>
+
 <body>
     <!-- Include Sidebar Component -->
     <?php include '../../dashboard/components/sidebar.php'; ?>
@@ -588,7 +651,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             <div class="modal-body">
                 <form id="itemForm">
                     <input type="hidden" id="itemId">
-                    
+
                     <div class="form-group">
                         <label class="form-label" for="itemName">
                             <i class="fas fa-box"></i>
@@ -668,18 +731,18 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             </div>
             <div class="modal-body">
                 <input type="hidden" id="deleteItemId">
-                
+
                 <div style="text-align: center; margin-bottom: 2rem;">
                     <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--danger), #e74c3c); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
                         <i class="fas fa-trash" style="color: white; font-size: 2rem;"></i>
                     </div>
-                    
+
                     <h3 style="color: var(--danger); margin-bottom: 1rem;">Delete Inventory Item</h3>
-                    
+
                     <p style="color: #666; margin-bottom: 1.5rem;">
                         Are you sure you want to delete this item? This action cannot be undone.
                     </p>
-                    
+
                     <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--danger); text-align: left;">
                         <strong>Item Details:</strong><br>
                         <strong>Name:</strong> <span id="deleteItemName"></span><br>
@@ -781,23 +844,23 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         async function loadItems() {
             try {
                 showAlert('🔄 Loading inventory items...', 'info');
-                
+
                 const apiUrl = `${API_BASE_URL}/api/admin/getitems`;
-                
+
                 console.log('🔍 Calling API endpoint:', apiUrl);
                 console.log('🔑 Using token:', token ? 'Present' : 'Missing');
-                
+
                 const response = await fetch(apiUrl, {
                     method: 'GET',
                     headers: headers
                 });
-                
+
                 console.log('📡 Response status:', response.status);
-                
+
                 if (!response.ok) {
                     const errorText = await response.text();
                     console.error('❌ API Error:', errorText);
-                    
+
                     if (response.status === 401) {
                         throw new Error('Authentication failed. Please login again.');
                     } else if (response.status === 403) {
@@ -847,18 +910,17 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                 filteredItems = [...items];
                 displayItems();
                 updateInventoryStats();
-                
+
                 showAlert(`✅ Loaded ${items.length} inventory items!`, 'success');
-                
+
             } catch (error) {
                 console.error('❌ Error loading items:', error);
                 showAlert('❌ Error loading items: ' + error.message, 'error');
-                
+
                 // Fallback to mock data for demo
                 console.log('🔄 Using mock data as fallback...');
-                items = [
-                    { 
-                        id: 1, 
+                items = [{
+                        id: 1,
                         name: 'Office Pens',
                         sku: 'PEN001',
                         category_id: 'Office Supplies',
@@ -867,8 +929,8 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                         current_stock: 150,
                         reorder_level: 50
                     },
-                    { 
-                        id: 2, 
+                    {
+                        id: 2,
                         name: 'Laptop Computers',
                         sku: 'LAP001',
                         category_id: 'Electronics',
@@ -877,8 +939,8 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                         current_stock: 5,
                         reorder_level: 10
                     },
-                    { 
-                        id: 3, 
+                    {
+                        id: 3,
                         name: 'Filing Cabinets',
                         sku: 'FIL001',
                         category_id: 'Furniture',
@@ -887,8 +949,8 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                         current_stock: 0,
                         reorder_level: 5
                     },
-                    { 
-                        id: 4, 
+                    {
+                        id: 4,
                         name: 'Copy Paper',
                         sku: 'PAP001',
                         category_id: 'Office Supplies',
@@ -902,7 +964,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                 filteredItems = [...items];
                 displayItems();
                 updateInventoryStats();
-                
+
                 showAlert('⚠️ Using demo data - API connection failed', 'warning');
             }
         }
@@ -921,24 +983,52 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                     populateCategoryDropdowns();
                 } else {
                     console.log('Using fallback categories...');
-                    categories = [
-                        { id: 1, name: 'Office Supplies' },
-                        { id: 2, name: 'Electronics' },
-                        { id: 3, name: 'Furniture' },
-                        { id: 4, name: 'Stationery' },
-                        { id: 5, name: 'Equipment' }
+                    categories = [{
+                            id: 1,
+                            name: 'Office Supplies'
+                        },
+                        {
+                            id: 2,
+                            name: 'Electronics'
+                        },
+                        {
+                            id: 3,
+                            name: 'Furniture'
+                        },
+                        {
+                            id: 4,
+                            name: 'Stationery'
+                        },
+                        {
+                            id: 5,
+                            name: 'Equipment'
+                        }
                     ];
                     populateCategoryDropdowns();
                 }
             } catch (error) {
                 console.error('Error loading categories:', error);
                 // Use fallback categories
-                categories = [
-                    { id: 1, name: 'Office Supplies' },
-                    { id: 2, name: 'Electronics' },
-                    { id: 3, name: 'Furniture' },
-                    { id: 4, name: 'Stationery' },
-                    { id: 5, name: 'Equipment' }
+                categories = [{
+                        id: 1,
+                        name: 'Office Supplies'
+                    },
+                    {
+                        id: 2,
+                        name: 'Electronics'
+                    },
+                    {
+                        id: 3,
+                        name: 'Furniture'
+                    },
+                    {
+                        id: 4,
+                        name: 'Stationery'
+                    },
+                    {
+                        id: 5,
+                        name: 'Equipment'
+                    }
                 ];
                 populateCategoryDropdowns();
             }
@@ -948,18 +1038,18 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         function populateCategoryDropdowns() {
             const categoryFilter = document.getElementById('categoryFilter');
             const itemCategory = document.getElementById('itemCategory');
-            
+
             // Clear existing options (except first)
             categoryFilter.innerHTML = '<option value="">All Categories</option>';
             itemCategory.innerHTML = '<option value="">Select Category</option>';
-            
+
             categories.forEach(category => {
                 // Filter dropdown
                 const filterOption = document.createElement('option');
                 filterOption.value = category.name;
                 filterOption.textContent = category.name;
                 categoryFilter.appendChild(filterOption);
-                
+
                 // Form dropdown
                 const formOption = document.createElement('option');
                 formOption.value = category.id;
@@ -973,7 +1063,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             console.log('📊 Displaying items:', filteredItems);
             const tbody = document.getElementById('itemsTableBody');
             const itemCount = document.getElementById('itemCount');
-            
+
             if (filteredItems.length === 0) {
                 tbody.innerHTML = `
                     <tr>
@@ -988,7 +1078,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
 
             tbody.innerHTML = filteredItems.map(item => {
                 const stockLevel = getStockLevel(item);
-                
+
                 return `
                     <tr>
                         <td><strong>#${item.id}</strong></td>
@@ -1024,15 +1114,27 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         function getStockLevel(item) {
             const stock = item.current_stock || 0;
             const reorderLevel = item.reorder_level || 0;
-            
+
             if (stock === 0) {
-                return { class: 'out', text: 'Out of Stock' };
+                return {
+                    class: 'out',
+                    text: 'Out of Stock'
+                };
             } else if (stock <= reorderLevel) {
-                return { class: 'low', text: 'Low Stock' };
+                return {
+                    class: 'low',
+                    text: 'Low Stock'
+                };
             } else if (stock <= reorderLevel * 2) {
-                return { class: 'medium', text: 'Medium Stock' };
+                return {
+                    class: 'medium',
+                    text: 'Medium Stock'
+                };
             } else {
-                return { class: 'high', text: 'High Stock' };
+                return {
+                    class: 'high',
+                    text: 'High Stock'
+                };
             }
         }
 
@@ -1061,7 +1163,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
 
             filteredItems = items.filter(item => {
                 // Search filter
-                const matchesSearch = !searchTerm || 
+                const matchesSearch = !searchTerm ||
                     item.name.toLowerCase().includes(searchTerm) ||
                     item.sku.toLowerCase().includes(searchTerm) ||
                     (item.description || '').toLowerCase().includes(searchTerm);
@@ -1094,7 +1196,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         // Show Edit Item Modal
         function showEditItemModal(itemId) {
             console.log('✏️ Opening Edit Item Modal for ID:', itemId);
-            
+
             const item = items.find(i => parseInt(i.id) === parseInt(itemId));
             if (item) {
                 console.log('✅ Found item:', item);
@@ -1116,7 +1218,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         // Show Delete Item Modal
         function showDeleteItemModal(itemId) {
             console.log('🗑️ Opening Delete Item Modal for ID:', itemId);
-            
+
             const item = items.find(i => parseInt(i.id) === parseInt(itemId));
             if (item) {
                 console.log('✅ Found item:', item);
@@ -1146,7 +1248,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         async function handleItemSubmit(e) {
             e.preventDefault();
             console.log('💾 Submitting item form...');
-            
+
             const submitBtn = document.getElementById('saveItemBtn');
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<div class="loading"></div> Saving...';
@@ -1167,7 +1269,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
 
                 // Try actual API call first
                 let apiUrl, method;
-                
+
                 if (itemId) {
                     apiUrl = `${API_BASE_URL}/api/admin/items/${itemId}`;
                     method = 'PUT';
@@ -1203,7 +1305,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
 
                 } catch (apiError) {
                     console.log('⚠️ API call failed, using mock update:', apiError.message);
-                    
+
                     // Fallback to mock data update
                     if (itemId) {
                         // Update existing item in mock data
@@ -1227,7 +1329,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
 
                     showAlert(`✅ Item ${itemId ? 'updated' : 'created'} successfully! (Demo mode)`, 'success');
                     closeItemModal();
-                    
+
                     // Refresh display
                     filteredItems = [...items];
                     displayItems();
@@ -1253,9 +1355,9 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
 
             try {
                 const itemId = parseInt(document.getElementById('deleteItemId').value);
-                
+
                 console.log('🗑️ Deleting item ID:', itemId);
-                
+
                 // Try actual API call first
                 try {
                     const response = await fetch(`${API_BASE_URL}/api/admin/items/${itemId}`, {
@@ -1283,19 +1385,19 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
 
                 } catch (apiError) {
                     console.log('⚠️ API call failed, using mock delete:', apiError.message);
-                    
+
                     // Fallback to mock data deletion
                     items = items.filter(i => i.id !== itemId);
 
                     showAlert('🗑️ Item deleted successfully! (Demo mode)', 'success');
                     closeDeleteModal();
-                    
+
                     // Refresh display
                     filteredItems = [...items];
                     displayItems();
                     updateInventoryStats();
                 }
-                
+
             } catch (error) {
                 console.error('❌ Error deleting item:', error);
                 showAlert('❌ Error deleting item: ' + error.message, 'error');
@@ -1315,7 +1417,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         // Export items
         function exportItems() {
             console.log('📁 Exporting items...');
-            
+
             const csvContent = [
                 ['ID', 'Name', 'SKU', 'Category', 'Unit', 'Current Stock', 'Reorder Level', 'Status', 'Description'],
                 ...filteredItems.map(item => {
@@ -1334,7 +1436,9 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                 })
             ].map(row => row.join(',')).join('\n');
 
-            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const blob = new Blob([csvContent], {
+                type: 'text/csv'
+            });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -1343,7 +1447,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             a.click();
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
-            
+
             showAlert('📁 Inventory items exported successfully!', 'success');
         }
 
@@ -1351,21 +1455,21 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         function showAlert(message, type = 'info') {
             console.log(`📢 Alert: ${message} (${type})`);
             const alertContainer = document.getElementById('alertContainer');
-            
+
             const alert = document.createElement('div');
             alert.className = `alert ${type}`;
-            
-            const icon = type === 'success' ? 'fa-check-circle' : 
-                        type === 'error' ? 'fa-exclamation-circle' : 
-                        type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
-            
+
+            const icon = type === 'success' ? 'fa-check-circle' :
+                type === 'error' ? 'fa-exclamation-circle' :
+                type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
+
             alert.innerHTML = `
                 <i class="fas ${icon}"></i>
                 <span>${message}</span>
             `;
-            
+
             alertContainer.appendChild(alert);
-            
+
             // Auto remove after 3 seconds
             setTimeout(() => {
                 if (alert.parentNode) {
@@ -1414,11 +1518,12 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         console.log('🔗 Items API Endpoint:', `${API_BASE_URL}/api/admin/getitems`);
         console.log('🔑 JWT Token Status:', token ? 'Present' : 'Missing');
         console.log('👤 Current User Role:', userRole);
-        
+
         // Show welcome message after page loads
         setTimeout(() => {
             showAlert('📦 Inventory Management System Ready!', 'success');
         }, 2000);
     </script>
 </body>
+
 </html>

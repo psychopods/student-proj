@@ -15,6 +15,7 @@ $_SESSION['user_role'] = 'CO';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -172,12 +173,35 @@ $_SESSION['user_role'] = 'CO';
             text-decoration: none;
         }
 
-        .btn-primary { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; }
-        .btn-success { background: var(--success); color: white; }
-        .btn-warning { background: var(--warning); color: #212529; }
-        .btn-danger { background: var(--danger); color: white; }
-        .btn-info { background: var(--info); color: white; }
-        .btn-secondary { background: #6c757d; color: white; }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: #212529;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-info {
+            background: var(--info);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
 
         .btn:hover {
             transform: translateY(-2px);
@@ -206,10 +230,25 @@ $_SESSION['user_role'] = 'CO';
             transform: translateY(-5px);
         }
 
-        .stat-card.total-processed { --card-bg-1: #667eea; --card-bg-2: #764ba2; }
-        .stat-card.approved-stats { --card-bg-1: #00b894; --card-bg-2: #00cec9; }
-        .stat-card.denied-stats { --card-bg-1: #fdcb6e; --card-bg-2: #e17055; }
-        .stat-card.pending-stats { --card-bg-1: #ff7675; --card-bg-2: #fd79a8; }
+        .stat-card.total-processed {
+            --card-bg-1: #667eea;
+            --card-bg-2: #764ba2;
+        }
+
+        .stat-card.approved-stats {
+            --card-bg-1: #00b894;
+            --card-bg-2: #00cec9;
+        }
+
+        .stat-card.denied-stats {
+            --card-bg-1: #fdcb6e;
+            --card-bg-2: #e17055;
+        }
+
+        .stat-card.pending-stats {
+            --card-bg-1: #ff7675;
+            --card-bg-2: #fd79a8;
+        }
 
         .stat-icon {
             font-size: 2.5rem;
@@ -301,8 +340,15 @@ $_SESSION['user_role'] = 'CO';
             letter-spacing: 0.5px;
         }
 
-        .status-badge.approved { background: #d4edda; color: #155724; }
-        .status-badge.denied { background: #f8d7da; color: #721c24; }
+        .status-badge.approved {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.denied {
+            background: #f8d7da;
+            color: #721c24;
+        }
 
         /* Alert */
         .alert {
@@ -315,10 +361,25 @@ $_SESSION['user_role'] = 'CO';
             gap: 1rem;
         }
 
-        .alert.success { background: linear-gradient(135deg, #d4edda, #c3e6cb); color: #155724; }
-        .alert.error { background: linear-gradient(135deg, #f8d7da, #f5c6cb); color: #721c24; }
-        .alert.info { background: linear-gradient(135deg, #d1ecf1, #bee5eb); color: #0c5460; }
-        .alert.warning { background: linear-gradient(135deg, #fff3cd, #ffeaa7); color: #856404; }
+        .alert.success {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            color: #155724;
+        }
+
+        .alert.error {
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+            color: #721c24;
+        }
+
+        .alert.info {
+            background: linear-gradient(135deg, #d1ecf1, #bee5eb);
+            color: #0c5460;
+        }
+
+        .alert.warning {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            color: #856404;
+        }
 
         /* Loading States */
         .loading-skeleton {
@@ -329,8 +390,13 @@ $_SESSION['user_role'] = 'CO';
         }
 
         @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
         }
 
         /* Report Summary */
@@ -430,6 +496,7 @@ $_SESSION['user_role'] = 'CO';
         }
     </style>
 </head>
+
 <body>
     <!-- Include Sidebar Component -->
     <?php include '../../dashboard/components/sidebar.php'; ?>
@@ -478,7 +545,7 @@ $_SESSION['user_role'] = 'CO';
                             <option value="year">This Year</option>
                         </select>
                     </div>
-                    
+
                     <div class="filter-group">
                         <label class="filter-label">Status Filter</label>
                         <select id="statusFilter" class="filter-control">
@@ -487,17 +554,17 @@ $_SESSION['user_role'] = 'CO';
                             <option value="denied">Denied Only</option>
                         </select>
                     </div>
-                    
+
                     <div class="filter-group">
                         <label class="filter-label">From Date</label>
                         <input type="date" id="fromDate" class="filter-control">
                     </div>
-                    
+
                     <div class="filter-group">
                         <label class="filter-label">To Date</label>
                         <input type="date" id="toDate" class="filter-control">
                     </div>
-                    
+
                     <div class="filter-group">
                         <button class="btn btn-primary" onclick="applyFilters()">
                             <i class="fas fa-filter"></i>
@@ -549,7 +616,7 @@ $_SESSION['user_role'] = 'CO';
                     </div>
                     <div class="stat-label">Total Processed</div>
                 </div>
-                
+
                 <div class="stat-card approved-stats">
                     <div class="stat-icon">
                         <i class="fas fa-check-circle"></i>
@@ -559,7 +626,7 @@ $_SESSION['user_role'] = 'CO';
                     </div>
                     <div class="stat-label">Total Approved</div>
                 </div>
-                
+
                 <div class="stat-card denied-stats">
                     <div class="stat-icon">
                         <i class="fas fa-times-circle"></i>
@@ -569,7 +636,7 @@ $_SESSION['user_role'] = 'CO';
                     </div>
                     <div class="stat-label">Total Denied</div>
                 </div>
-                
+
                 <div class="stat-card pending-stats">
                     <div class="stat-icon">
                         <i class="fas fa-hourglass-half"></i>
@@ -592,7 +659,7 @@ $_SESSION['user_role'] = 'CO';
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="chart-container">
                     <div class="chart-title">Approval vs Denial Rate</div>
                     <div class="chart-placeholder">
@@ -663,7 +730,7 @@ $_SESSION['user_role'] = 'CO';
                             <div class="stat-value" id="avgProcessingTime">-</div>
                             <div class="stat-label">Avg. Processing Time</div>
                         </div>
-                        
+
                         <div class="stat-card" style="--card-bg-1: #55a3ff; --card-bg-2: #3742fa;">
                             <div class="stat-icon">
                                 <i class="fas fa-calendar-day"></i>
@@ -671,7 +738,7 @@ $_SESSION['user_role'] = 'CO';
                             <div class="stat-value" id="dailyAverage">-</div>
                             <div class="stat-label">Daily Average</div>
                         </div>
-                        
+
                         <div class="stat-card" style="--card-bg-1: #26de81; --card-bg-2: #20bf6b;">
                             <div class="stat-icon">
                                 <i class="fas fa-percentage"></i>
@@ -727,7 +794,7 @@ $_SESSION['user_role'] = 'CO';
         function setDefaultDates() {
             const today = new Date();
             const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
-            
+
             document.getElementById('fromDate').value = firstDay.toISOString().split('T')[0];
             document.getElementById('toDate').value = today.toISOString().split('T')[0];
         }
@@ -738,7 +805,7 @@ $_SESSION['user_role'] = 'CO';
             const today = new Date();
             let fromDate, toDate;
 
-            switch(range) {
+            switch (range) {
                 case 'today':
                     fromDate = toDate = today;
                     break;
@@ -774,7 +841,7 @@ $_SESSION['user_role'] = 'CO';
         async function loadReportsData() {
             try {
                 showAlert('🔄 Loading reports data...', 'info');
-                
+
                 await Promise.all([
                     loadPendingRequests(),
                     loadProcessedRequests()
@@ -782,7 +849,7 @@ $_SESSION['user_role'] = 'CO';
 
                 applyFilters();
                 showAlert('✅ Reports loaded successfully!', 'success');
-                
+
             } catch (error) {
                 console.error('Error loading reports:', error);
                 showAlert('❌ Error loading reports: ' + error.message, 'error');
@@ -803,7 +870,7 @@ $_SESSION['user_role'] = 'CO';
 
                 const requests = await response.json();
                 reportsData.pendingRequests = Array.isArray(requests) ? requests : [];
-                
+
             } catch (error) {
                 console.error('Error loading pending requests:', error);
                 reportsData.pendingRequests = [];
@@ -824,7 +891,7 @@ $_SESSION['user_role'] = 'CO';
 
                 const requests = await response.json();
                 reportsData.processedRequests = Array.isArray(requests) ? requests : [];
-                
+
             } catch (error) {
                 console.error('Error loading processed requests:', error);
                 reportsData.processedRequests = [];
@@ -857,7 +924,7 @@ $_SESSION['user_role'] = 'CO';
             }
 
             reportsData.filteredData = filteredData;
-            
+
             updateStatistics();
             updateSummary();
             displayProcessingActivity();
@@ -882,10 +949,10 @@ $_SESSION['user_role'] = 'CO';
         function updateSummary() {
             const total = reportsData.filteredData.length;
             const approved = reportsData.filteredData.filter(req => req.status === 'approved').length;
-            
+
             // Calculate approval rate
             const approvalRate = total > 0 ? Math.round((approved / total) * 100) : 0;
-            
+
             // Calculate this week's processing
             const weekAgo = new Date();
             weekAgo.setDate(weekAgo.getDate() - 7);
@@ -906,7 +973,7 @@ $_SESSION['user_role'] = 'CO';
         // Display processing activity
         function displayProcessingActivity() {
             const container = document.getElementById('processingActivityContainer');
-            
+
             if (reportsData.filteredData.length === 0) {
                 container.innerHTML = `
                     <div class="empty-state">
@@ -959,7 +1026,7 @@ $_SESSION['user_role'] = 'CO';
         // Display category analysis
         function displayCategoryAnalysis() {
             const container = document.getElementById('categoryAnalysisContainer');
-            
+
             if (reportsData.filteredData.length === 0) {
                 container.innerHTML = `
                     <div class="empty-state">
@@ -976,7 +1043,11 @@ $_SESSION['user_role'] = 'CO';
             reportsData.filteredData.forEach(req => {
                 const category = req.item_name || 'Unknown Item';
                 if (!categoryStats[category]) {
-                    categoryStats[category] = { total: 0, approved: 0, denied: 0 };
+                    categoryStats[category] = {
+                        total: 0,
+                        approved: 0,
+                        denied: 0
+                    };
                 }
                 categoryStats[category].total++;
                 if (req.status === 'approved') {
@@ -1021,7 +1092,7 @@ $_SESSION['user_role'] = 'CO';
         function updatePerformanceMetrics() {
             const total = reportsData.filteredData.length;
             const approved = reportsData.filteredData.filter(req => req.status === 'approved').length;
-            
+
             // Calculate metrics
             const avgProcessingTime = total > 0 ? Math.round(Math.random() * 12 + 4) : 0; // 4-16 hours
             const dailyAverage = total > 0 ? Math.round(total / 30) : 0; // Assuming 30 days
@@ -1078,7 +1149,11 @@ $_SESSION['user_role'] = 'CO';
             reportsData.filteredData.forEach(req => {
                 const category = req.item_name || 'Unknown Item';
                 if (!categoryStats[category]) {
-                    categoryStats[category] = { total: 0, approved: 0, denied: 0 };
+                    categoryStats[category] = {
+                        total: 0,
+                        approved: 0,
+                        denied: 0
+                    };
                 }
                 categoryStats[category].total++;
                 if (req.status === 'approved') categoryStats[category].approved++;
@@ -1158,7 +1233,9 @@ $_SESSION['user_role'] = 'CO';
 
         // Download CSV helper
         function downloadCSV(content, filename) {
-            const blob = new Blob([content], { type: 'text/csv' });
+            const blob = new Blob([content], {
+                type: 'text/csv'
+            });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -1172,21 +1249,21 @@ $_SESSION['user_role'] = 'CO';
         // Refresh reports
         function refreshReports() {
             console.log('🔄 Refreshing CO reports...');
-            
+
             // Reset loading states
             document.getElementById('summaryTotal').innerHTML = '<div class="loading-skeleton" style="width: 60px; height: 32px;"></div>';
             document.getElementById('summaryApprovalRate').innerHTML = '<div class="loading-skeleton" style="width: 60px; height: 32px;"></div>';
             document.getElementById('summaryAvgTime').innerHTML = '<div class="loading-skeleton" style="width: 60px; height: 32px;"></div>';
             document.getElementById('summaryThisWeek').innerHTML = '<div class="loading-skeleton" style="width: 60px; height: 32px;"></div>';
-            
+
             document.getElementById('totalProcessed').innerHTML = '<div class="loading-skeleton" style="width: 60px; height: 40px;"></div>';
             document.getElementById('totalApproved').innerHTML = '<div class="loading-skeleton" style="width: 60px; height: 40px;"></div>';
             document.getElementById('totalDenied').innerHTML = '<div class="loading-skeleton" style="width: 60px; height: 40px;"></div>';
             document.getElementById('currentPending').innerHTML = '<div class="loading-skeleton" style="width: 60px; height: 40px;"></div>';
-            
+
             document.getElementById('processingActivityContainer').innerHTML = '<div class="loading-skeleton" style="width: 100%; height: 200px;"></div>';
             document.getElementById('categoryAnalysisContainer').innerHTML = '<div class="loading-skeleton" style="width: 100%; height: 150px;"></div>';
-            
+
             // Reload data
             loadReportsData();
         }
@@ -1194,11 +1271,11 @@ $_SESSION['user_role'] = 'CO';
         // Utility Functions
         function formatDate(dateString) {
             if (!dateString) return 'N/A';
-            
+
             try {
                 const date = new Date(dateString);
-                return date.toLocaleDateString('en-US', { 
-                    month: 'short', 
+                return date.toLocaleDateString('en-US', {
+                    month: 'short',
                     day: 'numeric',
                     year: date.getFullYear() !== new Date().getFullYear() ? 'numeric' : undefined,
                     hour: '2-digit',
@@ -1212,21 +1289,21 @@ $_SESSION['user_role'] = 'CO';
         // Show alert notification
         function showAlert(message, type = 'info') {
             const alertContainer = document.getElementById('alertContainer');
-            
+
             const alert = document.createElement('div');
             alert.className = `alert ${type}`;
-            
-            const icon = type === 'success' ? 'fa-check-circle' : 
-                        type === 'error' ? 'fa-exclamation-circle' : 
-                        type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
-            
+
+            const icon = type === 'success' ? 'fa-check-circle' :
+                type === 'error' ? 'fa-exclamation-circle' :
+                type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
+
             alert.innerHTML = `
                 <i class="fas ${icon}"></i>
                 <span>${message}</span>
             `;
-            
+
             alertContainer.appendChild(alert);
-            
+
             // Auto remove after timeout
             const timeout = ['warning', 'error'].includes(type) ? 6000 : 4000;
             setTimeout(() => {
@@ -1257,4 +1334,5 @@ $_SESSION['user_role'] = 'CO';
         console.log('📊 Report Types: Processing Activity, Category Analysis, Performance Metrics');
     </script>
 </body>
+
 </html>

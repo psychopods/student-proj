@@ -14,7 +14,6 @@ require '../vendor/autoload.php';
 require '../Config/config.php';
 
 use Firebase\JWT\JWT;
-use Firebase\JWT\Key;
 
 $issuer_claim = "localhost";
 $audience_claim = "localhost";
@@ -37,7 +36,8 @@ if (strpos($path, '/signup') !== false && $method === 'POST') {
 
 // SIGNUP FUNCTION
 //api endpoint ake ni "http://localhost/unfedZombie/Controllers/authController.php/signup"
-function signup($link) {
+function signup($link)
+{
     $data = json_decode(file_get_contents("php://input"), true);
     $name = $data['name'] ?? '';
     $email = $data['email'] ?? '';
@@ -78,7 +78,8 @@ function signup($link) {
 
 // LOGIN FUNCTION
 //api endpoint ake ni "http://localhost/unfedZombie/Controllers/authController.php/login"
-function login($link) {
+function login($link)
+{
     global $secret_key, $issuer_claim, $audience_claim, $issuedat_claim, $expire_claim;
 
     $data = json_decode(file_get_contents("php://input"), true);
@@ -127,4 +128,3 @@ function login($link) {
         echo json_encode(["message" => "Invalid email or password"]);
     }
 }
-?>

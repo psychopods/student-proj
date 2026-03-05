@@ -15,6 +15,7 @@ $_SESSION['user_role'] = 'Department';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -138,10 +139,25 @@ $_SESSION['user_role'] = 'Department';
             transform: translateY(-3px);
         }
 
-        .stat-card.total-requests { --card-bg-1: #667eea; --card-bg-2: #764ba2; }
-        .stat-card.pending-requests { --card-bg-1: #ff7675; --card-bg-2: #fd79a8; }
-        .stat-card.approved-requests { --card-bg-1: #00b894; --card-bg-2: #00cec9; }
-        .stat-card.denied-requests { --card-bg-1: #fdcb6e; --card-bg-2: #e17055; }
+        .stat-card.total-requests {
+            --card-bg-1: #667eea;
+            --card-bg-2: #764ba2;
+        }
+
+        .stat-card.pending-requests {
+            --card-bg-1: #ff7675;
+            --card-bg-2: #fd79a8;
+        }
+
+        .stat-card.approved-requests {
+            --card-bg-1: #00b894;
+            --card-bg-2: #00cec9;
+        }
+
+        .stat-card.denied-requests {
+            --card-bg-1: #fdcb6e;
+            --card-bg-2: #e17055;
+        }
 
         .stat-icon {
             font-size: 2rem;
@@ -175,12 +191,35 @@ $_SESSION['user_role'] = 'Department';
             text-decoration: none;
         }
 
-        .btn-primary { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; }
-        .btn-success { background: var(--success); color: white; }
-        .btn-warning { background: var(--warning); color: #212529; }
-        .btn-danger { background: var(--danger); color: white; }
-        .btn-info { background: var(--info); color: white; }
-        .btn-secondary { background: #6c757d; color: white; }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: #212529;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-info {
+            background: var(--info);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
 
         .btn-sm {
             padding: 0.4rem 0.8rem;
@@ -271,10 +310,25 @@ $_SESSION['user_role'] = 'Department';
             letter-spacing: 0.5px;
         }
 
-        .status-badge.pending { background: #fff3cd; color: #856404; }
-        .status-badge.approved { background: #d4edda; color: #155724; }
-        .status-badge.denied { background: #f8d7da; color: #721c24; }
-        .status-badge.in_progress { background: #d1ecf1; color: #0c5460; }
+        .status-badge.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-badge.approved {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.denied {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status-badge.in_progress {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
 
         /* Priority Badges */
         .priority-badge {
@@ -285,9 +339,20 @@ $_SESSION['user_role'] = 'Department';
             text-transform: uppercase;
         }
 
-        .priority-badge.high { background: #ffebee; color: #c62828; }
-        .priority-badge.medium { background: #fff3e0; color: #ef6c00; }
-        .priority-badge.low { background: #e8f5e8; color: #2e7d32; }
+        .priority-badge.high {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .priority-badge.medium {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .priority-badge.low {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
 
         /* Modal */
         .modal {
@@ -399,10 +464,25 @@ $_SESSION['user_role'] = 'Department';
             gap: 1rem;
         }
 
-        .alert.success { background: linear-gradient(135deg, #d4edda, #c3e6cb); color: #155724; }
-        .alert.error { background: linear-gradient(135deg, #f8d7da, #f5c6cb); color: #721c24; }
-        .alert.info { background: linear-gradient(135deg, #d1ecf1, #bee5eb); color: #0c5460; }
-        .alert.warning { background: linear-gradient(135deg, #fff3cd, #ffeaa7); color: #856404; }
+        .alert.success {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            color: #155724;
+        }
+
+        .alert.error {
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+            color: #721c24;
+        }
+
+        .alert.info {
+            background: linear-gradient(135deg, #d1ecf1, #bee5eb);
+            color: #0c5460;
+        }
+
+        .alert.warning {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            color: #856404;
+        }
 
         /* Loading States */
         .loading-skeleton {
@@ -413,8 +493,13 @@ $_SESSION['user_role'] = 'Department';
         }
 
         @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
         }
 
         /* Empty State */
@@ -479,6 +564,7 @@ $_SESSION['user_role'] = 'Department';
         }
     </style>
 </head>
+
 <body>
     <!-- Include Sidebar Component -->
     <?php include '../../dashboard/components/sidebar.php'; ?>
@@ -528,7 +614,7 @@ $_SESSION['user_role'] = 'Department';
                     </div>
                     <div class="stat-label">Total Requests</div>
                 </div>
-                
+
                 <div class="stat-card pending-requests" onclick="filterByStatus('pending')">
                     <div class="stat-icon">
                         <i class="fas fa-hourglass-half"></i>
@@ -538,7 +624,7 @@ $_SESSION['user_role'] = 'Department';
                     </div>
                     <div class="stat-label">Pending</div>
                 </div>
-                
+
                 <div class="stat-card approved-requests" onclick="filterByStatus('approved')">
                     <div class="stat-icon">
                         <i class="fas fa-check-circle"></i>
@@ -548,7 +634,7 @@ $_SESSION['user_role'] = 'Department';
                     </div>
                     <div class="stat-label">Approved</div>
                 </div>
-                
+
                 <div class="stat-card denied-requests" onclick="filterByStatus('denied')">
                     <div class="stat-icon">
                         <i class="fas fa-times-circle"></i>
@@ -677,7 +763,7 @@ $_SESSION['user_role'] = 'Department';
         async function loadMyRequests() {
             try {
                 showAlert('🔄 Loading your requests...', 'info');
-                
+
                 const response = await fetch(`${API_BASE_URL}/Department/api/requests/my`, {
                     method: 'GET',
                     headers: headers
@@ -690,19 +776,18 @@ $_SESSION['user_role'] = 'Department';
                 const requests = await response.json();
                 allRequests = Array.isArray(requests) ? requests : [];
                 filteredRequests = [...allRequests];
-                
+
                 updateStatistics();
                 displayRequests();
-                
+
                 showAlert(`✅ Loaded ${allRequests.length} requests!`, 'success');
-                
+
             } catch (error) {
                 console.error('Error loading requests:', error);
                 showAlert('❌ Error loading requests: ' + error.message, 'error');
-                
+
                 // Fallback to demo data
-                allRequests = [
-                    {
+                allRequests = [{
                         id: 1,
                         item_name: 'Office Pens',
                         quantity_requested: 10,
@@ -733,7 +818,7 @@ $_SESSION['user_role'] = 'Department';
                         remarks: 'Budget constraints - resubmit next quarter'
                     }
                 ];
-                
+
                 filteredRequests = [...allRequests];
                 updateStatistics();
                 displayRequests();
@@ -758,7 +843,7 @@ $_SESSION['user_role'] = 'Department';
         function displayRequests() {
             const tbody = document.getElementById('requestsTableBody');
             const requestCount = document.getElementById('requestCount');
-            
+
             if (filteredRequests.length === 0) {
                 tbody.innerHTML = `
                     <tr>
@@ -804,7 +889,7 @@ $_SESSION['user_role'] = 'Department';
 
             filteredRequests = allRequests.filter(request => {
                 // Search filter
-                const matchesSearch = !searchTerm || 
+                const matchesSearch = !searchTerm ||
                     request.id.toString().includes(searchTerm) ||
                     (request.item_name || '').toLowerCase().includes(searchTerm) ||
                     (request.purpose || '').toLowerCase().includes(searchTerm);
@@ -821,8 +906,8 @@ $_SESSION['user_role'] = 'Department';
                     const requestDate = new Date(request.request_date);
                     const today = new Date();
                     const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-                    
-                    switch(dateFilter) {
+
+                    switch (dateFilter) {
                         case 'today':
                             matchesDate = requestDate >= todayStart;
                             break;
@@ -864,7 +949,7 @@ $_SESSION['user_role'] = 'Department';
         async function viewRequestDetails(requestId) {
             try {
                 showAlert('🔄 Loading request details...', 'info');
-                
+
                 const response = await fetch(`${API_BASE_URL}/Department/api/requests/view?id=${requestId}`, {
                     method: 'GET',
                     headers: headers
@@ -876,10 +961,10 @@ $_SESSION['user_role'] = 'Department';
 
                 const request = await response.json();
                 showRequestModal(request);
-                
+
             } catch (error) {
                 console.error('Error viewing request:', error);
-                
+
                 // Fallback: find request in local data
                 const request = allRequests.find(r => r.id === requestId);
                 if (request) {
@@ -894,9 +979,9 @@ $_SESSION['user_role'] = 'Department';
         function showRequestModal(request) {
             const modalBody = document.getElementById('modalBody');
             const modalTitle = document.getElementById('modalTitle');
-            
+
             modalTitle.textContent = `Request #${request.id} Details`;
-            
+
             modalBody.innerHTML = `
                 <div class="request-details">
                     <div class="detail-row">
@@ -963,7 +1048,7 @@ $_SESSION['user_role'] = 'Department';
         async function trackRequestStatus(requestId) {
             try {
                 showAlert('🔄 Tracking request status...', 'info');
-                
+
                 const response = await fetch(`${API_BASE_URL}/Department/api/requests/status`, {
                     method: 'GET',
                     headers: headers
@@ -975,21 +1060,21 @@ $_SESSION['user_role'] = 'Department';
 
                 const statusData = await response.json();
                 const targetRequest = statusData.find(req => req.id === requestId);
-                
+
                 if (targetRequest) {
                     showAlert(`📊 Request #${requestId} Status: ${targetRequest.progress || targetRequest.status}`, 'info');
                 } else {
                     showAlert(`📋 Request #${requestId} not found in status tracking`, 'warning');
                 }
-                
+
             } catch (error) {
                 console.error('Error tracking request:', error);
-                
+
                 // Fallback: show status from local data
                 const request = allRequests.find(r => r.id === requestId);
                 if (request) {
                     let statusMessage = '';
-                    switch(request.status) {
+                    switch (request.status) {
                         case 'pending':
                             statusMessage = 'Your request is pending approval';
                             break;
@@ -1039,7 +1124,9 @@ $_SESSION['user_role'] = 'Department';
                 ])
             ].map(row => row.join(',')).join('\n');
 
-            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const blob = new Blob([csvContent], {
+                type: 'text/csv'
+            });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -1048,7 +1135,7 @@ $_SESSION['user_role'] = 'Department';
             a.click();
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
-            
+
             showAlert('📊 Your requests exported successfully!', 'success');
         }
 
@@ -1060,13 +1147,13 @@ $_SESSION['user_role'] = 'Department';
         // Refresh requests
         function refreshRequests() {
             console.log('🔄 Refreshing requests...');
-            
+
             // Reset loading states
             document.getElementById('totalRequests').innerHTML = '<div class="loading-skeleton" style="width: 40px; height: 32px;"></div>';
             document.getElementById('pendingRequests').innerHTML = '<div class="loading-skeleton" style="width: 40px; height: 32px;"></div>';
             document.getElementById('approvedRequests').innerHTML = '<div class="loading-skeleton" style="width: 40px; height: 32px;"></div>';
             document.getElementById('deniedRequests').innerHTML = '<div class="loading-skeleton" style="width: 40px; height: 32px;"></div>';
-            
+
             document.getElementById('requestsTableBody').innerHTML = `
                 <tr>
                     <td colspan="7" style="text-align: center; padding: 2rem;">
@@ -1074,7 +1161,7 @@ $_SESSION['user_role'] = 'Department';
                     </td>
                 </tr>
             `;
-            
+
             // Reload data
             loadMyRequests();
         }
@@ -1082,11 +1169,11 @@ $_SESSION['user_role'] = 'Department';
         // Utility Functions
         function formatDate(dateString) {
             if (!dateString) return 'N/A';
-            
+
             try {
                 const date = new Date(dateString);
-                return date.toLocaleDateString('en-US', { 
-                    month: 'short', 
+                return date.toLocaleDateString('en-US', {
+                    month: 'short',
                     day: 'numeric',
                     year: date.getFullYear() !== new Date().getFullYear() ? 'numeric' : undefined,
                     hour: '2-digit',
@@ -1100,21 +1187,21 @@ $_SESSION['user_role'] = 'Department';
         // Show alert notification
         function showAlert(message, type = 'info') {
             const alertContainer = document.getElementById('alertContainer');
-            
+
             const alert = document.createElement('div');
             alert.className = `alert ${type}`;
-            
-            const icon = type === 'success' ? 'fa-check-circle' : 
-                        type === 'error' ? 'fa-exclamation-circle' : 
-                        type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
-            
+
+            const icon = type === 'success' ? 'fa-check-circle' :
+                type === 'error' ? 'fa-exclamation-circle' :
+                type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
+
             alert.innerHTML = `
                 <i class="fas ${icon}"></i>
                 <span>${message}</span>
             `;
-            
+
             alertContainer.appendChild(alert);
-            
+
             // Auto remove after timeout
             const timeout = ['warning', 'error'].includes(type) ? 6000 : 4000;
             setTimeout(() => {
@@ -1163,4 +1250,5 @@ $_SESSION['user_role'] = 'Department';
         console.log('  - GET /Department/api/requests/status - Track request status');
     </script>
 </body>
+
 </html>

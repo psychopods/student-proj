@@ -86,7 +86,7 @@
                         <p><strong>Saturday:</strong> 08:00 - 13:00</p>
                         <p><strong>Sunday:</strong> Emergency Only</p>
                     </div>
-                    
+
                     <div class="emergency-contact">
                         <h4><i class="fas fa-exclamation-triangle"></i> Emergency Contact</h4>
                         <p><strong>24/7 Emergency:</strong></p>
@@ -150,50 +150,50 @@
 </button>
 
 <script>
-// Footer JavaScript Functions
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}
-
-// Show/hide back to top button
-window.addEventListener('scroll', function() {
-    const backToTop = document.getElementById('backToTop');
-    if (window.pageYOffset > 300) {
-        backToTop.classList.add('visible');
-    } else {
-        backToTop.classList.remove('visible');
-    }
-});
-
-// Update system status in real-time (demo)
-function updateSystemStatus() {
-    const statusDots = document.querySelectorAll('.status-dot');
-    
-    setInterval(() => {
-        statusDots.forEach(dot => {
-            // Keep most statuses as online for stability appearance
-            const isOnline = Math.random() > 0.1; // 90% chance of staying online
-            if (isOnline) {
-                dot.className = 'status-dot online';
-            } else {
-                dot.className = 'status-dot warning';
-            }
+    // Footer JavaScript Functions
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
-    }, 30000); // Update every 30 seconds
-}
-
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
-    updateSystemStatus();
-});
-
-// Emergency contact click handler
-document.querySelector('.emergency-contact').addEventListener('click', function() {
-    if (confirm('This will initiate emergency contact procedures. Continue?')) {
-        alert('Emergency contact protocol initiated. Help is on the way.');
     }
-});
+
+    // Show/hide back to top button
+    window.addEventListener('scroll', function() {
+        const backToTop = document.getElementById('backToTop');
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+
+    // Update system status in real-time (demo)
+    function updateSystemStatus() {
+        const statusDots = document.querySelectorAll('.status-dot');
+
+        setInterval(() => {
+            statusDots.forEach(dot => {
+                // Keep most statuses as online for stability appearance
+                const isOnline = Math.random() > 0.1; // 90% chance of staying online
+                if (isOnline) {
+                    dot.className = 'status-dot online';
+                } else {
+                    dot.className = 'status-dot warning';
+                }
+            });
+        }, 30000); // Update every 30 seconds
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        updateSystemStatus();
+    });
+
+    // Emergency contact click handler
+    document.querySelector('.emergency-contact').addEventListener('click', function() {
+        if (confirm('This will initiate emergency contact procedures. Continue?')) {
+            alert('Emergency contact protocol initiated. Help is on the way.');
+        }
+    });
 </script>

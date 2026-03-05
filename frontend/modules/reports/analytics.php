@@ -21,6 +21,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -130,12 +131,35 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             text-decoration: none;
         }
 
-        .btn-primary { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; }
-        .btn-success { background: var(--success); color: white; }
-        .btn-warning { background: var(--warning); color: #212529; }
-        .btn-danger { background: var(--danger); color: white; }
-        .btn-info { background: var(--info); color: white; }
-        .btn-secondary { background: #6c757d; color: white; }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: #212529;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-info {
+            background: var(--info);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
 
         .btn:hover {
             transform: translateY(-2px);
@@ -176,10 +200,25 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             transform: translate(30%, -30%);
         }
 
-        .stat-card.users { --card-bg-1: #667eea; --card-bg-2: #764ba2; }
-        .stat-card.requests { --card-bg-1: #f093fb; --card-bg-2: #f5576c; }
-        .stat-card.items { --card-bg-1: #43e97b; --card-bg-2: #38f9d7; }
-        .stat-card.efficiency { --card-bg-1: #4facfe; --card-bg-2: #00f2fe; }
+        .stat-card.users {
+            --card-bg-1: #667eea;
+            --card-bg-2: #764ba2;
+        }
+
+        .stat-card.requests {
+            --card-bg-1: #f093fb;
+            --card-bg-2: #f5576c;
+        }
+
+        .stat-card.items {
+            --card-bg-1: #43e97b;
+            --card-bg-2: #38f9d7;
+        }
+
+        .stat-card.efficiency {
+            --card-bg-1: #4facfe;
+            --card-bg-2: #00f2fe;
+        }
 
         .stat-header {
             display: flex;
@@ -369,7 +408,9 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* Responsive */
@@ -406,6 +447,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         }
     </style>
 </head>
+
 <body>
     <!-- Include Sidebar Component -->
     <?php include '../../dashboard/components/sidebar.php'; ?>
@@ -451,7 +493,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                         <option value="365">Last Year</option>
                     </select>
                 </div>
-                
+
                 <div class="filter-group">
                     <label class="filter-label">Data Type</label>
                     <select id="dataTypeFilter" class="filter-select" onchange="updateAnalytics()">
@@ -712,7 +754,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         async function loadAnalyticsData() {
             try {
                 showAlert('🔄 Loading analytics data...', 'info');
-                
+
                 // Load data from multiple endpoints in parallel
                 const [usersResponse, requestsResponse, itemsResponse] = await Promise.allSettled([
                     loadUsers(),
@@ -737,19 +779,19 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                 updateKeyMetrics();
                 createCharts();
                 updateDataTables();
-                
+
                 showAlert('✅ Analytics data loaded successfully!', 'success');
-                
+
             } catch (error) {
                 console.error('Error loading analytics:', error);
                 showAlert('❌ Error loading analytics: ' + error.message, 'error');
-                
+
                 // Use mock data for demo
                 generateMockData();
                 updateKeyMetrics();
                 createCharts();
                 updateDataTables();
-                
+
                 showAlert('⚠️ Using demo data - API connection failed', 'warning');
             }
         }
@@ -802,9 +844,11 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         // Generate mock data for demo
         function generateMockData() {
             console.log('📊 Generating mock analytics data...');
-            
+
             // Mock users
-            analyticsData.users = Array.from({length: 45}, (_, i) => ({
+            analyticsData.users = Array.from({
+                length: 45
+            }, (_, i) => ({
                 id: i + 1,
                 name: `User ${i + 1}`,
                 role: ['Admin', 'QuarterMaster', 'Department', 'CO', 'Auditor'][i % 5],
@@ -812,14 +856,24 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             }));
 
             // Mock requests with realistic patterns
-            analyticsData.requests = Array.from({length: 120}, (_, i) => {
-                const statuses = [
-                    { approved: 0, authorized: 0 }, // Pending
-                    { approved: 1, authorized: 0 }, // Approved
-                    { approved: 1, authorized: 1 }, // Authorized
+            analyticsData.requests = Array.from({
+                length: 120
+            }, (_, i) => {
+                const statuses = [{
+                        approved: 0,
+                        authorized: 0
+                    }, // Pending
+                    {
+                        approved: 1,
+                        authorized: 0
+                    }, // Approved
+                    {
+                        approved: 1,
+                        authorized: 1
+                    }, // Authorized
                 ];
                 const status = statuses[Math.floor(Math.random() * statuses.length)];
-                
+
                 return {
                     id: i + 1,
                     user_id: Math.floor(Math.random() * 45) + 1,
@@ -832,7 +886,9 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
 
             // Mock items
             const itemNames = ['Office Pens', 'Laptops', 'Chairs', 'Desks', 'Printers', 'Paper', 'Staplers', 'Folders', 'Monitors', 'Keyboards'];
-            analyticsData.items = Array.from({length: 25}, (_, i) => ({
+            analyticsData.items = Array.from({
+                length: 25
+            }, (_, i) => ({
                 id: i + 1,
                 name: itemNames[i % itemNames.length] + ` ${Math.floor(i/itemNames.length) + 1}`,
                 category_id: ['Office Supplies', 'Electronics', 'Furniture'][i % 3],
@@ -862,10 +918,10 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         // Calculate system efficiency
         function calculateSystemEfficiency() {
             if (analyticsData.requests.length === 0) return 0;
-            
+
             const authorizedRequests = analyticsData.requests.filter(r => r.authorized).length;
             const totalRequests = analyticsData.requests.length;
-            
+
             return Math.round((authorizedRequests / totalRequests) * 100);
         }
 
@@ -889,7 +945,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         // Create request status pie chart
         function createRequestStatusChart() {
             const ctx = document.getElementById('requestStatusChart').getContext('2d');
-            
+
             const pending = analyticsData.requests.filter(r => !r.approved && !r.authorized).length;
             const approved = analyticsData.requests.filter(r => r.approved && !r.authorized).length;
             const authorized = analyticsData.requests.filter(r => r.authorized).length;
@@ -932,7 +988,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         // Create request trends line chart
         function createRequestTrendsChart() {
             const ctx = document.getElementById('requestTrendsChart').getContext('2d');
-            
+
             // Group requests by month
             const monthlyData = getMonthlyRequestData();
 
@@ -983,7 +1039,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         // Create department activity bar chart
         function createDepartmentChart() {
             const ctx = document.getElementById('departmentChart').getContext('2d');
-            
+
             const departmentData = getDepartmentActivityData();
 
             if (charts.department) {
@@ -1028,7 +1084,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         // Create inventory status chart
         function createInventoryChart() {
             const ctx = document.getElementById('inventoryChart').getContext('2d');
-            
+
             const inventoryData = getInventoryStatusData();
 
             if (charts.inventory) {
@@ -1081,23 +1137,26 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             const months = [];
             const totals = [];
             const authorized = [];
-            
+
             // Get last 6 months
             for (let i = 5; i >= 0; i--) {
                 const date = new Date();
                 date.setMonth(date.getMonth() - i);
                 const monthKey = date.toISOString().substring(0, 7); // YYYY-MM
-                
-                months.push(date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }));
-                
-                const monthRequests = analyticsData.requests.filter(r => 
+
+                months.push(date.toLocaleDateString('en-US', {
+                    month: 'short',
+                    year: 'numeric'
+                }));
+
+                const monthRequests = analyticsData.requests.filter(r =>
                     r.created_at && r.created_at.startsWith(monthKey)
                 );
-                
+
                 totals.push(monthRequests.length);
                 authorized.push(monthRequests.filter(r => r.authorized).length);
             }
-            
+
             return {
                 labels: months,
                 totals: totals,
@@ -1110,18 +1169,18 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             const departments = ['Admin', 'QuarterMaster', 'Department', 'CO', 'Auditor'];
             const userCounts = [];
             const requestCounts = [];
-            
+
             departments.forEach(dept => {
                 const deptUsers = analyticsData.users.filter(u => u.role === dept);
                 const deptRequests = analyticsData.requests.filter(r => {
                     const user = analyticsData.users.find(u => u.id === r.user_id);
                     return user && user.role === dept;
                 });
-                
+
                 userCounts.push(deptUsers.length);
                 requestCounts.push(deptRequests.length);
             });
-            
+
             return {
                 labels: departments,
                 users: userCounts,
@@ -1131,12 +1190,15 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
 
         // Get inventory status data
         function getInventoryStatusData() {
-            let high = 0, medium = 0, low = 0, out = 0;
-            
+            let high = 0,
+                medium = 0,
+                low = 0,
+                out = 0;
+
             analyticsData.items.forEach(item => {
                 const stock = item.current_stock || 0;
                 const reorderLevel = item.reorder_level || 0;
-                
+
                 if (stock === 0) {
                     out++;
                 } else if (stock <= reorderLevel) {
@@ -1147,8 +1209,13 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                     high++;
                 }
             });
-            
-            return { high, medium, low, out };
+
+            return {
+                high,
+                medium,
+                low,
+                out
+            };
         }
 
         // Update data tables
@@ -1160,7 +1227,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         // Update top requested items table
         function updateTopItemsTable() {
             const itemRequestCounts = {};
-            
+
             // Count requests per item
             analyticsData.requests.forEach(request => {
                 const itemId = request.item_id;
@@ -1173,19 +1240,19 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                 }
                 itemRequestCounts[itemId].count++;
                 itemRequestCounts[itemId].totalQuantity += request.quantity || 0;
-                
+
                 // Get actual item name if available
                 const item = analyticsData.items.find(i => i.id === itemId);
                 if (item) {
                     itemRequestCounts[itemId].itemName = item.name;
                 }
             });
-            
+
             // Sort by request count
             const sortedItems = Object.values(itemRequestCounts)
                 .sort((a, b) => b.count - a.count)
                 .slice(0, 5);
-            
+
             const tbody = document.querySelector('#topItemsTable tbody');
             tbody.innerHTML = sortedItems.map((item, index) => `
                 <tr>
@@ -1199,8 +1266,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
 
         // Update performance metrics table
         function updatePerformanceTable() {
-            const metrics = [
-                {
+            const metrics = [{
                     name: 'Request Approval Rate',
                     current: calculateApprovalRate(),
                     target: 90,
@@ -1225,13 +1291,13 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                     unit: '%'
                 }
             ];
-            
+
             const tbody = document.querySelector('#performanceTable tbody');
             tbody.innerHTML = metrics.map(metric => {
                 const status = metric.current >= metric.target ? 'success' : 'warning';
                 const statusIcon = metric.current >= metric.target ? 'fa-check-circle' : 'fa-exclamation-triangle';
                 const statusColor = metric.current >= metric.target ? '#28a745' : '#ffc107';
-                
+
                 return `
                     <tr>
                         <td><strong>${metric.name}</strong></td>
@@ -1265,23 +1331,25 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             const period = document.getElementById('periodFilter').value;
             const dataType = document.getElementById('dataTypeFilter').value;
             const department = document.getElementById('departmentFilter').value;
-            
+
             console.log(`🔄 Updating analytics: ${period} days, ${dataType}, ${department}`);
-            
+
             // Filter data based on selections
             let filteredData = filterAnalyticsData(period, dataType, department);
-            
+
             // Update with filtered data
-            const originalData = { ...analyticsData };
+            const originalData = {
+                ...analyticsData
+            };
             analyticsData = filteredData;
-            
+
             updateKeyMetrics();
             createCharts();
             updateDataTables();
-            
+
             // Restore original data
             analyticsData = originalData;
-            
+
             showAlert(`📊 Analytics updated for ${period} days`, 'info');
         }
 
@@ -1289,18 +1357,18 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         function filterAnalyticsData(period, dataType, department) {
             const cutoffDate = new Date();
             cutoffDate.setDate(cutoffDate.getDate() - parseInt(period));
-            
+
             let filtered = {
                 users: [...analyticsData.users],
                 requests: [...analyticsData.requests],
                 items: [...analyticsData.items]
             };
-            
+
             // Filter by time period
-            filtered.requests = filtered.requests.filter(r => 
+            filtered.requests = filtered.requests.filter(r =>
                 !r.created_at || new Date(r.created_at) >= cutoffDate
             );
-            
+
             // Filter by department
             if (department !== 'all') {
                 const departmentRoleMap = {
@@ -1309,7 +1377,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                     'operations': 'Department',
                     'intelligence': 'CO'
                 };
-                
+
                 const targetRole = departmentRoleMap[department];
                 if (targetRole) {
                     filtered.users = filtered.users.filter(u => u.role === targetRole);
@@ -1317,14 +1385,14 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                     filtered.requests = filtered.requests.filter(r => userIds.includes(r.user_id));
                 }
             }
-            
+
             // Filter by data type
             if (dataType === 'requests') {
-                filtered.users = filtered.users.filter(u => 
+                filtered.users = filtered.users.filter(u =>
                     filtered.requests.some(r => r.user_id === u.id)
                 );
             }
-            
+
             return filtered;
         }
 
@@ -1337,7 +1405,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         // Export analytics report
         function exportAnalytics() {
             console.log('📁 Exporting analytics report...');
-            
+
             const reportData = {
                 generated: new Date().toISOString(),
                 period: document.getElementById('periodFilter').value + ' days',
@@ -1353,7 +1421,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                     authorized: analyticsData.requests.filter(r => r.authorized).length
                 }
             };
-            
+
             const csvContent = [
                 ['MSICT System Analytics Report'],
                 ['Generated:', new Date().toLocaleDateString()],
@@ -1375,7 +1443,9 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                 ['Avg Processing Time', calculateAverageProcessingTime() + ' hours']
             ].map(row => row.join(',')).join('\n');
 
-            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const blob = new Blob([csvContent], {
+                type: 'text/csv'
+            });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -1384,7 +1454,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             a.click();
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
-            
+
             showAlert('📊 Analytics report exported successfully!', 'success');
         }
 
@@ -1392,21 +1462,21 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         function showAlert(message, type = 'info') {
             console.log(`📢 Alert: ${message} (${type})`);
             const alertContainer = document.getElementById('alertContainer');
-            
+
             const alert = document.createElement('div');
             alert.className = `alert ${type}`;
-            
-            const icon = type === 'success' ? 'fa-check-circle' : 
-                        type === 'error' ? 'fa-exclamation-circle' : 
-                        type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
-            
+
+            const icon = type === 'success' ? 'fa-check-circle' :
+                type === 'error' ? 'fa-exclamation-circle' :
+                type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
+
             alert.innerHTML = `
                 <i class="fas ${icon}"></i>
                 <span>${message}</span>
             `;
-            
+
             alertContainer.appendChild(alert);
-            
+
             // Auto remove after 3 seconds
             setTimeout(() => {
                 if (alert.parentNode) {
@@ -1430,11 +1500,12 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         console.log('🔗 API Base URL:', API_BASE_URL);
         console.log('🔑 JWT Token Status:', token ? 'Present' : 'Missing');
         console.log('👤 Current User Role:', userRole);
-        
+
         // Show welcome message after page loads
         setTimeout(() => {
             showAlert('📊 Analytics Dashboard Ready!', 'success');
         }, 2000);
     </script>
 </body>
+
 </html>

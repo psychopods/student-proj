@@ -37,7 +37,8 @@ try {
     exit;
 }
 
-function isStoreKeeper($link, $role_id) {
+function isStoreKeeper($link, $role_id)
+{
     $query = "SELECT name FROM roles WHERE id = ?";
     $stmt = mysqli_prepare($link, $query);
     mysqli_stmt_bind_param($stmt, "i", $role_id);
@@ -89,7 +90,8 @@ if ($route === 'items' && $method === 'DELETE' && $id) {
 }
 
 
-function addItem($link) {
+function addItem($link)
+{
     $data = json_decode(file_get_contents("php://input"), true);
     $stmt = mysqli_prepare($link, "INSERT INTO items (name, description, sku, category_id, unit, reorder_level) VALUES (?, ?, ?, ?, ?, ?)");
     mysqli_stmt_bind_param($stmt, "sssisi", $data['name'], $data['description'], $data['sku'], $data['category_id'], $data['unit'], $data['reorder_level']);
@@ -101,7 +103,8 @@ function addItem($link) {
     }
 }
 
-function updateItem($link, $id = null) {
+function updateItem($link, $id = null)
+{
     $data = json_decode(file_get_contents("php://input"), true);
 
     if ($id === null) {
@@ -151,7 +154,8 @@ function updateItem($link, $id = null) {
     }
 }
 
-function deleteItem($link, $id) {
+function deleteItem($link, $id)
+{
     $stmt = mysqli_prepare($link, "DELETE FROM items WHERE id = ?");
     mysqli_stmt_bind_param($stmt, "i", $id);
     if (mysqli_stmt_execute($stmt)) {
@@ -162,7 +166,8 @@ function deleteItem($link, $id) {
     }
 }
 
-function updateStock($link, $id = null, $user_id = null) {
+function updateStock($link, $id = null, $user_id = null)
+{
     $data = json_decode(file_get_contents("php://input"), true);
 
     if ($id === null) {
@@ -220,7 +225,8 @@ function updateStock($link, $id = null, $user_id = null) {
     }
 }
 
-function authorizeRequest($link, $user_id) {
+function authorizeRequest($link, $user_id)
+{
     $data = json_decode(file_get_contents("php://input"), true);
     $request_id = $data['request_id'] ?? null;
     if (!$request_id) {
@@ -228,7 +234,7 @@ function authorizeRequest($link, $user_id) {
         echo json_encode(["message" => "Request ID is required"]);
         return;
     }
-    
+
     $stmt = mysqli_prepare(
         $link,
         "UPDATE item_requests 
@@ -244,14 +250,16 @@ function authorizeRequest($link, $user_id) {
     }
 }
 
-function viewStock($link) {
+function viewStock($link)
+{
     $query = "SELECT i.id, i.name, s.quantity, i.unit FROM items i JOIN inventory_stock s ON i.id = s.item_id";
     $result = mysqli_query($link, $query);
     $stock = mysqli_fetch_all($result, MYSQLI_ASSOC);
     echo json_encode($stock);
 }
 
-function viewDispatchableRequests($link) {
+function viewDispatchableRequests($link)
+{
     $query = "SELECT r.id, r.item_id, i.name as item_name, r.quantity_requested, r.requested_by
               FROM item_requests r
               JOIN items i ON r.item_id = i.id
@@ -261,7 +269,8 @@ function viewDispatchableRequests($link) {
     echo json_encode($requests);
 }
 
-function dispatchItem($link, $dispatched_by) {
+function dispatchItem($link, $dispatched_by)
+{
     $data = json_decode(file_get_contents("php://input"), true);
     $request_id = $data['request_id'] ?? null;
 
@@ -326,4 +335,3 @@ function dispatchItem($link, $dispatched_by) {
         echo json_encode(["error" => "Dispatch failed", "details" => $e->getMessage()]);
     }
 }
-?>

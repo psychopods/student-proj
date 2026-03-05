@@ -15,6 +15,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,7 +64,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
             border-radius: 10px;
             padding: 0.25rem;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .tab {
@@ -177,7 +178,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         .table-container {
             overflow-x: auto;
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .table {
@@ -214,9 +215,20 @@ $_SESSION['user_role'] = 'QuarterMaster';
             text-transform: uppercase;
         }
 
-        .status-badge.in-stock { background: #d4edda; color: #155724; }
-        .status-badge.low-stock { background: #f8d7da; color: #721c24; }
-        .status-badge.out-of-stock { background: #f0f0f0; color: #666; }
+        .status-badge.in-stock {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.low-stock {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status-badge.out-of-stock {
+            background: #f0f0f0;
+            color: #666;
+        }
 
         /* Buttons */
         .btn {
@@ -233,11 +245,30 @@ $_SESSION['user_role'] = 'QuarterMaster';
             text-decoration: none;
         }
 
-        .btn-primary { background: var(--primary-color); color: white; }
-        .btn-success { background: var(--success-color); color: white; }
-        .btn-info { background: var(--info-color); color: white; }
-        .btn-warning { background: var(--warning-color); color: #212529; }
-        .btn-danger { background: var(--danger-color); color: white; }
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .btn-info {
+            background: var(--info-color);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--warning-color);
+            color: #212529;
+        }
+
+        .btn-danger {
+            background: var(--danger-color);
+            color: white;
+        }
 
         .btn-sm {
             padding: 0.4rem 0.8rem;
@@ -351,9 +382,20 @@ $_SESSION['user_role'] = 'QuarterMaster';
             text-align: center;
         }
 
-        .stat-card.total { --card-bg-1: #667eea; --card-bg-2: #764ba2; }
-        .stat-card.low { --card-bg-1: #f093fb; --card-bg-2: #f5576c; }
-        .stat-card.out { --card-bg-1: #4facfe; --card-bg-2: #00f2fe; }
+        .stat-card.total {
+            --card-bg-1: #667eea;
+            --card-bg-2: #764ba2;
+        }
+
+        .stat-card.low {
+            --card-bg-1: #f093fb;
+            --card-bg-2: #f5576c;
+        }
+
+        .stat-card.out {
+            --card-bg-1: #4facfe;
+            --card-bg-2: #00f2fe;
+        }
 
         .stat-value {
             font-size: 2rem;
@@ -377,9 +419,20 @@ $_SESSION['user_role'] = 'QuarterMaster';
             gap: 1rem;
         }
 
-        .alert.success { background: linear-gradient(135deg, #d4edda, #c3e6cb); color: #155724; }
-        .alert.error { background: linear-gradient(135deg, #f8d7da, #f5c6cb); color: #721c24; }
-        .alert.info { background: linear-gradient(135deg, #d1ecf1, #bee5eb); color: #0c5460; }
+        .alert.success {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            color: #155724;
+        }
+
+        .alert.error {
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+            color: #721c24;
+        }
+
+        .alert.info {
+            background: linear-gradient(135deg, #d1ecf1, #bee5eb);
+            color: #0c5460;
+        }
 
         /* Loading */
         .loading {
@@ -399,7 +452,9 @@ $_SESSION['user_role'] = 'QuarterMaster';
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* Responsive */
@@ -408,18 +463,22 @@ $_SESSION['user_role'] = 'QuarterMaster';
                 flex-direction: column;
                 gap: 1rem;
             }
+
             .search-filter-bar {
                 flex-direction: column;
             }
+
             .tabs {
                 flex-direction: column;
             }
+
             .tab {
                 text-align: center;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Include Sidebar Component -->
     <?php include '../../dashboard/components/sidebar.php'; ?>
@@ -769,7 +828,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         async function loadAllData() {
             try {
                 showAlert('🔄 Loading data...', 'info');
-                
+
                 const [stock, items] = await Promise.allSettled([
                     loadStock(),
                     loadItems()
@@ -788,7 +847,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
                 }
 
                 showAlert('✅ Data loaded successfully!', 'success');
-                
+
             } catch (error) {
                 console.error('Error loading data:', error);
                 showAlert('❌ Error loading data: ' + error.message, 'error');
@@ -821,7 +880,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
             // Remove active class from all tabs and content
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            
+
             // Add active class to selected tab and content
             event.target.classList.add('active');
             document.getElementById(tabName).classList.add('active');
@@ -863,7 +922,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         // Display stock table
         function displayStock() {
             const tbody = document.getElementById('stockTable');
-            
+
             if (stockData.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 2rem;">No stock data available</td></tr>';
                 return;
@@ -888,7 +947,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         // Display items table
         function displayItems() {
             const tbody = document.getElementById('itemsTable');
-            
+
             if (stockData.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 2rem;">No items available</td></tr>';
                 return;
@@ -918,7 +977,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         function displayAlerts() {
             const tbody = document.getElementById('alertsTable');
             const lowStockItems = stockData.filter(item => item.quantity <= 10); // Assuming 10 is threshold
-            
+
             if (lowStockItems.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 2rem; color: green;"><i class="fas fa-check-circle"></i><br>All items are adequately stocked!</td></tr>';
                 return;
@@ -968,11 +1027,11 @@ $_SESSION['user_role'] = 'QuarterMaster';
         function filterStock() {
             const searchTerm = document.getElementById('stockSearch').value.toLowerCase();
             const filterValue = document.getElementById('stockFilter').value;
-            
+
             const filteredData = stockData.filter(item => {
                 const matchesSearch = item.name.toLowerCase().includes(searchTerm);
                 let matchesFilter = true;
-                
+
                 if (filterValue === 'in-stock') {
                     matchesFilter = item.quantity > 10;
                 } else if (filterValue === 'low-stock') {
@@ -980,7 +1039,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
                 } else if (filterValue === 'out-of-stock') {
                     matchesFilter = item.quantity === 0;
                 }
-                
+
                 return matchesSearch && matchesFilter;
             });
 
@@ -990,7 +1049,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         // Display filtered stock
         function displayFilteredStock(data) {
             const tbody = document.getElementById('stockTable');
-            
+
             if (data.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 2rem;">No items match your search criteria</td></tr>';
                 return;
@@ -1015,8 +1074,8 @@ $_SESSION['user_role'] = 'QuarterMaster';
         // Filter items table
         function filterItems() {
             const searchTerm = document.getElementById('itemSearch').value.toLowerCase();
-            
-            const filteredData = stockData.filter(item => 
+
+            const filteredData = stockData.filter(item =>
                 item.name.toLowerCase().includes(searchTerm) ||
                 (item.sku && item.sku.toLowerCase().includes(searchTerm))
             );
@@ -1027,7 +1086,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         // Display filtered items
         function displayFilteredItems(data) {
             const tbody = document.getElementById('itemsTable');
-            
+
             if (data.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 2rem;">No items match your search criteria</td></tr>';
                 return;
@@ -1068,7 +1127,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
 
             document.getElementById('modalTitle').textContent = 'Edit Item';
             document.getElementById('submitBtn').textContent = 'Update Item';
-            
+
             document.getElementById('itemId').value = item.id;
             document.getElementById('itemName').value = item.name;
             document.getElementById('itemSku').value = item.sku || '';
@@ -1076,7 +1135,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
             document.getElementById('itemUnit').value = item.unit;
             document.getElementById('itemReorderLevel').value = item.reorder_level || '';
             document.getElementById('itemCategoryId').value = item.category_id || '';
-            
+
             document.getElementById('itemModal').classList.add('show');
         }
 
@@ -1099,7 +1158,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         // Handle item form submission
         async function handleItemSubmit(e) {
             e.preventDefault();
-            
+
             const itemId = document.getElementById('itemId').value;
             const formData = {
                 name: document.getElementById('itemName').value,
@@ -1146,7 +1205,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         // Handle stock form submission
         async function handleStockSubmit(e) {
             e.preventDefault();
-            
+
             const itemId = document.getElementById('stockId').value;
             const newQuantity = parseInt(document.getElementById('newQuantity').value);
 
@@ -1208,21 +1267,21 @@ $_SESSION['user_role'] = 'QuarterMaster';
         // Show alert
         function showAlert(message, type = 'info') {
             const alertContainer = document.getElementById('alertContainer');
-            
+
             const alert = document.createElement('div');
             alert.className = `alert ${type}`;
-            
-            const icon = type === 'success' ? 'fa-check-circle' : 
-                        type === 'error' ? 'fa-exclamation-circle' : 
-                        'fa-info-circle';
-            
+
+            const icon = type === 'success' ? 'fa-check-circle' :
+                type === 'error' ? 'fa-exclamation-circle' :
+                'fa-info-circle';
+
             alert.innerHTML = `
                 <i class="fas ${icon}"></i>
                 <span>${message}</span>
             `;
-            
+
             alertContainer.appendChild(alert);
-            
+
             setTimeout(() => {
                 if (alert.parentNode) {
                     alert.parentNode.removeChild(alert);
@@ -1243,4 +1302,5 @@ $_SESSION['user_role'] = 'QuarterMaster';
         console.log('📦 Stock Management System Initialized');
     </script>
 </body>
+
 </html>

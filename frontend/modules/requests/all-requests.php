@@ -21,6 +21,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -129,12 +130,35 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             text-decoration: none;
         }
 
-        .btn-primary { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; }
-        .btn-success { background: var(--success); color: white; }
-        .btn-warning { background: var(--warning); color: #212529; }
-        .btn-danger { background: var(--danger); color: white; }
-        .btn-info { background: var(--info); color: white; }
-        .btn-secondary { background: #6c757d; color: white; }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: #212529;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-info {
+            background: var(--info);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
 
         .btn-sm {
             padding: 0.4rem 0.8rem;
@@ -193,11 +217,30 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             letter-spacing: 0.5px;
         }
 
-        .status-badge.pending { background: #fff3cd; color: #856404; }
-        .status-badge.approved { background: #d4edda; color: #155724; }
-        .status-badge.authorized { background: #cce5ff; color: #0056b3; }
-        .status-badge.rejected { background: #f8d7da; color: #721c24; }
-        .status-badge.completed { background: #d1ecf1; color: #0c5460; }
+        .status-badge.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-badge.approved {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.authorized {
+            background: #cce5ff;
+            color: #0056b3;
+        }
+
+        .status-badge.rejected {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status-badge.completed {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
 
         /* Search and Filter */
         .search-filter-bar {
@@ -250,10 +293,25 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .stat-card.total-requests { --card-bg-1: #667eea; --card-bg-2: #764ba2; }
-        .stat-card.pending-requests { --card-bg-1: #f093fb; --card-bg-2: #f5576c; }
-        .stat-card.approved-requests { --card-bg-1: #43e97b; --card-bg-2: #38f9d7; }
-        .stat-card.completed-requests { --card-bg-1: #4facfe; --card-bg-2: #00f2fe; }
+        .stat-card.total-requests {
+            --card-bg-1: #667eea;
+            --card-bg-2: #764ba2;
+        }
+
+        .stat-card.pending-requests {
+            --card-bg-1: #f093fb;
+            --card-bg-2: #f5576c;
+        }
+
+        .stat-card.approved-requests {
+            --card-bg-1: #43e97b;
+            --card-bg-2: #38f9d7;
+        }
+
+        .stat-card.completed-requests {
+            --card-bg-1: #4facfe;
+            --card-bg-2: #00f2fe;
+        }
 
         .stat-value {
             font-size: 2rem;
@@ -304,7 +362,9 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* Modal Styles */
@@ -407,6 +467,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         }
     </style>
 </head>
+
 <body>
     <!-- Include Sidebar Component -->
     <?php include '../../dashboard/components/sidebar.php'; ?>
@@ -620,23 +681,23 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         async function loadRequests() {
             try {
                 showAlert('🔄 Loading requests...', 'info');
-                
+
                 const apiUrl = `${API_BASE_URL}/api/admin/requests`;
-                
+
                 console.log('🔍 Calling API endpoint:', apiUrl);
                 console.log('🔑 Using token:', token ? 'Present' : 'Missing');
-                
+
                 const response = await fetch(apiUrl, {
                     method: 'GET',
                     headers: headers
                 });
-                
+
                 console.log('📡 Response status:', response.status);
-                
+
                 if (!response.ok) {
                     const errorText = await response.text();
                     console.error('❌ API Error:', errorText);
-                    
+
                     if (response.status === 401) {
                         throw new Error('Authentication failed. Please login again.');
                     } else if (response.status === 403) {
@@ -682,18 +743,17 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                 filteredRequests = [...requests];
                 displayRequests();
                 updateRequestStats();
-                
+
                 showAlert(`✅ Loaded ${requests.length} requests!`, 'success');
-                
+
             } catch (error) {
                 console.error('❌ Error loading requests:', error);
                 showAlert('❌ Error loading requests: ' + error.message, 'error');
-                
+
                 // Fallback to mock data for demo
                 console.log('🔄 Using mock data as fallback...');
-                requests = [
-                    { 
-                        id: 1, 
+                requests = [{
+                        id: 1,
                         user_id: 1,
                         item_id: 1,
                         quantity: 10,
@@ -704,8 +764,8 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                         requester_name: 'John Doe',
                         item_name: 'Pens'
                     },
-                    { 
-                        id: 2, 
+                    {
+                        id: 2,
                         user_id: 2,
                         item_id: 2,
                         quantity: 5,
@@ -717,8 +777,8 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                         requester_name: 'Jane Smith',
                         item_name: 'Laptops'
                     },
-                    { 
-                        id: 3, 
+                    {
+                        id: 3,
                         user_id: 3,
                         item_id: 3,
                         quantity: 20,
@@ -736,7 +796,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                 filteredRequests = [...requests];
                 displayRequests();
                 updateRequestStats();
-                
+
                 showAlert('⚠️ Using demo data - API connection failed', 'warning');
             }
         }
@@ -746,7 +806,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             console.log('📊 Displaying requests:', filteredRequests);
             const tbody = document.getElementById('requestsTableBody');
             const requestCount = document.getElementById('requestCount');
-            
+
             if (filteredRequests.length === 0) {
                 tbody.innerHTML = `
                     <tr>
@@ -762,7 +822,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             tbody.innerHTML = filteredRequests.map(request => {
                 const status = getRequestStatus(request);
                 const actions = getRequestActions(request);
-                
+
                 return `
                     <tr>
                         <td><strong>#${request.id}</strong></td>
@@ -788,13 +848,25 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         // Get request status
         function getRequestStatus(request) {
             if (request.authorized || request.authorized === 1 || request.authorized === '1') {
-                return { class: 'authorized', text: 'Authorized' };
+                return {
+                    class: 'authorized',
+                    text: 'Authorized'
+                };
             } else if (request.approved || request.approved === 1 || request.approved === '1') {
-                return { class: 'approved', text: 'Approved' };
+                return {
+                    class: 'approved',
+                    text: 'Approved'
+                };
             } else if (request.rejected || request.rejected === 1 || request.rejected === '1') {
-                return { class: 'rejected', text: 'Rejected' };
+                return {
+                    class: 'rejected',
+                    text: 'Rejected'
+                };
             } else {
-                return { class: 'pending', text: 'Pending' };
+                return {
+                    class: 'pending',
+                    text: 'Pending'
+                };
             }
         }
 
@@ -807,7 +879,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             `;
 
             const status = getRequestStatus(request);
-            
+
             // Add role-specific actions
             if (userRole === 'Admin' || userRole === 'QuarterMaster') {
                 if (status.class === 'pending') {
@@ -817,7 +889,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                         </button>
                     `;
                 }
-                
+
                 if (status.class === 'approved' && userRole === 'Admin') {
                     actions += `
                         <button class="btn btn-warning btn-sm authorize-request-btn" data-request-id="${request.id}" title="Authorize Request">
@@ -861,7 +933,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
 
             filteredRequests = requests.filter(request => {
                 // Search filter
-                const matchesSearch = !searchTerm || 
+                const matchesSearch = !searchTerm ||
                     request.id.toString().includes(searchTerm) ||
                     (request.requester_name || request.user_name || '').toLowerCase().includes(searchTerm) ||
                     (request.item_name || '').toLowerCase().includes(searchTerm) ||
@@ -877,8 +949,8 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                     const requestDate = new Date(request.created_at);
                     const today = new Date();
                     const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-                    
-                    switch(dateFilter) {
+
+                    switch (dateFilter) {
                         case 'today':
                             matchesDate = requestDate >= todayStart;
                             break;
@@ -903,7 +975,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         // View request details
         function viewRequest(requestId) {
             console.log('👁️ Viewing request details for ID:', requestId);
-            
+
             const request = requests.find(r => parseInt(r.id) === parseInt(requestId));
             if (!request) {
                 showAlert('❌ Request not found!', 'error');
@@ -911,7 +983,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             }
 
             const status = getRequestStatus(request);
-            
+
             const modalBody = document.getElementById('modalBody');
             modalBody.innerHTML = `
                 <div style="display: grid; gap: 1rem;">
@@ -990,7 +1062,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                         </button>
                     `;
                 }
-                
+
                 if (status.class === 'approved' && userRole === 'Admin') {
                     actions += `
                         <button class="btn btn-warning" onclick="authorizeRequest(${request.id}); closeRequestModal();">
@@ -1025,7 +1097,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
 
             try {
                 showAlert('🔄 Approving request...', 'info');
-                
+
                 const response = await fetch(`${API_BASE_URL}/api/admin/approve-request/${requestId}`, {
                     method: 'PUT',
                     headers: headers
@@ -1043,7 +1115,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             } catch (error) {
                 console.error('Error approving request:', error);
                 showAlert('❌ Error approving request: ' + error.message, 'error');
-                
+
                 // Fallback: Update local data for demo
                 const request = requests.find(r => r.id === requestId);
                 if (request) {
@@ -1065,7 +1137,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
 
             try {
                 showAlert('🔄 Authorizing request...', 'info');
-                
+
                 const response = await fetch(`${API_BASE_URL}/api/admin/authorize-request/${requestId}`, {
                     method: 'PUT',
                     headers: headers
@@ -1083,7 +1155,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             } catch (error) {
                 console.error('Error authorizing request:', error);
                 showAlert('❌ Error authorizing request: ' + error.message, 'error');
-                
+
                 // Fallback: Update local data for demo
                 const request = requests.find(r => r.id === requestId);
                 if (request) {
@@ -1100,12 +1172,12 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         // Format date
         function formatDate(dateString) {
             if (!dateString) return 'N/A';
-            
+
             try {
                 const date = new Date(dateString);
-                return date.toLocaleDateString('en-US', { 
+                return date.toLocaleDateString('en-US', {
                     year: 'numeric',
-                    month: 'short', 
+                    month: 'short',
                     day: 'numeric',
                     hour: '2-digit',
                     minute: '2-digit'
@@ -1129,7 +1201,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         // Export requests
         function exportRequests() {
             console.log('📁 Exporting requests...');
-            
+
             const csvContent = [
                 ['Request ID', 'User', 'Item', 'Quantity', 'Description', 'Status', 'Created Date', 'Approved Date', 'Authorized Date'],
                 ...filteredRequests.map(request => {
@@ -1148,7 +1220,9 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
                 })
             ].map(row => row.join(',')).join('\n');
 
-            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const blob = new Blob([csvContent], {
+                type: 'text/csv'
+            });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -1157,7 +1231,7 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
             a.click();
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
-            
+
             showAlert('📁 Requests exported successfully!', 'success');
         }
 
@@ -1165,21 +1239,21 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         function showAlert(message, type = 'info') {
             console.log(`📢 Alert: ${message} (${type})`);
             const alertContainer = document.getElementById('alertContainer');
-            
+
             const alert = document.createElement('div');
             alert.className = `alert ${type}`;
-            
-            const icon = type === 'success' ? 'fa-check-circle' : 
-                        type === 'error' ? 'fa-exclamation-circle' : 
-                        type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
-            
+
+            const icon = type === 'success' ? 'fa-check-circle' :
+                type === 'error' ? 'fa-exclamation-circle' :
+                type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
+
             alert.innerHTML = `
                 <i class="fas ${icon}"></i>
                 <span>${message}</span>
             `;
-            
+
             alertContainer.appendChild(alert);
-            
+
             // Auto remove after 3 seconds
             setTimeout(() => {
                 if (alert.parentNode) {
@@ -1221,11 +1295,12 @@ $_SESSION['full_name'] = $_SESSION['full_name'] ?? 'User Name';
         console.log('🔗 Requests API Endpoint:', `${API_BASE_URL}/api/admin/requests`);
         console.log('🔑 JWT Token Status:', token ? 'Present' : 'Missing');
         console.log('👤 Current User Role:', userRole);
-        
+
         // Show welcome message after page loads
         setTimeout(() => {
             showAlert('📋 All Requests System Ready!', 'success');
         }, 2000);
     </script>
 </body>
+
 </html>

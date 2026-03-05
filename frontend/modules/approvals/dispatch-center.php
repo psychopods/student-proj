@@ -15,6 +15,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,9 +74,20 @@ $_SESSION['user_role'] = 'QuarterMaster';
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .stat-card.pending { --card-bg-1: #667eea; --card-bg-2: #764ba2; }
-        .stat-card.today { --card-bg-1: #43e97b; --card-bg-2: #38f9d7; }
-        .stat-card.total { --card-bg-1: #4facfe; --card-bg-2: #00f2fe; }
+        .stat-card.pending {
+            --card-bg-1: #667eea;
+            --card-bg-2: #764ba2;
+        }
+
+        .stat-card.today {
+            --card-bg-1: #43e97b;
+            --card-bg-2: #38f9d7;
+        }
+
+        .stat-card.total {
+            --card-bg-1: #4facfe;
+            --card-bg-2: #00f2fe;
+        }
 
         .stat-value {
             font-size: 2rem;
@@ -95,7 +107,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
             border-radius: 10px;
             padding: 0.25rem;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .tab {
@@ -201,7 +213,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         .table-container {
             overflow-x: auto;
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .table {
@@ -238,9 +250,20 @@ $_SESSION['user_role'] = 'QuarterMaster';
             text-transform: uppercase;
         }
 
-        .status-badge.authorized { background: #cce5ff; color: #0056b3; }
-        .status-badge.dispatched { background: #d4edda; color: #155724; }
-        .status-badge.pending { background: #fff3cd; color: #856404; }
+        .status-badge.authorized {
+            background: #cce5ff;
+            color: #0056b3;
+        }
+
+        .status-badge.dispatched {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
 
         /* Priority Badges */
         .priority-badge {
@@ -250,9 +273,20 @@ $_SESSION['user_role'] = 'QuarterMaster';
             font-weight: 600;
         }
 
-        .priority-badge.high { background: #f8d7da; color: #721c24; }
-        .priority-badge.medium { background: #fff3cd; color: #856404; }
-        .priority-badge.low { background: #d4edda; color: #155724; }
+        .priority-badge.high {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .priority-badge.medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .priority-badge.low {
+            background: #d4edda;
+            color: #155724;
+        }
 
         /* Buttons */
         .btn {
@@ -269,11 +303,30 @@ $_SESSION['user_role'] = 'QuarterMaster';
             text-decoration: none;
         }
 
-        .btn-primary { background: var(--primary-color); color: white; }
-        .btn-success { background: var(--success-color); color: white; }
-        .btn-info { background: var(--info-color); color: white; }
-        .btn-warning { background: var(--warning-color); color: #212529; }
-        .btn-danger { background: var(--danger-color); color: white; }
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .btn-info {
+            background: var(--info-color);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--warning-color);
+            color: #212529;
+        }
+
+        .btn-danger {
+            background: var(--danger-color);
+            color: white;
+        }
 
         .btn-sm {
             padding: 0.4rem 0.8rem;
@@ -383,9 +436,20 @@ $_SESSION['user_role'] = 'QuarterMaster';
             gap: 1rem;
         }
 
-        .alert.success { background: linear-gradient(135deg, #d4edda, #c3e6cb); color: #155724; }
-        .alert.error { background: linear-gradient(135deg, #f8d7da, #f5c6cb); color: #721c24; }
-        .alert.info { background: linear-gradient(135deg, #d1ecf1, #bee5eb); color: #0c5460; }
+        .alert.success {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            color: #155724;
+        }
+
+        .alert.error {
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+            color: #721c24;
+        }
+
+        .alert.info {
+            background: linear-gradient(135deg, #d1ecf1, #bee5eb);
+            color: #0c5460;
+        }
 
         /* Loading */
         .loading {
@@ -405,7 +469,9 @@ $_SESSION['user_role'] = 'QuarterMaster';
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* Responsive */
@@ -414,21 +480,26 @@ $_SESSION['user_role'] = 'QuarterMaster';
                 flex-direction: column;
                 gap: 1rem;
             }
+
             .search-filter-bar {
                 flex-direction: column;
             }
+
             .tabs {
                 flex-direction: column;
             }
+
             .tab {
                 text-align: center;
             }
+
             .stats-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Include Sidebar Component -->
     <?php include '../../dashboard/components/sidebar.php'; ?>
@@ -685,7 +756,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         async function loadAllData() {
             try {
                 showAlert('🔄 Loading dispatch data...', 'info');
-                
+
                 const [ready, history, authorize] = await Promise.allSettled([
                     loadReadyRequests(),
                     loadDispatchHistory(),
@@ -709,7 +780,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
                 }
 
                 showAlert('✅ Data loaded successfully!', 'success');
-                
+
             } catch (error) {
                 console.error('Error loading data:', error);
                 showAlert('❌ Error loading data: ' + error.message, 'error');
@@ -754,7 +825,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         // Display ready requests
         function displayReadyRequests() {
             const tbody = document.getElementById('readyTable');
-            
+
             if (readyRequests.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; padding: 2rem; color: green;"><i class="fas fa-check-circle"></i><br>No requests ready for dispatch!</td></tr>';
                 return;
@@ -787,7 +858,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         // Display dispatch history
         function displayDispatchHistory() {
             const tbody = document.getElementById('historyTable');
-            
+
             if (dispatchHistory.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 2rem;">No dispatch history available</td></tr>';
                 return;
@@ -808,7 +879,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         // Display authorize requests
         function displayAuthorizeRequests() {
             const tbody = document.getElementById('authorizeTable');
-            
+
             if (authorizeRequests.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 2rem;">No requests pending authorization</td></tr>';
                 return;
@@ -835,7 +906,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         function switchTab(tabName) {
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            
+
             event.target.classList.add('active');
             document.getElementById(tabName).classList.add('active');
         }
@@ -849,7 +920,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         // Filter ready requests
         function filterReadyRequests() {
             const searchTerm = document.getElementById('readySearch').value.toLowerCase();
-            const filteredData = readyRequests.filter(request => 
+            const filteredData = readyRequests.filter(request =>
                 request.item_name.toLowerCase().includes(searchTerm) ||
                 request.id.toString().includes(searchTerm)
             );
@@ -859,7 +930,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         // Display filtered ready requests
         function displayFilteredReadyRequests(data) {
             const tbody = document.getElementById('readyTable');
-            
+
             if (data.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; padding: 2rem;">No requests match your search</td></tr>';
                 return;
@@ -892,7 +963,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         // Filter dispatch history
         function filterDispatchHistory() {
             const searchTerm = document.getElementById('historySearch').value.toLowerCase();
-            const filteredData = dispatchHistory.filter(dispatch => 
+            const filteredData = dispatchHistory.filter(dispatch =>
                 dispatch.item_name.toLowerCase().includes(searchTerm) ||
                 dispatch.request_id.toString().includes(searchTerm)
             );
@@ -902,7 +973,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         // Display filtered dispatch history
         function displayFilteredDispatchHistory(data) {
             const tbody = document.getElementById('historyTable');
-            
+
             if (data.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 2rem;">No history matches your search</td></tr>';
                 return;
@@ -924,11 +995,11 @@ $_SESSION['user_role'] = 'QuarterMaster';
         function toggleSelectAll() {
             const selectAllCheckbox = document.getElementById('selectAllCheckbox');
             const checkboxes = document.querySelectorAll('.request-checkbox');
-            
+
             checkboxes.forEach(checkbox => {
                 checkbox.checked = selectAllCheckbox.checked;
             });
-            
+
             updateSelectedRequests();
         }
 
@@ -940,12 +1011,12 @@ $_SESSION['user_role'] = 'QuarterMaster';
         function updateSelectedRequests() {
             const checkboxes = document.querySelectorAll('.request-checkbox:checked');
             selectedRequests = Array.from(checkboxes).map(cb => parseInt(cb.value));
-            
+
             const dispatchSelectedBtn = document.getElementById('dispatchSelectedBtn');
             dispatchSelectedBtn.disabled = selectedRequests.length === 0;
-            dispatchSelectedBtn.textContent = selectedRequests.length > 0 
-                ? `Dispatch Selected (${selectedRequests.length})` 
-                : 'Dispatch Selected';
+            dispatchSelectedBtn.textContent = selectedRequests.length > 0 ?
+                `Dispatch Selected (${selectedRequests.length})` :
+                'Dispatch Selected';
         }
 
         // Dispatch functions
@@ -979,7 +1050,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         function showDispatchModal(requests) {
             const modal = document.getElementById('dispatchModal');
             const detailsContainer = document.getElementById('dispatchDetails');
-            
+
             let totalItems = 0;
             let detailsHTML = `
                 <div class="request-details">
@@ -1019,10 +1090,10 @@ $_SESSION['user_role'] = 'QuarterMaster';
             `;
 
             detailsContainer.innerHTML = detailsHTML;
-            
+
             // Store requests for confirmation
             window.pendingDispatchRequests = requests;
-            
+
             modal.classList.add('show');
         }
 
@@ -1131,11 +1202,11 @@ $_SESSION['user_role'] = 'QuarterMaster';
         // Utility functions
         function formatDate(dateString) {
             if (!dateString) return 'N/A';
-            
+
             try {
                 const date = new Date(dateString);
-                return date.toLocaleDateString('en-US', { 
-                    month: 'short', 
+                return date.toLocaleDateString('en-US', {
+                    month: 'short',
                     day: 'numeric',
                     hour: '2-digit',
                     minute: '2-digit'
@@ -1154,21 +1225,21 @@ $_SESSION['user_role'] = 'QuarterMaster';
         // Show alert
         function showAlert(message, type = 'info') {
             const alertContainer = document.getElementById('alertContainer');
-            
+
             const alert = document.createElement('div');
             alert.className = `alert ${type}`;
-            
-            const icon = type === 'success' ? 'fa-check-circle' : 
-                        type === 'error' ? 'fa-exclamation-circle' : 
-                        type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
-            
+
+            const icon = type === 'success' ? 'fa-check-circle' :
+                type === 'error' ? 'fa-exclamation-circle' :
+                type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
+
             alert.innerHTML = `
                 <i class="fas ${icon}"></i>
                 <span>${message}</span>
             `;
-            
+
             alertContainer.appendChild(alert);
-            
+
             setTimeout(() => {
                 if (alert.parentNode) {
                     alert.parentNode.removeChild(alert);
@@ -1193,4 +1264,5 @@ $_SESSION['user_role'] = 'QuarterMaster';
         console.log('🚚 Dispatch Center Initialized');
     </script>
 </body>
+
 </html>

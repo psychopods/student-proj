@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>System Settings - MSICT Admin</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
+
 <body>
     <main class="main-content">
         <div class="settings-container">
@@ -403,7 +405,7 @@
 
                                 <div class="form-group">
                                     <label class="form-label" for="backupFrequency">Backup Frequency</label>
-                                    
+
                                     <select id="backupFrequency" class="form-control">
                                         <option value="daily" selected>Daily</option>
                                         <option value="weekly">Weekly</option>
@@ -648,27 +650,27 @@
                                     <i class="fas fa-broom"></i>
                                     Clear Cache
                                 </button>
-                                
+
                                 <button class="btn btn-info" onclick="optimizeDatabase()">
                                     <i class="fas fa-database"></i>
                                     Optimize Database
                                 </button>
-                                
+
                                 <button class="btn btn-secondary" onclick="rebuildIndex()">
                                     <i class="fas fa-refresh"></i>
                                     Rebuild Search Index
                                 </button>
-                                
+
                                 <button class="btn btn-primary" onclick="runDiagnostics()">
                                     <i class="fas fa-stethoscope"></i>
                                     Run Diagnostics
                                 </button>
-                                
+
                                 <button class="btn btn-warning" onclick="enableMaintenanceMode()">
                                     <i class="fas fa-pause"></i>
                                     Maintenance Mode
                                 </button>
-                                
+
                                 <button class="btn btn-danger" onclick="restartServices()">
                                     <i class="fas fa-power-off"></i>
                                     Restart Services
@@ -794,12 +796,35 @@
             font-size: 0.75rem;
         }
 
-        .btn-primary { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; }
-        .btn-success { background: var(--success); color: white; }
-        .btn-warning { background: var(--warning); color: #212529; }
-        .btn-danger { background: var(--danger); color: white; }
-        .btn-info { background: var(--info); color: white; }
-        .btn-secondary { background: #6c757d; color: white; }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: #212529;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-info {
+            background: var(--info);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
 
         .btn:hover {
             transform: translateY(-2px);
@@ -887,11 +912,11 @@
             border-radius: 50%;
         }
 
-        input:checked + .toggle-slider {
+        input:checked+.toggle-slider {
             background-color: var(--success);
         }
 
-        input:checked + .toggle-slider:before {
+        input:checked+.toggle-slider:before {
             transform: translateX(22px);
         }
 
@@ -1170,7 +1195,7 @@
         // Load current settings
         function loadCurrentSettings() {
             console.log('📋 Loading current system settings...');
-            
+
             currentSettings = {
                 general: {
                     systemName: document.getElementById('systemName')?.value || 'MSICT Ordering System',
@@ -1190,7 +1215,7 @@
         // Save all settings
         async function saveAllSettings() {
             console.log('💾 Saving all system settings...');
-            
+
             try {
                 showAlert('🔄 Saving settings...', 'info');
 
@@ -1207,9 +1232,9 @@
 
                 currentSettings = newSettings;
                 hasUnsavedChanges = false;
-                
+
                 showAlert('✅ All settings saved successfully!', 'success');
-                
+
             } catch (error) {
                 console.error('❌ Error saving settings:', error);
                 showAlert('❌ Error saving settings: ' + error.message, 'error');
@@ -1220,7 +1245,7 @@
         function resetToDefaults() {
             if (confirm('⚠️ Reset all settings to default values?\n\nThis action cannot be undone.')) {
                 console.log('🔄 Resetting to default settings...');
-                
+
                 // Reset form values to defaults
                 if (document.getElementById('backupFrequency')) {
                     document.getElementById('backupFrequency').value = 'daily';
@@ -1228,7 +1253,7 @@
                 if (document.getElementById('backupRetention')) {
                     document.getElementById('backupRetention').value = '30';
                 }
-                
+
                 markAsUnsaved();
                 showAlert('🔄 Settings reset to defaults. Click "Save All Changes" to apply.', 'warning');
             }
@@ -1237,7 +1262,7 @@
         // Check system status
         function checkSystemStatus() {
             console.log('🔍 Checking system status...');
-            
+
             setTimeout(() => {
                 updateStatusIndicator('dbStatus', 'online', 'Online');
                 updateStatusIndicator('emailStatus', 'online', 'Online');
@@ -1254,41 +1279,3 @@
                 element.innerHTML = `<i class="fas fa-circle"></i> ${text}`;
             }
         }
-
-        // Backup functions
-        function createBackup() {
-            console.log('💾 Creating system backup...');
-            showAlert('🔄 Creating backup... This may take a few minutes.', 'info');
-            
-            setTimeout(() => {
-                showAlert('✅ Backup created successfully!', 'success');
-                // Add new backup to the list
-                const backupsList = document.getElementById('backupsList');
-                const newBackup = document.createElement('div');
-                newBackup.className = 'backup-item';
-                const now = new Date();
-                const dateStr = now.toLocaleDateString('en-US', { 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    hour12: true
-                });
-                
-                newBackup.innerHTML = `
-                    <div class="backup-info">
-                        <div class="backup-date">${dateStr}</div>
-                        <div class="backup-size">Database: 12.7 MB | Files: 45.5 MB</div>
-                    </div>
-                    <div>
-                        <button class="btn btn-info btn-sm" onclick="downloadBackup('backup_${now.getTime()}')">
-                            <i class="fas fa-download"></i>
-                        </button>
-                        <button class="btn btn-warning btn-sm" onclick="restoreBackup('backup_${now.getTime()}')">
-                            <i class="fas fa-undo"></i>
-                        </button>
-                    </div>
-                `;
-                
-                back

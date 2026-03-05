@@ -37,7 +37,8 @@ try {
     exit;
 }
 
-function isDepartment($link, $role_id) {
+function isDepartment($link, $role_id)
+{
     $query = "SELECT name FROM roles WHERE id = ?";
     $stmt = mysqli_prepare($link, $query);
     mysqli_stmt_bind_param($stmt, "i", $role_id);
@@ -72,13 +73,13 @@ elseif ($route === 'requests/view' && $method === 'GET' && $id) { //http://local
 // Track the status of requests made by this department user
 elseif ($route === 'requests/status' && $method === 'GET') { //http://localhost/unfedZombie/Controllers/Department/api/requests/status
     trackRequestStatus($link, $user_id);
-}
-else {
+} else {
     http_response_code(404);
     echo json_encode(["message" => "Route not found"]);
 }
 
-function createItemRequest($link, $user_id) {
+function createItemRequest($link, $user_id)
+{
     $data = json_decode(file_get_contents("php://input"), true);
 
     if (empty($data['item_id']) || empty($data['quantity_requested'])) {
@@ -103,7 +104,8 @@ function createItemRequest($link, $user_id) {
     }
 }
 
-function viewMyRequests($link, $user_id) {
+function viewMyRequests($link, $user_id)
+{
     $stmt = mysqli_prepare($link, "SELECT r.id, r.item_id, i.name as item_name, r.quantity_requested, r.status, r.priority, r.purpose, r.request_date, r.remarks FROM item_requests r JOIN items i ON r.item_id = i.id WHERE r.requested_by = ? ORDER BY r.request_date DESC");
     mysqli_stmt_bind_param($stmt, "i", $user_id);
     mysqli_stmt_execute($stmt);
@@ -112,7 +114,8 @@ function viewMyRequests($link, $user_id) {
     echo json_encode($requests);
 }
 
-function viewSingleRequest($link, $user_id, $request_id) {
+function viewSingleRequest($link, $user_id, $request_id)
+{
     $stmt = mysqli_prepare($link, "SELECT r.id, r.item_id, i.name as item_name, r.quantity_requested, r.status, r.priority, r.purpose, r.request_date, r.remarks FROM item_requests r JOIN items i ON r.item_id = i.id WHERE r.id = ? AND r.requested_by = ?");
     mysqli_stmt_bind_param($stmt, "ii", $request_id, $user_id);
     mysqli_stmt_execute($stmt);
@@ -127,7 +130,8 @@ function viewSingleRequest($link, $user_id, $request_id) {
 }
 
 
-function trackRequestStatus($link, $user_id) {
+function trackRequestStatus($link, $user_id)
+{
     $stmt = mysqli_prepare($link, "SELECT r.id, r.item_id, i.name as item_name, r.quantity_requested, r.status, r.approved_by, r.created_at, r.remarks
         FROM item_requests r
         JOIN items i ON r.item_id = i.id
@@ -153,4 +157,3 @@ function trackRequestStatus($link, $user_id) {
     }
     echo json_encode($requests);
 }
-?>

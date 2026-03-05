@@ -15,6 +15,7 @@ $_SESSION['user_role'] = 'Admin';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,10 +53,25 @@ $_SESSION['user_role'] = 'Admin';
             transform: translateY(-5px);
         }
 
-        .stat-card.users { --card-bg-1: #667eea; --card-bg-2: #764ba2; }
-        .stat-card.requests { --card-bg-1: #f093fb; --card-bg-2: #f5576c; }
-        .stat-card.pending { --card-bg-1: #4facfe; --card-bg-2: #00f2fe; }
-        .stat-card.items { --card-bg-1: #43e97b; --card-bg-2: #38f9d7; }
+        .stat-card.users {
+            --card-bg-1: #667eea;
+            --card-bg-2: #764ba2;
+        }
+
+        .stat-card.requests {
+            --card-bg-1: #f093fb;
+            --card-bg-2: #f5576c;
+        }
+
+        .stat-card.pending {
+            --card-bg-1: #4facfe;
+            --card-bg-2: #00f2fe;
+        }
+
+        .stat-card.items {
+            --card-bg-1: #43e97b;
+            --card-bg-2: #38f9d7;
+        }
 
         .stat-value {
             font-size: 2rem;
@@ -128,10 +144,25 @@ $_SESSION['user_role'] = 'Admin';
             text-transform: uppercase;
         }
 
-        .status-badge.pending { background: #fff3cd; color: #856404; }
-        .status-badge.approved { background: #d4edda; color: #155724; }
-        .status-badge.rejected { background: #f8d7da; color: #721c24; }
-        .status-badge.authorized { background: #cce5ff; color: #0056b3; }
+        .status-badge.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-badge.approved {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.rejected {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status-badge.authorized {
+            background: #cce5ff;
+            color: #0056b3;
+        }
 
         /* Buttons */
         .btn {
@@ -201,8 +232,13 @@ $_SESSION['user_role'] = 'Admin';
         }
 
         @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
         }
 
         /* Alert */
@@ -236,10 +272,12 @@ $_SESSION['user_role'] = 'Admin';
             .stats-grid {
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
+
             .page-header {
                 flex-direction: column;
                 gap: 1rem;
             }
+
             .table th,
             .table td {
                 padding: 0.5rem;
@@ -248,6 +286,7 @@ $_SESSION['user_role'] = 'Admin';
         }
     </style>
 </head>
+
 <body>
     <!-- Include Sidebar Component -->
     <?php include 'components/sidebar.php'; ?>
@@ -408,7 +447,7 @@ $_SESSION['user_role'] = 'Admin';
         async function loadDashboardData() {
             try {
                 showAlert('🔄 Loading dashboard data...', 'info');
-                
+
                 // Load data in parallel
                 const [usersData, requestsData, itemsData] = await Promise.allSettled([
                     loadUsers(),
@@ -444,7 +483,7 @@ $_SESSION['user_role'] = 'Admin';
                 }
 
                 showAlert('✅ Dashboard loaded successfully!', 'success');
-                
+
             } catch (error) {
                 console.error('Error loading dashboard:', error);
                 showAlert('❌ Error loading dashboard: ' + error.message, 'error');
@@ -504,7 +543,7 @@ $_SESSION['user_role'] = 'Admin';
         // Update request statistics
         function updateRequestStats(requests) {
             document.getElementById('totalRequests').textContent = requests.length;
-            
+
             // Count pending requests (not approved and not authorized)
             const pendingCount = requests.filter(req => !req.approved && !req.authorized).length;
             document.getElementById('pendingRequests').textContent = pendingCount;
@@ -518,7 +557,7 @@ $_SESSION['user_role'] = 'Admin';
         // Display recent requests in table
         function displayRecentRequests(requests) {
             const tbody = document.getElementById('recentRequestsTable');
-            
+
             if (!requests || requests.length === 0) {
                 tbody.innerHTML = `
                     <tr>
@@ -539,7 +578,7 @@ $_SESSION['user_role'] = 'Admin';
             tbody.innerHTML = recentRequests.map(request => {
                 const status = getRequestStatus(request);
                 const date = formatDate(request.created_at || request.request_date);
-                
+
                 return `
                     <tr>
                         <td><strong>#${request.id}</strong></td>
@@ -560,24 +599,36 @@ $_SESSION['user_role'] = 'Admin';
         // Get request status
         function getRequestStatus(request) {
             if (request.authorized) {
-                return { class: 'authorized', text: 'Authorized' };
+                return {
+                    class: 'authorized',
+                    text: 'Authorized'
+                };
             } else if (request.approved) {
-                return { class: 'approved', text: 'Approved' };
+                return {
+                    class: 'approved',
+                    text: 'Approved'
+                };
             } else if (request.rejected) {
-                return { class: 'rejected', text: 'Rejected' };
+                return {
+                    class: 'rejected',
+                    text: 'Rejected'
+                };
             } else {
-                return { class: 'pending', text: 'Pending' };
+                return {
+                    class: 'pending',
+                    text: 'Pending'
+                };
             }
         }
 
         // Format date
         function formatDate(dateString) {
             if (!dateString) return 'N/A';
-            
+
             try {
                 const date = new Date(dateString);
-                return date.toLocaleDateString('en-US', { 
-                    month: 'short', 
+                return date.toLocaleDateString('en-US', {
+                    month: 'short',
                     day: 'numeric',
                     year: date.getFullYear() !== new Date().getFullYear() ? 'numeric' : undefined
                 });
@@ -627,7 +678,9 @@ $_SESSION['user_role'] = 'Admin';
                 ])
             ].map(row => row.join(',')).join('\n');
 
-            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const blob = new Blob([csvContent], {
+                type: 'text/csv'
+            });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -636,20 +689,20 @@ $_SESSION['user_role'] = 'Admin';
             a.click();
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
-            
+
             showAlert('📊 Dashboard report exported successfully!', 'success');
         }
 
         // Refresh dashboard
         function refreshDashboard() {
             console.log('🔄 Refreshing dashboard...');
-            
+
             // Reset loading states
             document.getElementById('totalUsers').innerHTML = '<div class="loading-skeleton" style="width: 60px; height: 32px; border-radius: 4px;"></div>';
             document.getElementById('totalRequests').innerHTML = '<div class="loading-skeleton" style="width: 80px; height: 32px; border-radius: 4px;"></div>';
             document.getElementById('pendingRequests').innerHTML = '<div class="loading-skeleton" style="width: 40px; height: 32px; border-radius: 4px;"></div>';
             document.getElementById('totalItems').innerHTML = '<div class="loading-skeleton" style="width: 70px; height: 32px; border-radius: 4px;"></div>';
-            
+
             document.getElementById('recentRequestsTable').innerHTML = `
                 <tr>
                     <td colspan="6" style="text-align: center; padding: 2rem;">
@@ -657,7 +710,7 @@ $_SESSION['user_role'] = 'Admin';
                     </td>
                 </tr>
             `;
-            
+
             // Reload data
             loadDashboardData();
         }
@@ -665,21 +718,21 @@ $_SESSION['user_role'] = 'Admin';
         // Show alert notification
         function showAlert(message, type = 'info') {
             const alertContainer = document.getElementById('alertContainer');
-            
+
             const alert = document.createElement('div');
             alert.className = `alert ${type}`;
-            
-            const icon = type === 'success' ? 'fa-check-circle' : 
-                        type === 'error' ? 'fa-exclamation-circle' : 
-                        type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
-            
+
+            const icon = type === 'success' ? 'fa-check-circle' :
+                type === 'error' ? 'fa-exclamation-circle' :
+                type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
+
             alert.innerHTML = `
                 <i class="fas ${icon}"></i>
                 <span>${message}</span>
             `;
-            
+
             alertContainer.appendChild(alert);
-            
+
             // Auto remove after 3 seconds
             setTimeout(() => {
                 if (alert.parentNode) {
@@ -705,4 +758,5 @@ $_SESSION['user_role'] = 'Admin';
         console.log('🔑 JWT Token Status:', token ? 'Present' : 'Missing');
     </script>
 </body>
+
 </html>

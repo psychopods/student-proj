@@ -15,6 +15,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,10 +53,25 @@ $_SESSION['user_role'] = 'QuarterMaster';
             transform: translateY(-5px);
         }
 
-        .stat-card.stock { --card-bg-1: #667eea; --card-bg-2: #764ba2; }
-        .stat-card.requests { --card-bg-1: #f093fb; --card-bg-2: #f5576c; }
-        .stat-card.dispatched { --card-bg-1: #43e97b; --card-bg-2: #38f9d7; }
-        .stat-card.items { --card-bg-1: #4facfe; --card-bg-2: #00f2fe; }
+        .stat-card.stock {
+            --card-bg-1: #667eea;
+            --card-bg-2: #764ba2;
+        }
+
+        .stat-card.requests {
+            --card-bg-1: #f093fb;
+            --card-bg-2: #f5576c;
+        }
+
+        .stat-card.dispatched {
+            --card-bg-1: #43e97b;
+            --card-bg-2: #38f9d7;
+        }
+
+        .stat-card.items {
+            --card-bg-1: #4facfe;
+            --card-bg-2: #00f2fe;
+        }
 
         .stat-value {
             font-size: 2rem;
@@ -128,9 +144,20 @@ $_SESSION['user_role'] = 'QuarterMaster';
             text-transform: uppercase;
         }
 
-        .status-badge.authorized { background: #cce5ff; color: #0056b3; }
-        .status-badge.low-stock { background: #f8d7da; color: #721c24; }
-        .status-badge.in-stock { background: #d4edda; color: #155724; }
+        .status-badge.authorized {
+            background: #cce5ff;
+            color: #0056b3;
+        }
+
+        .status-badge.low-stock {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status-badge.in-stock {
+            background: #d4edda;
+            color: #155724;
+        }
 
         /* Buttons */
         .btn {
@@ -205,8 +232,13 @@ $_SESSION['user_role'] = 'QuarterMaster';
         }
 
         @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
         }
 
         /* Alert */
@@ -240,10 +272,12 @@ $_SESSION['user_role'] = 'QuarterMaster';
             .stats-grid {
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
+
             .page-header {
                 flex-direction: column;
                 gap: 1rem;
             }
+
             .table th,
             .table td {
                 padding: 0.5rem;
@@ -252,6 +286,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         }
     </style>
 </head>
+
 <body>
     <!-- Include Sidebar Component -->
     <?php include 'components/sidebar.php'; ?>
@@ -445,7 +480,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         async function loadDashboardData() {
             try {
                 showAlert('🔄 Loading dashboard data...', 'info');
-                
+
                 // Load data in parallel
                 const [stockData, requestsData] = await Promise.allSettled([
                     loadStock(),
@@ -476,7 +511,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
                 document.getElementById('dispatchedToday').textContent = '0';
 
                 showAlert('✅ Dashboard loaded successfully!', 'success');
-                
+
             } catch (error) {
                 console.error('Error loading dashboard:', error);
                 showAlert('❌ Error loading dashboard: ' + error.message, 'error');
@@ -485,109 +520,107 @@ $_SESSION['user_role'] = 'QuarterMaster';
 
         // Load stock from API
         async function loadStock() {
-    try {
-        console.log('🔗 Loading stock from:', `${API_BASE_URL}/stock/view`);
-        
-        const response = await fetch(`${API_BASE_URL}/stock/view`, {
-            method: 'GET',
-            headers: headers
-        });
+            try {
+                console.log('🔗 Loading stock from:', `${API_BASE_URL}/stock/view`);
 
-        console.log('📡 Stock response status:', response.status);
+                const response = await fetch(`${API_BASE_URL}/stock/view`, {
+                    method: 'GET',
+                    headers: headers
+                });
 
-        if (!response.ok) {
-            if (response.status === 404) {
-                console.warn('⚠️ Stock API endpoint not found');
-                return []; // Return empty array instead of throwing error
+                console.log('📡 Stock response status:', response.status);
+
+                if (!response.ok) {
+                    if (response.status === 404) {
+                        console.warn('⚠️ Stock API endpoint not found');
+                        return []; // Return empty array instead of throwing error
+                    }
+                    throw new Error(`Stock API Error: ${response.status}`);
+                }
+
+                const stock = await response.json();
+                console.log('✅ Loaded stock:', stock);
+
+                return Array.isArray(stock) ? stock : [];
+
+            } catch (error) {
+                console.error('❌ Error loading stock:', error);
+
+                // Return mock data as fallback
+                console.log('🔄 Using fallback data for stock');
+                return [{
+                        id: 1,
+                        name: 'Office Chairs',
+                        quantity: 25,
+                        unit: 'pieces'
+                    },
+                    {
+                        id: 2,
+                        name: 'Laptops',
+                        quantity: 8,
+                        unit: 'pieces'
+                    },
+                    {
+                        id: 3,
+                        name: 'Printers',
+                        quantity: 3,
+                        unit: 'pieces'
+                    }
+                ];
             }
-            throw new Error(`Stock API Error: ${response.status}`);
         }
-
-        const stock = await response.json();
-        console.log('✅ Loaded stock:', stock);
-        
-        return Array.isArray(stock) ? stock : [];
-        
-    } catch (error) {
-        console.error('❌ Error loading stock:', error);
-        
-        // Return mock data as fallback
-        console.log('🔄 Using fallback data for stock');
-        return [
-            {
-                id: 1,
-                name: 'Office Chairs',
-                quantity: 25,
-                unit: 'pieces'
-            },
-            {
-                id: 2,
-                name: 'Laptops',
-                quantity: 8,
-                unit: 'pieces'
-            },
-            {
-                id: 3,
-                name: 'Printers',
-                quantity: 3,
-                unit: 'pieces'
-            }
-        ];
-    }
-}
 
         // Load requests from API
         async function loadRequests() {
-    try {
-        console.log('🔗 Loading requests from:', `${API_BASE_URL}/requests/ready`);
-        
-        const response = await fetch(`${API_BASE_URL}/requests/ready`, {
-            method: 'GET',
-            headers: headers
-        });
+            try {
+                console.log('🔗 Loading requests from:', `${API_BASE_URL}/requests/ready`);
 
-        console.log('📡 Requests response status:', response.status);
+                const response = await fetch(`${API_BASE_URL}/requests/ready`, {
+                    method: 'GET',
+                    headers: headers
+                });
 
-        if (!response.ok) {
-            if (response.status === 404) {
-                console.warn('⚠️ Requests API endpoint not found');
-                return []; // Return empty array instead of throwing error
+                console.log('📡 Requests response status:', response.status);
+
+                if (!response.ok) {
+                    if (response.status === 404) {
+                        console.warn('⚠️ Requests API endpoint not found');
+                        return []; // Return empty array instead of throwing error
+                    }
+                    throw new Error(`Requests API Error: ${response.status}`);
+                }
+
+                const requests = await response.json();
+                console.log('✅ Loaded requests:', requests);
+
+                return Array.isArray(requests) ? requests : [];
+
+            } catch (error) {
+                console.error('❌ Error loading requests:', error);
+
+                // Return mock data as fallback
+                console.log('🔄 Using fallback data for requests');
+                return [{
+                        id: 1,
+                        item_name: 'Office Chairs',
+                        quantity_requested: 10,
+                        requested_by: 1
+                    },
+                    {
+                        id: 2,
+                        item_name: 'Laptops',
+                        quantity_requested: 5,
+                        requested_by: 2
+                    }
+                ];
             }
-            throw new Error(`Requests API Error: ${response.status}`);
         }
-
-        const requests = await response.json();
-        console.log('✅ Loaded requests:', requests);
-        
-        return Array.isArray(requests) ? requests : [];
-        
-    } catch (error) {
-        console.error('❌ Error loading requests:', error);
-        
-        // Return mock data as fallback
-        console.log('🔄 Using fallback data for requests');
-        return [
-            {
-                id: 1,
-                item_name: 'Office Chairs',
-                quantity_requested: 10,
-                requested_by: 1
-            },
-            {
-                id: 2,
-                item_name: 'Laptops',
-                quantity_requested: 5,
-                requested_by: 2
-            }
-        ];
-    }
-}
 
 
         // Update stock statistics
         function updateStockStats(stock) {
             document.getElementById('totalStock').textContent = stock.length;
-            
+
             // Count low stock items (you may need to adjust this logic based on your reorder levels)
             const lowStockCount = stock.filter(item => item.quantity < 10).length; // Assuming 10 is low stock threshold
             document.getElementById('lowStockItems').textContent = lowStockCount;
@@ -601,7 +634,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         // Display stock in table
         function displayStock(stock) {
             const tbody = document.getElementById('stockTable');
-            
+
             if (!stock || stock.length === 0) {
                 tbody.innerHTML = `
                     <tr>
@@ -619,7 +652,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
 
             tbody.innerHTML = displayStock.map(item => {
                 const status = getStockStatus(item.quantity);
-                
+
                 return `
                     <tr>
                         <td><strong>${item.name}</strong></td>
@@ -639,7 +672,7 @@ $_SESSION['user_role'] = 'QuarterMaster';
         // Display requests in table
         function displayRequests(requests) {
             const tbody = document.getElementById('requestsTable');
-            
+
             if (!requests || requests.length === 0) {
                 tbody.innerHTML = `
                     <tr>
@@ -675,9 +708,15 @@ $_SESSION['user_role'] = 'QuarterMaster';
         // Get stock status
         function getStockStatus(quantity) {
             if (quantity < 10) {
-                return { class: 'low-stock', text: 'Low Stock' };
+                return {
+                    class: 'low-stock',
+                    text: 'Low Stock'
+                };
             } else {
-                return { class: 'in-stock', text: 'In Stock' };
+                return {
+                    class: 'in-stock',
+                    text: 'In Stock'
+                };
             }
         }
 
@@ -735,75 +774,75 @@ $_SESSION['user_role'] = 'QuarterMaster';
         }
 
         // Fixed dispatch function for dashboard
-async function dispatchRequest(requestId) {
-    if (!confirm('Are you sure you want to dispatch this request?')) return;
+        async function dispatchRequest(requestId) {
+            if (!confirm('Are you sure you want to dispatch this request?')) return;
 
-    try {
-        console.log('🚚 Dispatching request ID:', requestId);
-        showAlert('🚚 Dispatching item...', 'info');
-        
-        const response = await fetch(`${API_BASE_URL}/dispatch/item`, {
-            method: 'POST',
-            headers: headers,
-            body: JSON.stringify({
-                request_id: requestId
-            })
-        });
-
-        console.log('📡 Dispatch response status:', response.status);
-
-        if (!response.ok) {
-            const errorText = await response.text();
-            console.log('❌ Dispatch error response:', errorText);
-            
-            let errorData;
             try {
-                errorData = JSON.parse(errorText);
-            } catch (e) {
-                throw new Error(`HTTP ${response.status}: ${errorText}`);
-            }
-            
-            // Handle specific errors
-            if (errorData.message && errorData.message.includes('Approved and authorized request not found')) {
-                throw new Error('Request must be approved by CO (Commanding Officer) before dispatch');
-            } else if (errorData.message && errorData.message.includes('Insufficient stock')) {
-                throw new Error('Insufficient stock available for this item');
-            } else {
-                throw new Error(errorData.message || errorData.error || `HTTP ${response.status}`);
-            }
-        }
+                console.log('🚚 Dispatching request ID:', requestId);
+                showAlert('🚚 Dispatching item...', 'info');
 
-        const result = await response.json();
-        console.log('✅ Dispatch success:', result);
-        
-        showAlert('✅ Item dispatched successfully!', 'success');
-        refreshDashboard();
-        
-    } catch (error) {
-        console.error('❌ Error dispatching item:', error);
-        
-        if (error.message.includes('CO (Commanding Officer)')) {
-            showAlert('⚠️ Cannot dispatch: Request must be approved by CO first', 'warning');
-        } else if (error.message.includes('Insufficient stock')) {
-            showAlert('⚠️ Cannot dispatch: Insufficient stock available', 'warning');
-        } else if (error.message.includes('404') || error.message.includes('Not Found')) {
-            showAlert('⚠️ Dispatch API not found. Please check backend setup', 'warning');
-        } else {
-            showAlert('❌ Error dispatching item: ' + error.message, 'error');
+                const response = await fetch(`${API_BASE_URL}/dispatch/item`, {
+                    method: 'POST',
+                    headers: headers,
+                    body: JSON.stringify({
+                        request_id: requestId
+                    })
+                });
+
+                console.log('📡 Dispatch response status:', response.status);
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.log('❌ Dispatch error response:', errorText);
+
+                    let errorData;
+                    try {
+                        errorData = JSON.parse(errorText);
+                    } catch (e) {
+                        throw new Error(`HTTP ${response.status}: ${errorText}`);
+                    }
+
+                    // Handle specific errors
+                    if (errorData.message && errorData.message.includes('Approved and authorized request not found')) {
+                        throw new Error('Request must be approved by CO (Commanding Officer) before dispatch');
+                    } else if (errorData.message && errorData.message.includes('Insufficient stock')) {
+                        throw new Error('Insufficient stock available for this item');
+                    } else {
+                        throw new Error(errorData.message || errorData.error || `HTTP ${response.status}`);
+                    }
+                }
+
+                const result = await response.json();
+                console.log('✅ Dispatch success:', result);
+
+                showAlert('✅ Item dispatched successfully!', 'success');
+                refreshDashboard();
+
+            } catch (error) {
+                console.error('❌ Error dispatching item:', error);
+
+                if (error.message.includes('CO (Commanding Officer)')) {
+                    showAlert('⚠️ Cannot dispatch: Request must be approved by CO first', 'warning');
+                } else if (error.message.includes('Insufficient stock')) {
+                    showAlert('⚠️ Cannot dispatch: Insufficient stock available', 'warning');
+                } else if (error.message.includes('404') || error.message.includes('Not Found')) {
+                    showAlert('⚠️ Dispatch API not found. Please check backend setup', 'warning');
+                } else {
+                    showAlert('❌ Error dispatching item: ' + error.message, 'error');
+                }
+            }
         }
-    }
-}
 
         // Refresh dashboard
         function refreshDashboard() {
             console.log('🔄 Refreshing dashboard...');
-            
+
             // Reset loading states
             document.getElementById('totalStock').innerHTML = '<div class="loading-skeleton" style="width: 60px; height: 32px; border-radius: 4px;"></div>';
             document.getElementById('authorizedRequests').innerHTML = '<div class="loading-skeleton" style="width: 40px; height: 32px; border-radius: 4px;"></div>';
             document.getElementById('dispatchedToday').innerHTML = '<div class="loading-skeleton" style="width: 50px; height: 32px; border-radius: 4px;"></div>';
             document.getElementById('lowStockItems').innerHTML = '<div class="loading-skeleton" style="width: 30px; height: 32px; border-radius: 4px;"></div>';
-            
+
             document.getElementById('stockTable').innerHTML = `
                 <tr>
                     <td colspan="5" style="text-align: center; padding: 2rem;">
@@ -819,7 +858,7 @@ async function dispatchRequest(requestId) {
                     </td>
                 </tr>
             `;
-            
+
             // Reload data
             loadDashboardData();
         }
@@ -827,21 +866,21 @@ async function dispatchRequest(requestId) {
         // Show alert notification
         function showAlert(message, type = 'info') {
             const alertContainer = document.getElementById('alertContainer');
-            
+
             const alert = document.createElement('div');
             alert.className = `alert ${type}`;
-            
-            const icon = type === 'success' ? 'fa-check-circle' : 
-                        type === 'error' ? 'fa-exclamation-circle' : 
-                        type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
-            
+
+            const icon = type === 'success' ? 'fa-check-circle' :
+                type === 'error' ? 'fa-exclamation-circle' :
+                type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
+
             alert.innerHTML = `
                 <i class="fas ${icon}"></i>
                 <span>${message}</span>
             `;
-            
+
             alertContainer.appendChild(alert);
-            
+
             // Auto remove after 3 seconds
             setTimeout(() => {
                 if (alert.parentNode) {
@@ -871,4 +910,5 @@ async function dispatchRequest(requestId) {
         console.log('🔑 JWT Token Status:', token ? 'Present' : 'Missing');
     </script>
 </body>
+
 </html>

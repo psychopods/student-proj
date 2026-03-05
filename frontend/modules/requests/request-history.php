@@ -15,6 +15,7 @@ $_SESSION['user_role'] = 'Department';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -183,10 +184,25 @@ $_SESSION['user_role'] = 'Department';
             transform: translateY(-5px);
         }
 
-        .stat-card.total-requests { --card-bg-1: #667eea; --card-bg-2: #764ba2; }
-        .stat-card.completed-requests { --card-bg-1: #00b894; --card-bg-2: #00cec9; }
-        .stat-card.pending-requests { --card-bg-1: #ff7675; --card-bg-2: #fd79a8; }
-        .stat-card.success-rate { --card-bg-1: #fdcb6e; --card-bg-2: #e17055; }
+        .stat-card.total-requests {
+            --card-bg-1: #667eea;
+            --card-bg-2: #764ba2;
+        }
+
+        .stat-card.completed-requests {
+            --card-bg-1: #00b894;
+            --card-bg-2: #00cec9;
+        }
+
+        .stat-card.pending-requests {
+            --card-bg-1: #ff7675;
+            --card-bg-2: #fd79a8;
+        }
+
+        .stat-card.success-rate {
+            --card-bg-1: #fdcb6e;
+            --card-bg-2: #e17055;
+        }
 
         .stat-icon {
             font-size: 2.5rem;
@@ -262,12 +278,35 @@ $_SESSION['user_role'] = 'Department';
             text-decoration: none;
         }
 
-        .btn-primary { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; }
-        .btn-success { background: var(--success); color: white; }
-        .btn-warning { background: var(--warning); color: #212529; }
-        .btn-danger { background: var(--danger); color: white; }
-        .btn-info { background: var(--info); color: white; }
-        .btn-secondary { background: #6c757d; color: white; }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: #212529;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-info {
+            background: var(--info);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
 
         .btn:hover {
             transform: translateY(-2px);
@@ -370,10 +409,25 @@ $_SESSION['user_role'] = 'Department';
             letter-spacing: 0.5px;
         }
 
-        .status-badge.pending { background: #fff3cd; color: #856404; }
-        .status-badge.approved { background: #d4edda; color: #155724; }
-        .status-badge.denied { background: #f8d7da; color: #721c24; }
-        .status-badge.in_progress { background: #d1ecf1; color: #0c5460; }
+        .status-badge.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-badge.approved {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.denied {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status-badge.in_progress {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
 
         /* Charts */
         .charts-grid {
@@ -471,10 +525,25 @@ $_SESSION['user_role'] = 'Department';
             gap: 1rem;
         }
 
-        .alert.success { background: linear-gradient(135deg, #d4edda, #c3e6cb); color: #155724; }
-        .alert.error { background: linear-gradient(135deg, #f8d7da, #f5c6cb); color: #721c24; }
-        .alert.info { background: linear-gradient(135deg, #d1ecf1, #bee5eb); color: #0c5460; }
-        .alert.warning { background: linear-gradient(135deg, #fff3cd, #ffeaa7); color: #856404; }
+        .alert.success {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            color: #155724;
+        }
+
+        .alert.error {
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+            color: #721c24;
+        }
+
+        .alert.info {
+            background: linear-gradient(135deg, #d1ecf1, #bee5eb);
+            color: #0c5460;
+        }
+
+        .alert.warning {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            color: #856404;
+        }
 
         /* Loading States */
         .loading-skeleton {
@@ -485,8 +554,13 @@ $_SESSION['user_role'] = 'Department';
         }
 
         @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
         }
 
         /* Empty State */
@@ -569,6 +643,7 @@ $_SESSION['user_role'] = 'Department';
         }
     </style>
 </head>
+
 <body>
     <!-- Include Sidebar Component -->
     <?php include '../../dashboard/components/sidebar.php'; ?>
@@ -652,7 +727,7 @@ $_SESSION['user_role'] = 'Department';
                             <option value="year">This Year</option>
                         </select>
                     </div>
-                    
+
                     <div class="filter-group">
                         <label class="filter-label">Status Filter</label>
                         <select id="statusFilter" class="filter-control">
@@ -662,17 +737,17 @@ $_SESSION['user_role'] = 'Department';
                             <option value="denied">Denied</option>
                         </select>
                     </div>
-                    
+
                     <div class="filter-group">
                         <label class="filter-label">From Date</label>
                         <input type="date" id="fromDate" class="filter-control">
                     </div>
-                    
+
                     <div class="filter-group">
                         <label class="filter-label">To Date</label>
                         <input type="date" id="toDate" class="filter-control">
                     </div>
-                    
+
                     <div class="filter-group">
                         <button class="btn btn-primary" onclick="applyFilters()">
                             <i class="fas fa-filter"></i>
@@ -693,7 +768,7 @@ $_SESSION['user_role'] = 'Department';
                     </div>
                     <div class="stat-label">Total Requests</div>
                 </div>
-                
+
                 <div class="stat-card completed-requests" onclick="filterByStatus('approved')">
                     <div class="stat-icon">
                         <i class="fas fa-check-circle"></i>
@@ -703,7 +778,7 @@ $_SESSION['user_role'] = 'Department';
                     </div>
                     <div class="stat-label">Completed</div>
                 </div>
-                
+
                 <div class="stat-card pending-requests" onclick="filterByStatus('pending')">
                     <div class="stat-icon">
                         <i class="fas fa-hourglass-half"></i>
@@ -713,7 +788,7 @@ $_SESSION['user_role'] = 'Department';
                     </div>
                     <div class="stat-label">Still Pending</div>
                 </div>
-                
+
                 <div class="stat-card success-rate">
                     <div class="stat-icon">
                         <i class="fas fa-percentage"></i>
@@ -759,7 +834,7 @@ $_SESSION['user_role'] = 'Department';
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="chart-container">
                             <div class="chart-title">Request Status Distribution</div>
                             <div class="chart-placeholder">
@@ -905,7 +980,7 @@ $_SESSION['user_role'] = 'Department';
         function setDefaultDates() {
             const today = new Date();
             const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
-            
+
             document.getElementById('fromDate').value = firstDay.toISOString().split('T')[0];
             document.getElementById('toDate').value = today.toISOString().split('T')[0];
         }
@@ -916,7 +991,7 @@ $_SESSION['user_role'] = 'Department';
             const today = new Date();
             let fromDate, toDate;
 
-            switch(range) {
+            switch (range) {
                 case 'today':
                     fromDate = toDate = today;
                     break;
@@ -952,7 +1027,7 @@ $_SESSION['user_role'] = 'Department';
         async function loadHistoryData() {
             try {
                 showAlert('🔄 Loading your request history...', 'info');
-                
+
                 const response = await fetch(`${API_BASE_URL}/Department/api/requests/my`, {
                     method: 'GET',
                     headers: headers
@@ -964,17 +1039,16 @@ $_SESSION['user_role'] = 'Department';
 
                 const requests = await response.json();
                 historyData.allRequests = Array.isArray(requests) ? requests : [];
-                
+
                 applyFilters();
                 showAlert(`✅ Loaded ${historyData.allRequests.length} requests!`, 'success');
-                
+
             } catch (error) {
                 console.error('Error loading history:', error);
                 showAlert('❌ Error loading history: ' + error.message, 'error');
-                
+
                 // Fallback demo data
-                historyData.allRequests = [
-                    {
+                historyData.allRequests = [{
                         id: 1,
                         item_name: 'Office Pens',
                         quantity_requested: 10,
@@ -1025,7 +1099,7 @@ $_SESSION['user_role'] = 'Department';
                         remarks: null
                     }
                 ];
-                
+
                 applyFilters();
                 showAlert('⚠️ Using demo data - API connection failed', 'warning');
             }
@@ -1057,7 +1131,7 @@ $_SESSION['user_role'] = 'Department';
             }
 
             historyData.filteredRequests = filteredData;
-            
+
             updateStatistics();
             updateSummary();
             displayOverview();
@@ -1084,7 +1158,7 @@ $_SESSION['user_role'] = 'Department';
             const total = historyData.allRequests.length;
             const approved = historyData.allRequests.filter(req => req.status === 'approved').length;
             const successRate = total > 0 ? Math.round((approved / total) * 100) : 0;
-            
+
             // This month's requests
             const thisMonth = new Date();
             const monthStart = new Date(thisMonth.getFullYear(), thisMonth.getMonth(), 1);
@@ -1103,7 +1177,7 @@ $_SESSION['user_role'] = 'Department';
         function displayOverview() {
             const insights = document.getElementById('quickInsights');
             const total = historyData.filteredRequests.length;
-            
+
             if (total === 0) {
                 insights.innerHTML = `
                     <div class="empty-state">
@@ -1118,14 +1192,14 @@ $_SESSION['user_role'] = 'Department';
             const approved = historyData.filteredRequests.filter(req => req.status === 'approved').length;
             const pending = historyData.filteredRequests.filter(req => req.status === 'pending').length;
             const denied = historyData.filteredRequests.filter(req => req.status === 'denied').length;
-            
+
             // Calculate most requested item
             const itemCounts = {};
             historyData.filteredRequests.forEach(req => {
                 const item = req.item_name || 'Unknown';
                 itemCounts[item] = (itemCounts[item] || 0) + 1;
             });
-            const mostRequested = Object.keys(itemCounts).length > 0 ? 
+            const mostRequested = Object.keys(itemCounts).length > 0 ?
                 Object.keys(itemCounts).reduce((a, b) => itemCounts[a] > itemCounts[b] ? a : b) : 'None';
 
             insights.innerHTML = `
@@ -1172,7 +1246,7 @@ $_SESSION['user_role'] = 'Department';
         // Display timeline
         function displayTimeline() {
             const container = document.getElementById('timelineContainer');
-            
+
             if (historyData.filteredRequests.length === 0) {
                 container.innerHTML = `
                     <div class="empty-state">
@@ -1214,7 +1288,7 @@ $_SESSION['user_role'] = 'Department';
         // Display analytics
         function displayAnalytics() {
             const container = document.getElementById('analyticsContainer');
-            
+
             if (historyData.filteredRequests.length === 0) {
                 container.innerHTML = `
                     <div class="empty-state">
@@ -1282,7 +1356,7 @@ $_SESSION['user_role'] = 'Department';
         // Display detailed view
         function displayDetailedView() {
             const tbody = document.getElementById('detailedTableBody');
-            
+
             if (historyData.filteredRequests.length === 0) {
                 tbody.innerHTML = `
                     <tr>
@@ -1399,7 +1473,9 @@ $_SESSION['user_role'] = 'Department';
 
         // Utility functions
         function downloadCSV(content, filename) {
-            const blob = new Blob([content], { type: 'text/csv' });
+            const blob = new Blob([content], {
+                type: 'text/csv'
+            });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -1419,8 +1495,8 @@ $_SESSION['user_role'] = 'Department';
         function formatDate(dateString) {
             if (!dateString) return 'N/A';
             try {
-                return new Date(dateString).toLocaleDateString('en-US', { 
-                    month: 'short', 
+                return new Date(dateString).toLocaleDateString('en-US', {
+                    month: 'short',
                     day: 'numeric',
                     year: 'numeric',
                     hour: '2-digit',
@@ -1434,8 +1510,8 @@ $_SESSION['user_role'] = 'Department';
         function formatDateShort(dateString) {
             if (!dateString) return 'N/A';
             try {
-                return new Date(dateString).toLocaleDateString('en-US', { 
-                    month: 'short', 
+                return new Date(dateString).toLocaleDateString('en-US', {
+                    month: 'short',
                     day: 'numeric'
                 });
             } catch (error) {
@@ -1450,13 +1526,13 @@ $_SESSION['user_role'] = 'Department';
 
         function refreshData() {
             console.log('🔄 Refreshing history data...');
-            
+
             // Reset loading states
             document.getElementById('summaryTotal').innerHTML = '<div class="loading-skeleton" style="width: 60px; height: 32px;"></div>';
             document.getElementById('summaryApproved').innerHTML = '<div class="loading-skeleton" style="width: 60px; height: 32px;"></div>';
             document.getElementById('summarySuccess').innerHTML = '<div class="loading-skeleton" style="width: 60px; height: 32px;"></div>';
             document.getElementById('summaryThisMonth').innerHTML = '<div class="loading-skeleton" style="width: 60px; height: 32px;"></div>';
-            
+
             // Reload data
             loadHistoryData();
         }
@@ -1464,21 +1540,21 @@ $_SESSION['user_role'] = 'Department';
         // Show alert notification
         function showAlert(message, type = 'info') {
             const alertContainer = document.getElementById('alertContainer');
-            
+
             const alert = document.createElement('div');
             alert.className = `alert ${type}`;
-            
-            const icon = type === 'success' ? 'fa-check-circle' : 
-                        type === 'error' ? 'fa-exclamation-circle' : 
-                        type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
-            
+
+            const icon = type === 'success' ? 'fa-check-circle' :
+                type === 'error' ? 'fa-exclamation-circle' :
+                type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
+
             alert.innerHTML = `
                 <i class="fas ${icon}"></i>
                 <span>${message}</span>
             `;
-            
+
             alertContainer.appendChild(alert);
-            
+
             // Auto remove after timeout
             setTimeout(() => {
                 if (alert.parentNode) {
@@ -1510,4 +1586,5 @@ $_SESSION['user_role'] = 'Department';
         console.log('📡 Using API Endpoint: GET /Department/api/requests/my');
     </script>
 </body>
+
 </html>

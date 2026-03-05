@@ -5,7 +5,7 @@ session_start();
 // Redirect if already logged in
 if (isset($_SESSION['user_id'])) {
     $role = $_SESSION['user_role'];
-    switch($role) {
+    switch ($role) {
         case 'Admin':
             header('Location: ../dashboard/admin-dashboard.php');
             break;
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
     $remember = isset($_POST['remember']);
-    
+
     // Basic validation
     if (empty($email) || empty($password)) {
         $error_message = 'Please fill in all fields.';
@@ -72,16 +72,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             error_log("Login API Error: " . $curl_error);
         } else {
             $api_response = json_decode($response, true);
-            
+
             if ($http_code === 200 && isset($api_response['token'])) {
                 // Successful login
                 $token = $api_response['token'];
-                
+
                 // Decode JWT to get user info (simple decode - in production use proper JWT library)
                 $jwt_parts = explode('.', $token);
                 if (count($jwt_parts) === 3) {
                     $payload = json_decode(base64_decode($jwt_parts[1]), true);
-                    
+
                     if ($payload) {
                         // Set session variables
                         $_SESSION['user_id'] = $payload['sub'];
@@ -92,16 +92,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $_SESSION['jwt_token'] = $token;
                         $_SESSION['token_expires'] = $payload['exp'];
                         $_SESSION['login_time'] = time();
-                        
+
                         // Set remember me cookie if checked
                         if ($remember) {
                             $cookie_value = base64_encode($payload['sub'] . '|' . $payload['email'] . '|' . time());
                             setcookie('remember_user', $cookie_value, time() + (30 * 24 * 60 * 60), '/', '', false, true);
                         }
-                        
+
                         // Redirect based on role
                         $role = $_SESSION['user_role'];
-                        switch($role) {
+                        switch ($role) {
                             case 'Admin':
                                 header('Location: ../dashboard/admin-dashboard.php');
                                 break;
@@ -123,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         exit();
                     }
                 }
-                
+
                 $error_message = 'Login response format error. Please try again.';
             } else {
                 // API returned error
@@ -134,8 +134,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Function to convert role_id to role name - UPDATED ROLES
-function getRoleNameFromId($role_id) {
-    switch($role_id) {
+function getRoleNameFromId($role_id)
+{
+    switch ($role_id) {
         case 1:
             return 'Admin';
         case 2:
@@ -168,6 +169,7 @@ if (isset($_COOKIE['remember_user'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -214,7 +216,7 @@ if (isset($_COOKIE['remember_user'])) {
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 75% 75%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
             z-index: -1;
@@ -240,6 +242,7 @@ if (isset($_COOKIE['remember_user'])) {
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -515,7 +518,9 @@ if (isset($_COOKIE['remember_user'])) {
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* Security Badge */
@@ -642,33 +647,35 @@ if (isset($_COOKIE['remember_user'])) {
         }
 
         .back-to-main {
-        margin-top: 1rem;
-        text-align: center;
-    }
-    .back-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--primary-color);
-        text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-    }
+            margin-top: 1rem;
+            text-align: center;
+        }
 
-    .back-link:hover {
-        background: rgba(45, 80, 22, 0.1);
-        text-decoration: none;
-        transform: translateX(-2px);
-    }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
 
-    .back-link i {
-        font-size: 0.8rem;
-    }
+        .back-link:hover {
+            background: rgba(45, 80, 22, 0.1);
+            text-decoration: none;
+            transform: translateX(-2px);
+        }
+
+        .back-link i {
+            font-size: 0.8rem;
+        }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <!-- Left Panel -->
@@ -689,16 +696,16 @@ if (isset($_COOKIE['remember_user'])) {
 
         <!-- Right Panel -->
         <div class="login-right">
-        <div class="login-header">
-        <h2>Secure Login</h2>
-        <p>Access your account to manage office requirements</p>
-        <!-- Add this back link -->
-        <div class="back-to-main">
-            <a href="../index.php" class="back-link">
-                <i class="fas fa-arrow-left"></i> Back to Main Page
-            </a>
-        </div>
-    </div>
+            <div class="login-header">
+                <h2>Secure Login</h2>
+                <p>Access your account to manage office requirements</p>
+                <!-- Add this back link -->
+                <div class="back-to-main">
+                    <a href="../index.php" class="back-link">
+                        <i class="fas fa-arrow-left"></i> Back to Main Page
+                    </a>
+                </div>
+            </div>
 
             <!-- Alert Messages -->
             <?php if (!empty($error_message)): ?>
@@ -720,16 +727,15 @@ if (isset($_COOKIE['remember_user'])) {
                 <div class="form-group">
                     <label for="email">Email Address</label>
                     <div class="input-wrapper">
-                        <input 
-                            type="email" 
-                            id="email" 
-                            name="email" 
-                            class="form-control <?php echo !empty($error_message) ? 'is-invalid' : ''; ?>" 
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            class="form-control <?php echo !empty($error_message) ? 'is-invalid' : ''; ?>"
                             placeholder="Enter your email address"
                             value="<?php echo htmlspecialchars($remembered_email); ?>"
                             required
-                            autocomplete="email"
-                        >
+                            autocomplete="email">
                         <i class="fas fa-envelope input-icon"></i>
                     </div>
                 </div>
@@ -737,15 +743,14 @@ if (isset($_COOKIE['remember_user'])) {
                 <div class="form-group">
                     <label for="password">Password</label>
                     <div class="input-wrapper">
-                        <input 
-                            type="password" 
-                            id="password" 
-                            name="password" 
-                            class="form-control <?php echo !empty($error_message) ? 'is-invalid' : ''; ?>" 
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            class="form-control <?php echo !empty($error_message) ? 'is-invalid' : ''; ?>"
                             placeholder="Enter your password"
                             required
-                            autocomplete="current-password"
-                        >
+                            autocomplete="current-password">
                         <i class="fas fa-lock input-icon"></i>
                         <button type="button" class="password-toggle" onclick="togglePassword()">
                             <i class="fas fa-eye" id="passwordIcon"></i>
@@ -786,7 +791,7 @@ if (isset($_COOKIE['remember_user'])) {
         function togglePassword() {
             const passwordInput = document.getElementById('password');
             const passwordIcon = document.getElementById('passwordIcon');
-            
+
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
                 passwordIcon.classList.remove('fa-eye');
@@ -840,7 +845,7 @@ if (isset($_COOKIE['remember_user'])) {
         document.addEventListener('DOMContentLoaded', function() {
             // Focus on email field
             document.getElementById('email').focus();
-            
+
             // Test API connectivity (optional)
             testAPIConnectivity();
         });
@@ -855,21 +860,21 @@ if (isset($_COOKIE['remember_user'])) {
         // Test API connectivity
         function testAPIConnectivity() {
             fetch('<?php echo $api_base_url; ?>/test', {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    console.log('API connectivity test passed');
-                } else {
-                    console.warn('API might not be available');
-                }
-            })
-            .catch(error => {
-                console.warn('API connectivity test failed:', error);
-            });
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('API connectivity test passed');
+                    } else {
+                        console.warn('API might not be available');
+                    }
+                })
+                .catch(error => {
+                    console.warn('API connectivity test failed:', error);
+                });
         }
 
         // Auto-clear error messages after 10 seconds
@@ -885,4 +890,5 @@ if (isset($_COOKIE['remember_user'])) {
         }, 10000);
     </script>
 </body>
+
 </html>

@@ -15,6 +15,7 @@ $_SESSION['user_role'] = 'Department';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -293,12 +294,35 @@ $_SESSION['user_role'] = 'Department';
             text-decoration: none;
         }
 
-        .btn-primary { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; }
-        .btn-success { background: var(--success); color: white; }
-        .btn-warning { background: var(--warning); color: #212529; }
-        .btn-danger { background: var(--danger); color: white; }
-        .btn-info { background: var(--info); color: white; }
-        .btn-secondary { background: #6c757d; color: white; }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: #212529;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-info {
+            background: var(--info);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
 
         .btn:hover {
             transform: translateY(-2px);
@@ -337,10 +361,25 @@ $_SESSION['user_role'] = 'Department';
             gap: 1rem;
         }
 
-        .alert.success { background: linear-gradient(135deg, #d4edda, #c3e6cb); color: #155724; }
-        .alert.error { background: linear-gradient(135deg, #f8d7da, #f5c6cb); color: #721c24; }
-        .alert.info { background: linear-gradient(135deg, #d1ecf1, #bee5eb); color: #0c5460; }
-        .alert.warning { background: linear-gradient(135deg, #fff3cd, #ffeaa7); color: #856404; }
+        .alert.success {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            color: #155724;
+        }
+
+        .alert.error {
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+            color: #721c24;
+        }
+
+        .alert.info {
+            background: linear-gradient(135deg, #d1ecf1, #bee5eb);
+            color: #0c5460;
+        }
+
+        .alert.warning {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            color: #856404;
+        }
 
         /* Progress Steps */
         .progress-steps {
@@ -382,8 +421,13 @@ $_SESSION['user_role'] = 'Department';
         }
 
         @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
         }
 
         /* Responsive */
@@ -443,12 +487,25 @@ $_SESSION['user_role'] = 'Department';
         }
 
         @keyframes bounce {
-            0%, 20%, 60%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            80% { transform: translateY(-5px); }
+
+            0%,
+            20%,
+            60%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            80% {
+                transform: translateY(-5px);
+            }
         }
     </style>
 </head>
+
 <body>
     <!-- Include Sidebar Component -->
     <?php include '../../dashboard/components/sidebar.php'; ?>
@@ -518,18 +575,17 @@ $_SESSION['user_role'] = 'Department';
                                     <i class="fas fa-box"></i>
                                     Item Selection
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label class="form-label required" for="itemSearch">Search Item</label>
                                     <div class="item-selector">
-                                        <input 
-                                            type="text" 
-                                            id="itemSearch" 
-                                            class="form-control" 
+                                        <input
+                                            type="text"
+                                            id="itemSearch"
+                                            class="form-control"
                                             placeholder="Type to search for items..."
                                             autocomplete="off"
-                                            required
-                                        >
+                                            required>
                                         <div id="searchDropdown" class="search-dropdown"></div>
                                     </div>
                                     <div class="form-text">Start typing to see available items</div>
@@ -546,16 +602,15 @@ $_SESSION['user_role'] = 'Department';
 
                                 <div class="form-group">
                                     <label class="form-label required" for="quantity">Quantity Requested</label>
-                                    <input 
-                                        type="number" 
-                                        id="quantity" 
-                                        class="form-control" 
+                                    <input
+                                        type="number"
+                                        id="quantity"
+                                        class="form-control"
                                         name="quantity_requested"
-                                        min="1" 
+                                        min="1"
                                         max="1000"
                                         placeholder="Enter quantity needed"
-                                        required
-                                    >
+                                        required>
                                     <div class="form-text">Maximum 1000 units per request</div>
                                     <div class="error-message" id="quantityError">Please enter a valid quantity</div>
                                 </div>
@@ -593,39 +648,36 @@ $_SESSION['user_role'] = 'Department';
 
                                 <div class="form-group">
                                     <label class="form-label required" for="purpose">Purpose/Justification</label>
-                                    <textarea 
-                                        id="purpose" 
-                                        class="form-control" 
+                                    <textarea
+                                        id="purpose"
+                                        class="form-control"
                                         name="purpose"
-                                        rows="4" 
+                                        rows="4"
                                         placeholder="Explain why you need these items, how they will be used, and their importance to your department's operations..."
-                                        required
-                                    ></textarea>
+                                        required></textarea>
                                     <div class="form-text">Provide detailed justification for this request</div>
                                     <div class="error-message" id="purposeError">Please provide a purpose for this request</div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="form-label" for="expectedDate">Expected Usage Date</label>
-                                    <input 
-                                        type="date" 
-                                        id="expectedDate" 
-                                        class="form-control" 
+                                    <input
+                                        type="date"
+                                        id="expectedDate"
+                                        class="form-control"
                                         name="expected_date"
-                                        min=""
-                                    >
+                                        min="">
                                     <div class="form-text">When do you expect to use these items? (Optional)</div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="form-label" for="additionalNotes">Additional Notes</label>
-                                    <textarea 
-                                        id="additionalNotes" 
-                                        class="form-control" 
+                                    <textarea
+                                        id="additionalNotes"
+                                        class="form-control"
                                         name="additional_notes"
-                                        rows="3" 
-                                        placeholder="Any additional information, special requirements, or delivery instructions..."
-                                    ></textarea>
+                                        rows="3"
+                                        placeholder="Any additional information, special requirements, or delivery instructions..."></textarea>
                                     <div class="form-text">Optional additional information</div>
                                 </div>
                             </div>
@@ -676,7 +728,7 @@ $_SESSION['user_role'] = 'Department';
             console.log('🔗 API Base URL:', API_BASE_URL);
             console.log('🔑 JWT Token Status:', token ? 'Present' : 'Missing');
             console.log('👤 User Role: Department');
-            
+
             setupEventListeners();
             loadAvailableItems();
             setMinDate();
@@ -710,99 +762,112 @@ $_SESSION['user_role'] = 'Department';
         async function loadAvailableItems() {
             try {
                 showAlert('🔄 Loading available items...', 'info');
-                
+
                 // Since Department backend needs items from database but doesn't have items endpoint,
                 // we'll use the existing items that are referenced in the backend's JOIN queries
                 // This means items must exist in the database for requests to work
-                
+
                 console.log('📝 Loading items for Department users...');
-                
+
                 // These items should match what's in your database 'items' table
                 // The Department backend will validate item_id against the items table
-                availableItems = [
-                    { 
-                        id: 1, 
-                        name: 'Blue Ballpoint Pens', 
-                        category_id: 'Stationery', 
+                availableItems = [{
+                        id: 1,
+                        name: 'Blue Ballpoint Pens',
+                        category_id: 'Stationery',
                         description: 'Blue ink ballpoint pens for office use',
                         unit: 'pieces'
                     },
-                    { 
-                        id: 2, 
-                        name: 'HP Business Laptops', 
-                        category_id: 'Electronics', 
+                    {
+                        id: 2,
+                        name: 'HP Business Laptops',
+                        category_id: 'Electronics',
                         description: 'HP ProBook laptops with Windows 11 Pro',
                         unit: 'units'
                     },
-                    { 
-                        id: 3, 
-                        name: 'Steel Filing Cabinets', 
-                        category_id: 'Furniture', 
+                    {
+                        id: 3,
+                        name: 'Steel Filing Cabinets',
+                        category_id: 'Furniture',
                         description: '4-drawer steel filing cabinets with locks',
                         unit: 'units'
                     },
-                    { 
-                        id: 4, 
-                        name: 'A4 Copy Paper', 
-                        category_id: 'Stationery', 
+                    {
+                        id: 4,
+                        name: 'A4 Copy Paper',
+                        category_id: 'Stationery',
                         description: 'White A4 copy paper (500 sheets per ream)',
                         unit: 'reams'
                     },
-                    { 
-                        id: 5, 
-                        name: 'Office Chairs', 
-                        category_id: 'Furniture', 
+                    {
+                        id: 5,
+                        name: 'Office Chairs',
+                        category_id: 'Furniture',
                         description: 'Ergonomic office chairs with adjustable height',
                         unit: 'units'
                     },
-                    { 
-                        id: 6, 
-                        name: 'Desktop Computers', 
-                        category_id: 'Electronics', 
+                    {
+                        id: 6,
+                        name: 'Desktop Computers',
+                        category_id: 'Electronics',
                         description: 'Dell OptiPlex desktop computers',
                         unit: 'units'
                     },
-                    { 
-                        id: 7, 
-                        name: 'Ink Cartridges', 
-                        category_id: 'Electronics', 
+                    {
+                        id: 7,
+                        name: 'Ink Cartridges',
+                        category_id: 'Electronics',
                         description: 'HP black ink cartridges for office printers',
                         unit: 'pieces'
                     },
-                    { 
-                        id: 8, 
-                        name: 'Notebooks', 
-                        category_id: 'Stationery', 
+                    {
+                        id: 8,
+                        name: 'Notebooks',
+                        category_id: 'Stationery',
                         description: 'A5 ruled notebooks for meetings',
                         unit: 'pieces'
                     },
-                    { 
-                        id: 9, 
-                        name: 'Conference Phones', 
-                        category_id: 'Electronics', 
+                    {
+                        id: 9,
+                        name: 'Conference Phones',
+                        category_id: 'Electronics',
                         description: 'Polycom conference phones for meeting rooms',
                         unit: 'units'
                     },
-                    { 
-                        id: 10, 
-                        name: 'Desk Lamps', 
-                        category_id: 'Electronics', 
+                    {
+                        id: 10,
+                        name: 'Desk Lamps',
+                        category_id: 'Electronics',
                         description: 'LED desk lamps with adjustable brightness',
                         unit: 'units'
                     }
                 ];
-                
+
                 showAlert(`✅ Loaded ${availableItems.length} available items!`, 'success');
-                
+
             } catch (error) {
                 console.error('Error loading items:', error);
                 showAlert('❌ Error loading items: ' + error.message, 'error');
-                
+
                 // Minimal fallback
-                availableItems = [
-                    { id: 1, name: 'Office Supplies', category_id: 'General', description: 'Various office supplies' },
-                    { id: 2, name: 'Computer Equipment', category_id: 'Electronics', description: 'Computer hardware' },
-                    { id: 3, name: 'Office Furniture', category_id: 'Furniture', description: 'Desks and chairs' }
+                availableItems = [{
+                        id: 1,
+                        name: 'Office Supplies',
+                        category_id: 'General',
+                        description: 'Various office supplies'
+                    },
+                    {
+                        id: 2,
+                        name: 'Computer Equipment',
+                        category_id: 'Electronics',
+                        description: 'Computer hardware'
+                    },
+                    {
+                        id: 3,
+                        name: 'Office Furniture',
+                        category_id: 'Furniture',
+                        description: 'Desks and chairs'
+                    }
                 ];
                 showAlert('⚠️ Using basic item list', 'warning');
             }
@@ -812,13 +877,13 @@ $_SESSION['user_role'] = 'Department';
         function handleItemSearch() {
             const searchTerm = document.getElementById('itemSearch').value.toLowerCase();
             const dropdown = document.getElementById('searchDropdown');
-            
+
             if (searchTerm.length === 0) {
                 hideDropdown();
                 return;
             }
 
-            const filteredItems = availableItems.filter(item => 
+            const filteredItems = availableItems.filter(item =>
                 item.name.toLowerCase().includes(searchTerm) ||
                 (item.category_id && item.category_id.toLowerCase().includes(searchTerm)) ||
                 (item.description && item.description.toLowerCase().includes(searchTerm))
@@ -831,7 +896,7 @@ $_SESSION['user_role'] = 'Department';
         // Display search results
         function displaySearchResults(items) {
             const dropdown = document.getElementById('searchDropdown');
-            
+
             if (items.length === 0) {
                 dropdown.innerHTML = `
                     <div class="dropdown-item" style="text-align: center; color: #666;">
@@ -856,8 +921,12 @@ $_SESSION['user_role'] = 'Department';
 
         // Select item from dropdown
         function selectItem(itemId, itemName, category) {
-            selectedItem = { id: itemId, name: itemName, category: category };
-            
+            selectedItem = {
+                id: itemId,
+                name: itemName,
+                category: category
+            };
+
             document.getElementById('itemSearch').value = itemName;
             document.getElementById('selectedItemId').value = itemId;
             document.getElementById('selectedItem').innerHTML = `
@@ -871,7 +940,7 @@ $_SESSION['user_role'] = 'Department';
                     </button>
                 </div>
             `;
-            
+
             hideDropdown();
             validateItem();
             showAlert(`✅ Selected: ${itemName}`, 'success');
@@ -905,14 +974,14 @@ $_SESSION['user_role'] = 'Department';
             document.querySelectorAll('.priority-option').forEach(option => {
                 option.classList.remove('selected');
             });
-            
+
             // Add selected class to clicked option
             event.currentTarget.classList.add('selected');
-            
+
             // Update hidden input
             const priority = event.currentTarget.dataset.priority;
             document.getElementById('priority').value = priority;
-            
+
             showAlert(`Priority set to: ${priority.charAt(0).toUpperCase() + priority.slice(1)}`, 'info');
         }
 
@@ -920,7 +989,7 @@ $_SESSION['user_role'] = 'Department';
         function validateItem() {
             const itemInput = document.getElementById('itemSearch');
             const itemError = document.getElementById('itemError');
-            
+
             if (!selectedItem || !selectedItem.id) {
                 itemInput.classList.add('error');
                 itemError.style.display = 'block';
@@ -936,7 +1005,7 @@ $_SESSION['user_role'] = 'Department';
             const quantityInput = document.getElementById('quantity');
             const quantityError = document.getElementById('quantityError');
             const quantity = parseInt(quantityInput.value);
-            
+
             if (!quantity || quantity < 1 || quantity > 1000) {
                 quantityInput.classList.add('error');
                 quantityError.style.display = 'block';
@@ -951,7 +1020,7 @@ $_SESSION['user_role'] = 'Department';
         function validatePurpose() {
             const purposeInput = document.getElementById('purpose');
             const purposeError = document.getElementById('purposeError');
-            
+
             if (!purposeInput.value.trim() || purposeInput.value.trim().length < 10) {
                 purposeInput.classList.add('error');
                 purposeError.style.display = 'block';
@@ -968,14 +1037,14 @@ $_SESSION['user_role'] = 'Department';
             const isItemValid = validateItem();
             const isQuantityValid = validateQuantity();
             const isPurposeValid = validatePurpose();
-            
+
             return isItemValid && isQuantityValid && isPurposeValid;
         }
 
         // Submit request
         async function submitRequest(event) {
             event.preventDefault();
-            
+
             if (!validateForm()) {
                 showAlert('❌ Please fix the errors in the form before submitting', 'error');
                 return;
@@ -1003,7 +1072,7 @@ $_SESSION['user_role'] = 'Department';
                 console.log('🎯 API Endpoint:', `${API_BASE_URL}/Department/api/requests/add`);
 
                 showAlert('🔄 Submitting your request...', 'info');
-                
+
                 const response = await fetch(`${API_BASE_URL}/Department/api/requests/add`, {
                     method: 'POST',
                     headers: headers,
@@ -1036,20 +1105,20 @@ $_SESSION['user_role'] = 'Department';
                 }
 
                 console.log('✅ Submission result:', result);
-                
+
                 // Clear any saved draft
                 clearDraft();
-                
+
                 // Show success message with request ID
                 const requestId = result.request_id || result.id || 'NEW';
                 showSuccessScreen(requestId);
-                
+
             } catch (error) {
                 console.error('❌ Error submitting request:', error);
-                
+
                 // Provide specific error messages based on error type
                 let errorMessage = error.message;
-                
+
                 if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
                     errorMessage = 'Network error. Please check your connection and try again.';
                 } else if (error.message.includes('403') || error.message.includes('Access denied')) {
@@ -1063,9 +1132,9 @@ $_SESSION['user_role'] = 'Department';
                 } else if (error.message.includes('500')) {
                     errorMessage = 'Server error. Please try again later or contact support.';
                 }
-                
+
                 showAlert('❌ ' + errorMessage, 'error');
-                
+
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Request';
             }
@@ -1178,10 +1247,10 @@ $_SESSION['user_role'] = 'Department';
         }
 
         function autoSaveDraft() {
-            const hasContent = document.getElementById('selectedItemId').value || 
-                             document.getElementById('quantity').value || 
-                             document.getElementById('purpose').value;
-            
+            const hasContent = document.getElementById('selectedItemId').value ||
+                document.getElementById('quantity').value ||
+                document.getElementById('purpose').value;
+
             if (hasContent) {
                 saveDraft();
                 console.log('📝 Auto-saved draft');
@@ -1193,7 +1262,7 @@ $_SESSION['user_role'] = 'Department';
                 const savedDraft = localStorage.getItem('request_draft');
                 if (savedDraft) {
                     const draftData = JSON.parse(savedDraft);
-                    
+
                     // Ask user if they want to restore draft
                     if (confirm('📝 Found a saved draft from ' + new Date(draftData.saved_at).toLocaleString() + '. Would you like to restore it?')) {
                         restoreDraft(draftData);
@@ -1210,12 +1279,12 @@ $_SESSION['user_role'] = 'Department';
             if (draftData.item_id && draftData.item_name) {
                 selectItem(parseInt(draftData.item_id), draftData.item_name, 'Restored');
             }
-            
+
             document.getElementById('quantity').value = draftData.quantity || '';
             document.getElementById('purpose').value = draftData.purpose || '';
             document.getElementById('expectedDate').value = draftData.expected_date || '';
             document.getElementById('additionalNotes').value = draftData.additional_notes || '';
-            
+
             if (draftData.priority) {
                 document.querySelectorAll('.priority-option').forEach(option => {
                     option.classList.remove('selected');
@@ -1247,14 +1316,14 @@ $_SESSION['user_role'] = 'Department';
             if (confirm('⚠️ Are you sure you want to reset the form? All entered data will be lost.')) {
                 document.getElementById('requestForm').reset();
                 clearSelection();
-                
+
                 // Reset priority to medium
                 document.querySelectorAll('.priority-option').forEach(option => {
                     option.classList.remove('selected');
                 });
                 document.querySelector('.priority-option[data-priority="medium"]').classList.add('selected');
                 document.getElementById('priority').value = 'medium';
-                
+
                 // Clear validation errors
                 document.querySelectorAll('.form-control').forEach(input => {
                     input.classList.remove('error');
@@ -1262,7 +1331,7 @@ $_SESSION['user_role'] = 'Department';
                 document.querySelectorAll('.error-message').forEach(error => {
                     error.style.display = 'none';
                 });
-                
+
                 clearDraft();
                 showAlert('🔄 Form reset successfully', 'info');
             }
@@ -1288,24 +1357,23 @@ $_SESSION['user_role'] = 'Department';
         // Show alert notification
         function showAlert(message, type = 'info') {
             const alertContainer = document.getElementById('alertContainer');
-            
+
             const alert = document.createElement('div');
             alert.className = `alert ${type}`;
-            
-            const icon = type === 'success' ? 'fa-check-circle' : 
-                        type === 'error' ? 'fa-exclamation-circle' : 
-                        type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
-            
+
+            const icon = type === 'success' ? 'fa-check-circle' :
+                type === 'error' ? 'fa-exclamation-circle' :
+                type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
+
             alert.innerHTML = `
                 <i class="fas ${icon}"></i>
                 <span>${message}</span>
             `;
-            
+
             alertContainer.appendChild(alert);
-            
+
             // Auto remove after timeout (longer for preview)
-            const timeout = message.includes('Request Preview') ? 10000 : 
-                           ['warning', 'error'].includes(type) ? 6000 : 4000;
+            const timeout = message.includes('Request Preview') ? 10000 : ['warning', 'error'].includes(type) ? 6000 : 4000;
             setTimeout(() => {
                 if (alert.parentNode) {
                     alert.style.animation = 'slideOutRight 0.4s ease';
@@ -1344,4 +1412,5 @@ $_SESSION['user_role'] = 'Department';
         console.log('⚠️ Items displayed must match database items table for successful submission');
     </script>
 </body>
+
 </html>

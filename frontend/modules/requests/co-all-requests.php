@@ -15,6 +15,7 @@ $_SESSION['user_role'] = 'CO';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -130,12 +131,35 @@ $_SESSION['user_role'] = 'CO';
             text-decoration: none;
         }
 
-        .btn-primary { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; }
-        .btn-success { background: var(--success); color: white; }
-        .btn-warning { background: var(--warning); color: #212529; }
-        .btn-danger { background: var(--danger); color: white; }
-        .btn-info { background: var(--info); color: white; }
-        .btn-secondary { background: #6c757d; color: white; }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: #212529;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-info {
+            background: var(--info);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
 
         .btn-sm {
             padding: 0.4rem 0.8rem;
@@ -201,9 +225,20 @@ $_SESSION['user_role'] = 'CO';
             letter-spacing: 0.5px;
         }
 
-        .status-badge.pending { background: #fff3cd; color: #856404; }
-        .status-badge.approved { background: #d4edda; color: #155724; }
-        .status-badge.denied { background: #f8d7da; color: #721c24; }
+        .status-badge.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-badge.approved {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.denied {
+            background: #f8d7da;
+            color: #721c24;
+        }
 
         /* Priority Badges */
         .priority-badge {
@@ -214,9 +249,20 @@ $_SESSION['user_role'] = 'CO';
             text-transform: uppercase;
         }
 
-        .priority-badge.high { background: #ffebee; color: #c62828; }
-        .priority-badge.medium { background: #fff3e0; color: #ef6c00; }
-        .priority-badge.low { background: #e8f5e8; color: #2e7d32; }
+        .priority-badge.high {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .priority-badge.medium {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .priority-badge.low {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
 
         /* Tabs */
         .tabs-container {
@@ -324,10 +370,25 @@ $_SESSION['user_role'] = 'CO';
             transform: translateY(-5px);
         }
 
-        .stat-card.pending-requests { --card-bg-1: #ff7675; --card-bg-2: #fd79a8; }
-        .stat-card.my-approved { --card-bg-1: #00b894; --card-bg-2: #00cec9; }
-        .stat-card.my-denied { --card-bg-1: #fdcb6e; --card-bg-2: #e17055; }
-        .stat-card.total-processed { --card-bg-1: #6c5ce7; --card-bg-2: #a29bfe; }
+        .stat-card.pending-requests {
+            --card-bg-1: #ff7675;
+            --card-bg-2: #fd79a8;
+        }
+
+        .stat-card.my-approved {
+            --card-bg-1: #00b894;
+            --card-bg-2: #00cec9;
+        }
+
+        .stat-card.my-denied {
+            --card-bg-1: #fdcb6e;
+            --card-bg-2: #e17055;
+        }
+
+        .stat-card.total-processed {
+            --card-bg-1: #6c5ce7;
+            --card-bg-2: #a29bfe;
+        }
 
         .stat-icon {
             font-size: 2.5rem;
@@ -358,10 +419,25 @@ $_SESSION['user_role'] = 'CO';
             gap: 1rem;
         }
 
-        .alert.success { background: linear-gradient(135deg, #d4edda, #c3e6cb); color: #155724; }
-        .alert.error { background: linear-gradient(135deg, #f8d7da, #f5c6cb); color: #721c24; }
-        .alert.info { background: linear-gradient(135deg, #d1ecf1, #bee5eb); color: #0c5460; }
-        .alert.warning { background: linear-gradient(135deg, #fff3cd, #ffeaa7); color: #856404; }
+        .alert.success {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            color: #155724;
+        }
+
+        .alert.error {
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+            color: #721c24;
+        }
+
+        .alert.info {
+            background: linear-gradient(135deg, #d1ecf1, #bee5eb);
+            color: #0c5460;
+        }
+
+        .alert.warning {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            color: #856404;
+        }
 
         /* Loading States */
         .loading-skeleton {
@@ -372,8 +448,13 @@ $_SESSION['user_role'] = 'CO';
         }
 
         @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
         }
 
         /* Bulk Actions */
@@ -468,6 +549,7 @@ $_SESSION['user_role'] = 'CO';
         }
     </style>
 </head>
+
 <body>
     <!-- Include Sidebar Component -->
     <?php include '../../dashboard/components/sidebar.php'; ?>
@@ -513,7 +595,7 @@ $_SESSION['user_role'] = 'CO';
                     </div>
                     <div class="stat-label">Pending Approval</div>
                 </div>
-                
+
                 <div class="stat-card my-approved" onclick="switchTab('processed')">
                     <div class="stat-icon">
                         <i class="fas fa-check-circle"></i>
@@ -523,7 +605,7 @@ $_SESSION['user_role'] = 'CO';
                     </div>
                     <div class="stat-label">Approved by Me</div>
                 </div>
-                
+
                 <div class="stat-card my-denied" onclick="switchTab('processed')">
                     <div class="stat-icon">
                         <i class="fas fa-times-circle"></i>
@@ -533,7 +615,7 @@ $_SESSION['user_role'] = 'CO';
                     </div>
                     <div class="stat-label">Denied by Me</div>
                 </div>
-                
+
                 <div class="stat-card total-processed" onclick="switchTab('processed')">
                     <div class="stat-icon">
                         <i class="fas fa-clipboard-list"></i>
@@ -695,7 +777,7 @@ $_SESSION['user_role'] = 'CO';
             // Search and filter functionality
             document.getElementById('pendingSearchInput').addEventListener('input', filterPendingRequests);
             document.getElementById('pendingPriorityFilter').addEventListener('change', filterPendingRequests);
-            
+
             document.getElementById('processedSearchInput').addEventListener('input', filterProcessedRequests);
             document.getElementById('processedStatusFilter').addEventListener('change', filterProcessedRequests);
             document.getElementById('processedDateFilter').addEventListener('change', filterProcessedRequests);
@@ -705,7 +787,7 @@ $_SESSION['user_role'] = 'CO';
         async function loadAllData() {
             try {
                 showAlert('🔄 Loading CO requests...', 'info');
-                
+
                 await Promise.all([
                     loadPendingRequests(),
                     loadProcessedRequests()
@@ -713,7 +795,7 @@ $_SESSION['user_role'] = 'CO';
 
                 updateStatistics();
                 showAlert('✅ Data loaded successfully!', 'success');
-                
+
             } catch (error) {
                 console.error('Error loading data:', error);
                 showAlert('❌ Error loading data: ' + error.message, 'error');
@@ -734,9 +816,9 @@ $_SESSION['user_role'] = 'CO';
 
                 const requests = await response.json();
                 allData.pendingRequests = Array.isArray(requests) ? requests : [];
-                
+
                 displayPendingRequests();
-                
+
             } catch (error) {
                 console.error('Error loading pending requests:', error);
                 allData.pendingRequests = [];
@@ -758,9 +840,9 @@ $_SESSION['user_role'] = 'CO';
 
                 const requests = await response.json();
                 allData.processedRequests = Array.isArray(requests) ? requests : [];
-                
+
                 displayProcessedRequests();
-                
+
             } catch (error) {
                 console.error('Error loading processed requests:', error);
                 allData.processedRequests = [];
@@ -771,7 +853,7 @@ $_SESSION['user_role'] = 'CO';
         // Display pending requests
         function displayPendingRequests() {
             const tbody = document.getElementById('pendingRequestsBody');
-            
+
             if (!allData.pendingRequests || allData.pendingRequests.length === 0) {
                 tbody.innerHTML = `
                     <tr>
@@ -814,7 +896,7 @@ $_SESSION['user_role'] = 'CO';
         // Display processed requests
         function displayProcessedRequests() {
             const tbody = document.getElementById('processedRequestsBody');
-            
+
             if (!allData.processedRequests || allData.processedRequests.length === 0) {
                 tbody.innerHTML = `
                     <tr>
@@ -876,15 +958,15 @@ $_SESSION['user_role'] = 'CO';
             const selectAll = document.getElementById('selectAllPending');
             const selectAllHeader = document.getElementById('selectAllPendingHeader');
             const checkboxes = document.querySelectorAll('.request-select');
-            
+
             // Sync both select all checkboxes
             selectAll.checked = selectAllHeader.checked;
             selectAllHeader.checked = selectAll.checked;
-            
+
             checkboxes.forEach(checkbox => {
                 checkbox.checked = selectAll.checked;
             });
-            
+
             updateSelectedRequests();
         }
 
@@ -892,11 +974,11 @@ $_SESSION['user_role'] = 'CO';
         function updateSelectedRequests() {
             const checkboxes = document.querySelectorAll('.request-select:checked');
             allData.selectedRequests = Array.from(checkboxes).map(cb => parseInt(cb.value));
-            
+
             // Update button states
             const approveBtn = document.getElementById('approveSelectedBtn');
             const denyBtn = document.getElementById('denySelectedBtn');
-            
+
             if (allData.selectedRequests.length > 0) {
                 approveBtn.disabled = false;
                 denyBtn.disabled = false;
@@ -914,7 +996,7 @@ $_SESSION['user_role'] = 'CO';
 
             try {
                 showAlert('🔄 Approving request...', 'info');
-                
+
                 const response = await fetch(`${API_BASE_URL}/CO/api/requests/approve?id=${requestId}`, {
                     method: 'PUT',
                     headers: headers
@@ -926,10 +1008,10 @@ $_SESSION['user_role'] = 'CO';
 
                 const result = await response.json();
                 showAlert('✅ Request approved successfully!', 'success');
-                
+
                 // Refresh data
                 await loadAllData();
-                
+
             } catch (error) {
                 console.error('Error approving request:', error);
                 showAlert('❌ Error approving request: ' + error.message, 'error');
@@ -945,11 +1027,13 @@ $_SESSION['user_role'] = 'CO';
 
             try {
                 showAlert('🔄 Denying request...', 'info');
-                
+
                 const response = await fetch(`${API_BASE_URL}/CO/api/requests/deny?id=${requestId}`, {
                     method: 'PUT',
                     headers: headers,
-                    body: JSON.stringify({ remarks: remarks })
+                    body: JSON.stringify({
+                        remarks: remarks
+                    })
                 });
 
                 if (!response.ok) {
@@ -958,10 +1042,10 @@ $_SESSION['user_role'] = 'CO';
 
                 const result = await response.json();
                 showAlert('✅ Request denied successfully!', 'success');
-                
+
                 // Refresh data
                 await loadAllData();
-                
+
             } catch (error) {
                 console.error('Error denying request:', error);
                 showAlert('❌ Error denying request: ' + error.message, 'error');
@@ -981,7 +1065,7 @@ $_SESSION['user_role'] = 'CO';
 
             try {
                 showAlert('🔄 Approving selected requests...', 'info');
-                
+
                 const promises = allData.selectedRequests.map(requestId =>
                     fetch(`${API_BASE_URL}/CO/api/requests/approve?id=${requestId}`, {
                         method: 'PUT',
@@ -991,11 +1075,11 @@ $_SESSION['user_role'] = 'CO';
 
                 await Promise.all(promises);
                 showAlert(`✅ ${allData.selectedRequests.length} requests approved successfully!`, 'success');
-                
+
                 // Reset selection and refresh
                 allData.selectedRequests = [];
                 await loadAllData();
-                
+
             } catch (error) {
                 console.error('Error approving requests:', error);
                 showAlert('❌ Error approving some requests: ' + error.message, 'error');
@@ -1016,22 +1100,24 @@ $_SESSION['user_role'] = 'CO';
 
             try {
                 showAlert('🔄 Denying selected requests...', 'info');
-                
+
                 const promises = allData.selectedRequests.map(requestId =>
                     fetch(`${API_BASE_URL}/CO/api/requests/deny?id=${requestId}`, {
                         method: 'PUT',
                         headers: headers,
-                        body: JSON.stringify({ remarks: remarks })
+                        body: JSON.stringify({
+                            remarks: remarks
+                        })
                     })
                 );
 
                 await Promise.all(promises);
                 showAlert(`✅ ${allData.selectedRequests.length} requests denied successfully!`, 'success');
-                
+
                 // Reset selection and refresh
                 allData.selectedRequests = [];
                 await loadAllData();
-                
+
             } catch (error) {
                 console.error('Error denying requests:', error);
                 showAlert('❌ Error denying some requests: ' + error.message, 'error');
@@ -1044,7 +1130,7 @@ $_SESSION['user_role'] = 'CO';
             const priorityFilter = document.getElementById('pendingPriorityFilter').value;
 
             const filteredRequests = allData.pendingRequests.filter(request => {
-                const matchesSearch = !searchTerm || 
+                const matchesSearch = !searchTerm ||
                     request.id.toString().includes(searchTerm) ||
                     (request.requested_by || '').toLowerCase().includes(searchTerm) ||
                     (request.item_name || '').toLowerCase().includes(searchTerm) ||
@@ -1057,7 +1143,7 @@ $_SESSION['user_role'] = 'CO';
 
             // Update display with filtered results
             const tbody = document.getElementById('pendingRequestsBody');
-            
+
             if (filteredRequests.length === 0) {
                 tbody.innerHTML = `
                     <tr>
@@ -1104,7 +1190,7 @@ $_SESSION['user_role'] = 'CO';
             const dateFilter = document.getElementById('processedDateFilter').value;
 
             const filteredRequests = allData.processedRequests.filter(request => {
-                const matchesSearch = !searchTerm || 
+                const matchesSearch = !searchTerm ||
                     request.id.toString().includes(searchTerm) ||
                     (request.requested_by || '').toLowerCase().includes(searchTerm) ||
                     (request.item_name || '').toLowerCase().includes(searchTerm);
@@ -1116,8 +1202,8 @@ $_SESSION['user_role'] = 'CO';
                     const requestDate = new Date(request.approved_at);
                     const today = new Date();
                     const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-                    
-                    switch(dateFilter) {
+
+                    switch (dateFilter) {
                         case 'today':
                             matchesDate = requestDate >= todayStart;
                             break;
@@ -1138,7 +1224,7 @@ $_SESSION['user_role'] = 'CO';
 
             // Update display with filtered results
             const tbody = document.getElementById('processedRequestsBody');
-            
+
             if (filteredRequests.length === 0) {
                 tbody.innerHTML = `
                     <tr>
@@ -1221,7 +1307,9 @@ $_SESSION['user_role'] = 'CO';
                 ])
             ].map(row => row.join(',')).join('\n');
 
-            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const blob = new Blob([csvContent], {
+                type: 'text/csv'
+            });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -1230,20 +1318,20 @@ $_SESSION['user_role'] = 'CO';
             a.click();
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
-            
+
             showAlert('📊 CO report exported successfully!', 'success');
         }
 
         // Refresh all data
         function refreshAllData() {
             console.log('🔄 Refreshing CO request data...');
-            
+
             // Reset loading states
             document.getElementById('pendingCount').innerHTML = '<div class="loading-skeleton" style="width: 60px; height: 40px;"></div>';
             document.getElementById('approvedCount').innerHTML = '<div class="loading-skeleton" style="width: 60px; height: 40px;"></div>';
             document.getElementById('deniedCount').innerHTML = '<div class="loading-skeleton" style="width: 60px; height: 40px;"></div>';
             document.getElementById('totalProcessed').innerHTML = '<div class="loading-skeleton" style="width: 60px; height: 40px;"></div>';
-            
+
             // Reset table loading states
             document.getElementById('pendingRequestsBody').innerHTML = `
                 <tr>
@@ -1252,7 +1340,7 @@ $_SESSION['user_role'] = 'CO';
                     </td>
                 </tr>
             `;
-            
+
             document.getElementById('processedRequestsBody').innerHTML = `
                 <tr>
                     <td colspan="7" style="text-align: center; padding: 2rem;">
@@ -1260,7 +1348,7 @@ $_SESSION['user_role'] = 'CO';
                     </td>
                 </tr>
             `;
-            
+
             // Reload data
             loadAllData();
         }
@@ -1268,11 +1356,11 @@ $_SESSION['user_role'] = 'CO';
         // Utility Functions
         function formatDate(dateString) {
             if (!dateString) return 'N/A';
-            
+
             try {
                 const date = new Date(dateString);
-                return date.toLocaleDateString('en-US', { 
-                    month: 'short', 
+                return date.toLocaleDateString('en-US', {
+                    month: 'short',
                     day: 'numeric',
                     year: date.getFullYear() !== new Date().getFullYear() ? 'numeric' : undefined,
                     hour: '2-digit',
@@ -1291,21 +1379,21 @@ $_SESSION['user_role'] = 'CO';
         // Show alert notification
         function showAlert(message, type = 'info') {
             const alertContainer = document.getElementById('alertContainer');
-            
+
             const alert = document.createElement('div');
             alert.className = `alert ${type}`;
-            
-            const icon = type === 'success' ? 'fa-check-circle' : 
-                        type === 'error' ? 'fa-exclamation-circle' : 
-                        type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
-            
+
+            const icon = type === 'success' ? 'fa-check-circle' :
+                type === 'error' ? 'fa-exclamation-circle' :
+                type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
+
             alert.innerHTML = `
                 <i class="fas ${icon}"></i>
                 <span>${message}</span>
             `;
-            
+
             alertContainer.appendChild(alert);
-            
+
             // Auto remove after timeout
             const timeout = ['warning', 'error'].includes(type) ? 6000 : 4000;
             setTimeout(() => {
@@ -1339,4 +1427,5 @@ $_SESSION['user_role'] = 'CO';
         console.log('👤 User Role: CO (Chief Officer)');
     </script>
 </body>
+
 </html>

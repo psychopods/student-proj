@@ -15,6 +15,7 @@ $_SESSION['user_role'] = 'Admin';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -164,12 +165,35 @@ $_SESSION['user_role'] = 'Admin';
             text-decoration: none;
         }
 
-        .btn-primary { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; }
-        .btn-success { background: var(--success); color: white; }
-        .btn-warning { background: var(--warning); color: #212529; }
-        .btn-danger { background: var(--danger); color: white; }
-        .btn-info { background: var(--info); color: white; }
-        .btn-secondary { background: #6c757d; color: white; }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: #212529;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-info {
+            background: var(--info);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
 
         .btn-sm {
             padding: 0.4rem 0.8rem;
@@ -228,11 +252,30 @@ $_SESSION['user_role'] = 'Admin';
             letter-spacing: 0.5px;
         }
 
-        .role-badge.admin { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
-        .role-badge.quartermaster { background: linear-gradient(135deg, #f093fb, #f5576c); color: white; }
-        .role-badge.department { background: linear-gradient(135deg, #4facfe, #00f2fe); color: white; }
-        .role-badge.co { background: linear-gradient(135deg, #43e97b, #38f9d7); color: #1e3c72; }
-        .role-badge.auditor { background: linear-gradient(135deg, #fa709a, #fee140); color: #1e3c72; }
+        .role-badge.admin {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .role-badge.quartermaster {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+        }
+
+        .role-badge.department {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+        }
+
+        .role-badge.co {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            color: #1e3c72;
+        }
+
+        .role-badge.auditor {
+            background: linear-gradient(135deg, #fa709a, #fee140);
+            color: #1e3c72;
+        }
 
         /* Search and Filter */
         .search-filter-bar {
@@ -397,10 +440,25 @@ $_SESSION['user_role'] = 'Admin';
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .stat-card.total-roles { --card-bg-1: #667eea; --card-bg-2: #764ba2; }
-        .stat-card.active-roles { --card-bg-1: #43e97b; --card-bg-2: #38f9d7; }
-        .stat-card.total-permissions { --card-bg-1: #f093fb; --card-bg-2: #f5576c; }
-        .stat-card.role-assignments { --card-bg-1: #4facfe; --card-bg-2: #00f2fe; }
+        .stat-card.total-roles {
+            --card-bg-1: #667eea;
+            --card-bg-2: #764ba2;
+        }
+
+        .stat-card.active-roles {
+            --card-bg-1: #43e97b;
+            --card-bg-2: #38f9d7;
+        }
+
+        .stat-card.total-permissions {
+            --card-bg-1: #f093fb;
+            --card-bg-2: #f5576c;
+        }
+
+        .stat-card.role-assignments {
+            --card-bg-1: #4facfe;
+            --card-bg-2: #00f2fe;
+        }
 
         .stat-value {
             font-size: 2rem;
@@ -425,20 +483,28 @@ $_SESSION['user_role'] = 'Admin';
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         @keyframes slideInUp {
-            from { 
+            from {
                 opacity: 0;
                 transform: translateY(30px);
             }
-            to { 
+
+            to {
                 opacity: 1;
                 transform: translateY(0);
             }
@@ -480,6 +546,7 @@ $_SESSION['user_role'] = 'Admin';
         }
     </style>
 </head>
+
 <body>
     <!-- Include Sidebar Component -->
     <?php include '../../dashboard/components/sidebar.php'; ?>
@@ -650,7 +717,7 @@ $_SESSION['user_role'] = 'Admin';
             <div class="modal-body">
                 <form id="roleForm">
                     <input type="hidden" id="roleId">
-                    
+
                     <div class="form-group">
                         <label class="form-label" for="roleName">
                             <i class="fas fa-user-shield"></i>
@@ -693,7 +760,7 @@ $_SESSION['user_role'] = 'Admin';
             <div class="modal-body">
                 <form id="permissionForm">
                     <input type="hidden" id="permissionId">
-                    
+
                     <div class="form-group">
                         <label class="form-label" for="selectedRole">
                             <i class="fas fa-user-shield"></i>
@@ -738,156 +805,156 @@ $_SESSION['user_role'] = 'Admin';
     <?php include '../../dashboard/components/footer.php'; ?>
 
     <script>
-    // API Configuration
-    const API_BASE_URL = 'http://localhost/students-proj/unfedZombie/Controllers';
-    let roles = [];
-    let rolePermissions = [];
-    let filteredRoles = [];
-    let filteredPermissions = [];
+        // API Configuration
+        const API_BASE_URL = 'http://localhost/students-proj/unfedZombie/Controllers';
+        let roles = [];
+        let rolePermissions = [];
+        let filteredRoles = [];
+        let filteredPermissions = [];
 
-    // Get JWT token from session
-    const token = '<?php echo $_SESSION["jwt_token"] ?? ""; ?>';
+        // Get JWT token from session
+        const token = '<?php echo $_SESSION["jwt_token"] ?? ""; ?>';
 
-    // API Headers
-    const headers = {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-    };
+        // API Headers
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        };
 
-    // Load data on page load
-    document.addEventListener('DOMContentLoaded', function() {
-        loadRoles();
-        loadRolePermissions();
-        setupEventListeners();
-        setupTableEventDelegation();
-    });
-
-    // Setup event listeners
-    function setupEventListeners() {
-        // Search functionality
-        document.getElementById('roleSearchInput').addEventListener('input', filterRoles);
-        document.getElementById('permissionSearchInput').addEventListener('input', filterPermissions);
-
-        // Form submissions
-        document.getElementById('roleForm').addEventListener('submit', handleRoleSubmit);
-        document.getElementById('permissionForm').addEventListener('submit', handlePermissionSubmit);
-    }
-
-    // Setup event delegation for table buttons
-    function setupTableEventDelegation() {
-        console.log('🎯 Setting up event delegation for role management tables...');
-        
-        // Event delegation for roles table
-        document.getElementById('rolesTable').addEventListener('click', handleRolesTableClick);
-        
-        // Event delegation for permissions table
-        document.getElementById('permissionsTable').addEventListener('click', handlePermissionsTableClick);
-    }
-
-    // Handle roles table button clicks
-    function handleRolesTableClick(e) {
-        // Handle delete role button clicks
-        if (e.target.closest('.delete-role-btn')) {
-            e.preventDefault();
-            e.stopPropagation();
-            const button = e.target.closest('.delete-role-btn');
-            const roleId = parseInt(button.getAttribute('data-role-id'));
-            console.log('🗑️ Delete role button clicked for ID:', roleId);
-            if (roleId && !isNaN(roleId)) {
-                deleteRole(roleId);
-            } else {
-                console.error('❌ Invalid role ID:', roleId);
-                showAlert('❌ Invalid role ID!', 'error');
-            }
-        }
-    }
-
-    // Handle permissions table button clicks
-    function handlePermissionsTableClick(e) {
-        // Handle edit permission button clicks
-        if (e.target.closest('.edit-permission-btn')) {
-            e.preventDefault();
-            e.stopPropagation();
-            const button = e.target.closest('.edit-permission-btn');
-            const permissionId = parseInt(button.getAttribute('data-permission-id'));
-            console.log('✏️ Edit permission button clicked for ID:', permissionId);
-            if (permissionId && !isNaN(permissionId)) {
-                editPermission(permissionId);
-            } else {
-                console.error('❌ Invalid permission ID:', permissionId);
-                showAlert('❌ Invalid permission ID!', 'error');
-            }
-        }
-        
-        // Handle delete permission button clicks
-        if (e.target.closest('.delete-permission-btn')) {
-            e.preventDefault();
-            e.stopPropagation();
-            const button = e.target.closest('.delete-permission-btn');
-            const permissionId = parseInt(button.getAttribute('data-permission-id'));
-            console.log('🗑️ Delete permission button clicked for ID:', permissionId);
-            if (permissionId && !isNaN(permissionId)) {
-                deletePermission(permissionId);
-            } else {
-                console.error('❌ Invalid permission ID:', permissionId);
-                showAlert('❌ Invalid permission ID!', 'error');
-            }
-        }
-    }
-
-    // Tab switching
-    function switchTab(tabName) {
-        // Remove active class from all tabs and buttons
-        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-
-        // Add active class to selected tab
-        document.querySelector(`[onclick="switchTab('${tabName}')"]`).classList.add('active');
-        document.getElementById(tabName + 'Tab').classList.add('active');
-
-        if (tabName === 'roles') {
+        // Load data on page load
+        document.addEventListener('DOMContentLoaded', function() {
             loadRoles();
-        } else if (tabName === 'permissions') {
             loadRolePermissions();
+            setupEventListeners();
+            setupTableEventDelegation();
+        });
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Search functionality
+            document.getElementById('roleSearchInput').addEventListener('input', filterRoles);
+            document.getElementById('permissionSearchInput').addEventListener('input', filterPermissions);
+
+            // Form submissions
+            document.getElementById('roleForm').addEventListener('submit', handleRoleSubmit);
+            document.getElementById('permissionForm').addEventListener('submit', handlePermissionSubmit);
         }
-    }
 
-    // Load roles from API
-    async function loadRoles() {
-        try {
-            showAlert('🔄 Loading roles...', 'info');
-            
-            const response = await fetch(`${API_BASE_URL}/admin/api/admin/roles`, {
-                method: 'GET',
-                headers: headers
-            });
+        // Setup event delegation for table buttons
+        function setupTableEventDelegation() {
+            console.log('🎯 Setting up event delegation for role management tables...');
 
-            if (!response.ok) {
-                throw new Error(`API Error: ${response.status}`);
+            // Event delegation for roles table
+            document.getElementById('rolesTable').addEventListener('click', handleRolesTableClick);
+
+            // Event delegation for permissions table
+            document.getElementById('permissionsTable').addEventListener('click', handlePermissionsTableClick);
+        }
+
+        // Handle roles table button clicks
+        function handleRolesTableClick(e) {
+            // Handle delete role button clicks
+            if (e.target.closest('.delete-role-btn')) {
+                e.preventDefault();
+                e.stopPropagation();
+                const button = e.target.closest('.delete-role-btn');
+                const roleId = parseInt(button.getAttribute('data-role-id'));
+                console.log('🗑️ Delete role button clicked for ID:', roleId);
+                if (roleId && !isNaN(roleId)) {
+                    deleteRole(roleId);
+                } else {
+                    console.error('❌ Invalid role ID:', roleId);
+                    showAlert('❌ Invalid role ID!', 'error');
+                }
+            }
+        }
+
+        // Handle permissions table button clicks
+        function handlePermissionsTableClick(e) {
+            // Handle edit permission button clicks
+            if (e.target.closest('.edit-permission-btn')) {
+                e.preventDefault();
+                e.stopPropagation();
+                const button = e.target.closest('.edit-permission-btn');
+                const permissionId = parseInt(button.getAttribute('data-permission-id'));
+                console.log('✏️ Edit permission button clicked for ID:', permissionId);
+                if (permissionId && !isNaN(permissionId)) {
+                    editPermission(permissionId);
+                } else {
+                    console.error('❌ Invalid permission ID:', permissionId);
+                    showAlert('❌ Invalid permission ID!', 'error');
+                }
             }
 
-            const responseText = await response.text();
-            roles = JSON.parse(responseText);
-            
-            // Ensure all role IDs are numbers for consistency
-            roles = roles.map(role => ({
-                ...role,
-                id: parseInt(role.id)
-            }));
-            
-            filteredRoles = [...roles];
-            
-            displayRoles();
-            updateStats();
-            populateRoleSelect();
-            
-            showAlert(`✅ Loaded ${roles.length} roles!`, 'success');
-            
-        } catch (error) {
-            console.error('Error loading roles:', error);
-            showAlert('❌ Error loading roles: ' + error.message, 'error');
-            
-            document.getElementById('rolesTableBody').innerHTML = `
+            // Handle delete permission button clicks
+            if (e.target.closest('.delete-permission-btn')) {
+                e.preventDefault();
+                e.stopPropagation();
+                const button = e.target.closest('.delete-permission-btn');
+                const permissionId = parseInt(button.getAttribute('data-permission-id'));
+                console.log('🗑️ Delete permission button clicked for ID:', permissionId);
+                if (permissionId && !isNaN(permissionId)) {
+                    deletePermission(permissionId);
+                } else {
+                    console.error('❌ Invalid permission ID:', permissionId);
+                    showAlert('❌ Invalid permission ID!', 'error');
+                }
+            }
+        }
+
+        // Tab switching
+        function switchTab(tabName) {
+            // Remove active class from all tabs and buttons
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            // Add active class to selected tab
+            document.querySelector(`[onclick="switchTab('${tabName}')"]`).classList.add('active');
+            document.getElementById(tabName + 'Tab').classList.add('active');
+
+            if (tabName === 'roles') {
+                loadRoles();
+            } else if (tabName === 'permissions') {
+                loadRolePermissions();
+            }
+        }
+
+        // Load roles from API
+        async function loadRoles() {
+            try {
+                showAlert('🔄 Loading roles...', 'info');
+
+                const response = await fetch(`${API_BASE_URL}/admin/api/admin/roles`, {
+                    method: 'GET',
+                    headers: headers
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status}`);
+                }
+
+                const responseText = await response.text();
+                roles = JSON.parse(responseText);
+
+                // Ensure all role IDs are numbers for consistency
+                roles = roles.map(role => ({
+                    ...role,
+                    id: parseInt(role.id)
+                }));
+
+                filteredRoles = [...roles];
+
+                displayRoles();
+                updateStats();
+                populateRoleSelect();
+
+                showAlert(`✅ Loaded ${roles.length} roles!`, 'success');
+
+            } catch (error) {
+                console.error('Error loading roles:', error);
+                showAlert('❌ Error loading roles: ' + error.message, 'error');
+
+                document.getElementById('rolesTableBody').innerHTML = `
                 <tr>
                     <td colspan="4" style="text-align: center; padding: 2rem; color: #721c24;">
                         <i class="fas fa-exclamation-triangle"></i>
@@ -895,44 +962,44 @@ $_SESSION['user_role'] = 'Admin';
                     </td>
                 </tr>
             `;
-        }
-    }
-
-    // Load role permissions from API
-    async function loadRolePermissions() {
-        try {
-            showAlert('🔄 Loading permissions...', 'info');
-            
-            const response = await fetch(`${API_BASE_URL}/admin/api/admin/role-permissions`, {
-                method: 'GET',
-                headers: headers
-            });
-
-            if (!response.ok) {
-                throw new Error(`API Error: ${response.status}`);
             }
+        }
 
-            const responseText = await response.text();
-            rolePermissions = JSON.parse(responseText);
-            
-            // Ensure all permission IDs are numbers for consistency
-            rolePermissions = rolePermissions.map(permission => ({
-                ...permission,
-                id: parseInt(permission.id)
-            }));
-            
-            filteredPermissions = [...rolePermissions];
-            
-            displayPermissions();
-            updateStats();
-            
-            showAlert(`✅ Loaded ${rolePermissions.length} permissions!`, 'success');
-            
-        } catch (error) {
-            console.error('Error loading permissions:', error);
-            showAlert('❌ Error loading permissions: ' + error.message, 'error');
-            
-            document.getElementById('permissionsTableBody').innerHTML = `
+        // Load role permissions from API
+        async function loadRolePermissions() {
+            try {
+                showAlert('🔄 Loading permissions...', 'info');
+
+                const response = await fetch(`${API_BASE_URL}/admin/api/admin/role-permissions`, {
+                    method: 'GET',
+                    headers: headers
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status}`);
+                }
+
+                const responseText = await response.text();
+                rolePermissions = JSON.parse(responseText);
+
+                // Ensure all permission IDs are numbers for consistency
+                rolePermissions = rolePermissions.map(permission => ({
+                    ...permission,
+                    id: parseInt(permission.id)
+                }));
+
+                filteredPermissions = [...rolePermissions];
+
+                displayPermissions();
+                updateStats();
+
+                showAlert(`✅ Loaded ${rolePermissions.length} permissions!`, 'success');
+
+            } catch (error) {
+                console.error('Error loading permissions:', error);
+                showAlert('❌ Error loading permissions: ' + error.message, 'error');
+
+                document.getElementById('permissionsTableBody').innerHTML = `
                 <tr>
                     <td colspan="4" style="text-align: center; padding: 2rem; color: #721c24;">
                         <i class="fas fa-exclamation-triangle"></i>
@@ -940,27 +1007,27 @@ $_SESSION['user_role'] = 'Admin';
                     </td>
                 </tr>
             `;
+            }
         }
-    }
 
-    // Display roles in table
-    function displayRoles() {
-        const tbody = document.getElementById('rolesTableBody');
-        const roleCount = document.getElementById('roleCount');
+        // Display roles in table
+        function displayRoles() {
+            const tbody = document.getElementById('rolesTableBody');
+            const roleCount = document.getElementById('roleCount');
 
-        if (filteredRoles.length === 0) {
-            tbody.innerHTML = `
+            if (filteredRoles.length === 0) {
+                tbody.innerHTML = `
                 <tr>
                     <td colspan="4" style="text-align: center; padding: 2rem;">
                         <i class="fas fa-user-shield"></i> No roles found
                     </td>
                 </tr>
             `;
-            roleCount.textContent = '0';
-            return;
-        }
+                roleCount.textContent = '0';
+                return;
+            }
 
-        tbody.innerHTML = filteredRoles.map(role => `
+            tbody.innerHTML = filteredRoles.map(role => `
             <tr>
                 <td><strong>#${role.id}</strong></td>
                 <td>
@@ -975,28 +1042,28 @@ $_SESSION['user_role'] = 'Admin';
             </tr>
         `).join('');
 
-        roleCount.textContent = filteredRoles.length;
-        console.log('✅ Roles table updated with event delegation handling button clicks');
-    }
+            roleCount.textContent = filteredRoles.length;
+            console.log('✅ Roles table updated with event delegation handling button clicks');
+        }
 
-    // Display permissions in table
-    function displayPermissions() {
-        const tbody = document.getElementById('permissionsTableBody');
-        const permissionCount = document.getElementById('permissionCount');
+        // Display permissions in table
+        function displayPermissions() {
+            const tbody = document.getElementById('permissionsTableBody');
+            const permissionCount = document.getElementById('permissionCount');
 
-        if (filteredPermissions.length === 0) {
-            tbody.innerHTML = `
+            if (filteredPermissions.length === 0) {
+                tbody.innerHTML = `
                 <tr>
                     <td colspan="4" style="text-align: center; padding: 2rem;">
                         <i class="fas fa-key"></i> No permissions found
                     </td>
                 </tr>
             `;
-            permissionCount.textContent = '0';
-            return;
-        }
+                permissionCount.textContent = '0';
+                return;
+            }
 
-        tbody.innerHTML = filteredPermissions.map(permission => `
+            tbody.innerHTML = filteredPermissions.map(permission => `
             <tr>
                 <td><strong>#${permission.id}</strong></td>
                 <td>
@@ -1018,166 +1085,82 @@ $_SESSION['user_role'] = 'Admin';
             </tr>
         `).join('');
 
-        permissionCount.textContent = filteredPermissions.length;
-        console.log('✅ Permissions table updated with event delegation handling button clicks');
-    }
-
-    // Update statistics
-    function updateStats() {
-        document.getElementById('totalRoles').textContent = roles.length;
-        document.getElementById('activeRoles').textContent = roles.length;
-        document.getElementById('totalPermissions').textContent = rolePermissions.length;
-        document.getElementById('roleAssignments').textContent = rolePermissions.length;
-    }
-
-    // Filter roles
-    function filterRoles() {
-        const searchTerm = document.getElementById('roleSearchInput').value.toLowerCase();
-        filteredRoles = roles.filter(role => 
-            role.name.toLowerCase().includes(searchTerm) ||
-            (role.description && role.description.toLowerCase().includes(searchTerm))
-        );
-        displayRoles();
-    }
-
-    // Filter permissions
-    function filterPermissions() {
-        const searchTerm = document.getElementById('permissionSearchInput').value.toLowerCase();
-        filteredPermissions = rolePermissions.filter(permission => 
-            permission.role.toLowerCase().includes(searchTerm) ||
-            permission.permission.toLowerCase().includes(searchTerm)
-        );
-        displayPermissions();
-    }
-
-    // Show Add Role Modal
-    function showAddRoleModal() {
-        document.getElementById('roleModalTitle').textContent = 'Add New Role';
-        document.getElementById('roleForm').reset();
-        document.getElementById('roleId').value = '';
-        document.getElementById('roleModal').classList.add('show');
-    }
-
-    // Show Add Permission Modal
-    function showAddPermissionModal() {
-        document.getElementById('permissionModalTitle').textContent = 'Assign Permission';
-        document.getElementById('permissionForm').reset();
-        document.getElementById('permissionId').value = '';
-        document.getElementById('permissionModal').classList.add('show');
-    }
-
-    // Close modals
-    function closeRoleModal() {
-        document.getElementById('roleModal').classList.remove('show');
-    }
-
-    function closePermissionModal() {
-        document.getElementById('permissionModal').classList.remove('show');
-    }
-
-    // Handle role form submission
-    async function handleRoleSubmit(e) {
-        e.preventDefault();
-        
-        const submitBtn = document.getElementById('saveRoleBtn');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<div class="loading"></div> Saving...';
-        submitBtn.disabled = true;
-
-        try {
-            const roleData = {
-                name: document.getElementById('roleName').value,
-                description: document.getElementById('roleDescription').value
-            };
-
-            const response = await fetch(`${API_BASE_URL}/admin/api/admin/roles`, {
-                method: 'POST',
-                headers: headers,
-                body: JSON.stringify(roleData)
-            });
-
-            const result = await response.json();
-
-            if (!response.ok) {
-                throw new Error(result.message || result.error || `HTTP ${response.status}`);
-            }
-
-            showAlert('✅ Role created successfully!', 'success');
-            closeRoleModal();
-            loadRoles();
-
-        } catch (error) {
-            console.error('Error saving role:', error);
-            showAlert('❌ Error saving role: ' + error.message, 'error');
-        } finally {
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
+            permissionCount.textContent = filteredPermissions.length;
+            console.log('✅ Permissions table updated with event delegation handling button clicks');
         }
-    }
 
-    // Handle permission form submission
-    async function handlePermissionSubmit(e) {
-        e.preventDefault();
-        
-        const submitBtn = document.getElementById('savePermissionBtn');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<div class="loading"></div> Saving...';
-        submitBtn.disabled = true;
-
-        try {
-            const permissionId = document.getElementById('permissionId').value;
-            const permissionData = {
-                role_id: parseInt(document.getElementById('selectedRole').value),
-                permission_id: parseInt(document.getElementById('selectedPermission').value)
-            };
-
-            let apiUrl = `${API_BASE_URL}/admin/api/admin/role-permissions`;
-            let method = 'POST';
-
-            if (permissionId) {
-                apiUrl += `/${permissionId}`;
-                method = 'PUT';
-            }
-
-            const response = await fetch(apiUrl, {
-                method: method,
-                headers: headers,
-                body: JSON.stringify(permissionData)
-            });
-
-            const result = await response.json();
-
-            if (!response.ok) {
-                throw new Error(result.message || result.error || `HTTP ${response.status}`);
-            }
-
-            showAlert(`✅ Permission ${permissionId ? 'updated' : 'assigned'} successfully!`, 'success');
-            closePermissionModal();
-            loadRolePermissions();
-
-        } catch (error) {
-            console.error('Error saving permission:', error);
-            showAlert('❌ Error saving permission: ' + error.message, 'error');
-        } finally {
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
+        // Update statistics
+        function updateStats() {
+            document.getElementById('totalRoles').textContent = roles.length;
+            document.getElementById('activeRoles').textContent = roles.length;
+            document.getElementById('totalPermissions').textContent = rolePermissions.length;
+            document.getElementById('roleAssignments').textContent = rolePermissions.length;
         }
-    }
 
-    // Delete role
-    async function deleteRole(roleId) {
-        console.log('🗑️ Deleting role with ID:', roleId, 'Type:', typeof roleId);
-        console.log('🔍 Available roles:', roles.map(r => ({ id: r.id, type: typeof r.id, name: r.name })));
-        
-        // Convert roleId to number to ensure match
-        const numericRoleId = parseInt(roleId);
-        const role = roles.find(r => parseInt(r.id) === numericRoleId);
-        
-        if (role && confirm(`⚠️ Delete role "${role.name}"?\n\nThis action cannot be undone.`)) {
+        // Filter roles
+        function filterRoles() {
+            const searchTerm = document.getElementById('roleSearchInput').value.toLowerCase();
+            filteredRoles = roles.filter(role =>
+                role.name.toLowerCase().includes(searchTerm) ||
+                (role.description && role.description.toLowerCase().includes(searchTerm))
+            );
+            displayRoles();
+        }
+
+        // Filter permissions
+        function filterPermissions() {
+            const searchTerm = document.getElementById('permissionSearchInput').value.toLowerCase();
+            filteredPermissions = rolePermissions.filter(permission =>
+                permission.role.toLowerCase().includes(searchTerm) ||
+                permission.permission.toLowerCase().includes(searchTerm)
+            );
+            displayPermissions();
+        }
+
+        // Show Add Role Modal
+        function showAddRoleModal() {
+            document.getElementById('roleModalTitle').textContent = 'Add New Role';
+            document.getElementById('roleForm').reset();
+            document.getElementById('roleId').value = '';
+            document.getElementById('roleModal').classList.add('show');
+        }
+
+        // Show Add Permission Modal
+        function showAddPermissionModal() {
+            document.getElementById('permissionModalTitle').textContent = 'Assign Permission';
+            document.getElementById('permissionForm').reset();
+            document.getElementById('permissionId').value = '';
+            document.getElementById('permissionModal').classList.add('show');
+        }
+
+        // Close modals
+        function closeRoleModal() {
+            document.getElementById('roleModal').classList.remove('show');
+        }
+
+        function closePermissionModal() {
+            document.getElementById('permissionModal').classList.remove('show');
+        }
+
+        // Handle role form submission
+        async function handleRoleSubmit(e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('saveRoleBtn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<div class="loading"></div> Saving...';
+            submitBtn.disabled = true;
+
             try {
-                const response = await fetch(`${API_BASE_URL}/admin/api/admin/roles/${roleId}`, {
-                    method: 'DELETE',
-                    headers: headers
+                const roleData = {
+                    name: document.getElementById('roleName').value,
+                    description: document.getElementById('roleDescription').value
+                };
+
+                const response = await fetch(`${API_BASE_URL}/admin/api/admin/roles`, {
+                    method: 'POST',
+                    headers: headers,
+                    body: JSON.stringify(roleData)
                 });
 
                 const result = await response.json();
@@ -1186,68 +1169,47 @@ $_SESSION['user_role'] = 'Admin';
                     throw new Error(result.message || result.error || `HTTP ${response.status}`);
                 }
 
-                showAlert('🗑️ Role deleted successfully!', 'success');
+                showAlert('✅ Role created successfully!', 'success');
+                closeRoleModal();
                 loadRoles();
 
             } catch (error) {
-                console.error('Error deleting role:', error);
-                showAlert('❌ Error deleting role: ' + error.message, 'error');
+                console.error('Error saving role:', error);
+                showAlert('❌ Error saving role: ' + error.message, 'error');
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
             }
-        } else if (!role) {
-            console.error('❌ Role not found:', roleId);
-            showAlert('❌ Role not found!', 'error');
         }
-    }
 
-    // Edit permission
-    function editPermission(permissionId) {
-        console.log('✏️ Editing permission with ID:', permissionId, 'Type:', typeof permissionId);
-        console.log('🔍 Available permissions:', rolePermissions.map(p => ({ id: p.id, type: typeof p.id, role: p.role, permission: p.permission })));
-        
-        // Convert permissionId to number to ensure match
-        const numericPermissionId = parseInt(permissionId);
-        const permission = rolePermissions.find(p => parseInt(p.id) === numericPermissionId);
-        
-        if (permission) {
-            console.log('✅ Found permission:', permission);
-            document.getElementById('permissionModalTitle').textContent = 'Edit Permission';
-            document.getElementById('permissionId').value = permission.id;
-            
-            // Find role by name and set value
-            const roleOption = Array.from(document.getElementById('selectedRole').options)
-                .find(option => option.text === permission.role);
-            if (roleOption) {
-                document.getElementById('selectedRole').value = roleOption.value;
-            }
-            
-            // Set permission based on name
-            const permissionMap = {
-                'Create': 1, 'Read': 2, 'Update': 3, 'Delete': 4, 'Approve': 5, 'Authorize': 6
-            };
-            document.getElementById('selectedPermission').value = permissionMap[permission.permission] || '';
-            
-            document.getElementById('permissionModal').classList.add('show');
-        } else {
-            console.error('❌ Permission not found:', permissionId);
-            console.error('🔍 Available permissions:', rolePermissions.map(p => ({ id: p.id, type: typeof p.id, role: p.role })));
-            showAlert('❌ Permission not found!', 'error');
-        }
-    }
+        // Handle permission form submission
+        async function handlePermissionSubmit(e) {
+            e.preventDefault();
 
-    // Delete permission
-    async function deletePermission(permissionId) {
-        console.log('🗑️ Deleting permission with ID:', permissionId, 'Type:', typeof permissionId);
-        console.log('🔍 Available permissions:', rolePermissions.map(p => ({ id: p.id, type: typeof p.id, role: p.role, permission: p.permission })));
-        
-        // Convert permissionId to number to ensure match
-        const numericPermissionId = parseInt(permissionId);
-        const permission = rolePermissions.find(p => parseInt(p.id) === numericPermissionId);
-        
-        if (permission && confirm(`⚠️ Remove "${permission.permission}" permission from "${permission.role}" role?\n\nThis action cannot be undone.`)) {
+            const submitBtn = document.getElementById('savePermissionBtn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<div class="loading"></div> Saving...';
+            submitBtn.disabled = true;
+
             try {
-                const response = await fetch(`${API_BASE_URL}/admin/api/admin/role-permissions/${permissionId}`, {
-                    method: 'DELETE',
-                    headers: headers
+                const permissionId = document.getElementById('permissionId').value;
+                const permissionData = {
+                    role_id: parseInt(document.getElementById('selectedRole').value),
+                    permission_id: parseInt(document.getElementById('selectedPermission').value)
+                };
+
+                let apiUrl = `${API_BASE_URL}/admin/api/admin/role-permissions`;
+                let method = 'POST';
+
+                if (permissionId) {
+                    apiUrl += `/${permissionId}`;
+                    method = 'PUT';
+                }
+
+                const response = await fetch(apiUrl, {
+                    method: method,
+                    headers: headers,
+                    body: JSON.stringify(permissionData)
                 });
 
                 const result = await response.json();
@@ -1256,102 +1218,231 @@ $_SESSION['user_role'] = 'Admin';
                     throw new Error(result.message || result.error || `HTTP ${response.status}`);
                 }
 
-                showAlert('🗑️ Permission removed successfully!', 'success');
+                showAlert(`✅ Permission ${permissionId ? 'updated' : 'assigned'} successfully!`, 'success');
+                closePermissionModal();
                 loadRolePermissions();
 
             } catch (error) {
-                console.error('Error deleting permission:', error);
-                showAlert('❌ Error deleting permission: ' + error.message, 'error');
+                console.error('Error saving permission:', error);
+                showAlert('❌ Error saving permission: ' + error.message, 'error');
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
             }
-        } else if (!permission) {
-            console.error('❌ Permission not found:', permissionId);
-            showAlert('❌ Permission not found!', 'error');
         }
-    }
 
-    // Populate role select dropdown
-    function populateRoleSelect() {
-        const select = document.getElementById('selectedRole');
-        select.innerHTML = '<option value="">Select a role</option>';
-        
-        roles.forEach(role => {
-            const option = document.createElement('option');
-            option.value = role.id;
-            option.textContent = role.name;
-            select.appendChild(option);
-        });
-    }
+        // Delete role
+        async function deleteRole(roleId) {
+            console.log('🗑️ Deleting role with ID:', roleId, 'Type:', typeof roleId);
+            console.log('🔍 Available roles:', roles.map(r => ({
+                id: r.id,
+                type: typeof r.id,
+                name: r.name
+            })));
 
-    // Refresh all data
-    function refreshAll() {
-        loadRoles();
-        loadRolePermissions();
-    }
+            // Convert roleId to number to ensure match
+            const numericRoleId = parseInt(roleId);
+            const role = roles.find(r => parseInt(r.id) === numericRoleId);
 
-    // Show alert notification
-    function showAlert(message, type = 'info') {
-        const alertContainer = document.getElementById('alertContainer');
-        
-        const alert = document.createElement('div');
-        alert.className = `alert ${type}`;
-        
-        const icon = type === 'success' ? 'fa-check-circle' : 
-                    type === 'error' ? 'fa-exclamation-circle' : 
-                    type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
-        
-        alert.innerHTML = `
+            if (role && confirm(`⚠️ Delete role "${role.name}"?\n\nThis action cannot be undone.`)) {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/admin/api/admin/roles/${roleId}`, {
+                        method: 'DELETE',
+                        headers: headers
+                    });
+
+                    const result = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(result.message || result.error || `HTTP ${response.status}`);
+                    }
+
+                    showAlert('🗑️ Role deleted successfully!', 'success');
+                    loadRoles();
+
+                } catch (error) {
+                    console.error('Error deleting role:', error);
+                    showAlert('❌ Error deleting role: ' + error.message, 'error');
+                }
+            } else if (!role) {
+                console.error('❌ Role not found:', roleId);
+                showAlert('❌ Role not found!', 'error');
+            }
+        }
+
+        // Edit permission
+        function editPermission(permissionId) {
+            console.log('✏️ Editing permission with ID:', permissionId, 'Type:', typeof permissionId);
+            console.log('🔍 Available permissions:', rolePermissions.map(p => ({
+                id: p.id,
+                type: typeof p.id,
+                role: p.role,
+                permission: p.permission
+            })));
+
+            // Convert permissionId to number to ensure match
+            const numericPermissionId = parseInt(permissionId);
+            const permission = rolePermissions.find(p => parseInt(p.id) === numericPermissionId);
+
+            if (permission) {
+                console.log('✅ Found permission:', permission);
+                document.getElementById('permissionModalTitle').textContent = 'Edit Permission';
+                document.getElementById('permissionId').value = permission.id;
+
+                // Find role by name and set value
+                const roleOption = Array.from(document.getElementById('selectedRole').options)
+                    .find(option => option.text === permission.role);
+                if (roleOption) {
+                    document.getElementById('selectedRole').value = roleOption.value;
+                }
+
+                // Set permission based on name
+                const permissionMap = {
+                    'Create': 1,
+                    'Read': 2,
+                    'Update': 3,
+                    'Delete': 4,
+                    'Approve': 5,
+                    'Authorize': 6
+                };
+                document.getElementById('selectedPermission').value = permissionMap[permission.permission] || '';
+
+                document.getElementById('permissionModal').classList.add('show');
+            } else {
+                console.error('❌ Permission not found:', permissionId);
+                console.error('🔍 Available permissions:', rolePermissions.map(p => ({
+                    id: p.id,
+                    type: typeof p.id,
+                    role: p.role
+                })));
+                showAlert('❌ Permission not found!', 'error');
+            }
+        }
+
+        // Delete permission
+        async function deletePermission(permissionId) {
+            console.log('🗑️ Deleting permission with ID:', permissionId, 'Type:', typeof permissionId);
+            console.log('🔍 Available permissions:', rolePermissions.map(p => ({
+                id: p.id,
+                type: typeof p.id,
+                role: p.role,
+                permission: p.permission
+            })));
+
+            // Convert permissionId to number to ensure match
+            const numericPermissionId = parseInt(permissionId);
+            const permission = rolePermissions.find(p => parseInt(p.id) === numericPermissionId);
+
+            if (permission && confirm(`⚠️ Remove "${permission.permission}" permission from "${permission.role}" role?\n\nThis action cannot be undone.`)) {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/admin/api/admin/role-permissions/${permissionId}`, {
+                        method: 'DELETE',
+                        headers: headers
+                    });
+
+                    const result = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(result.message || result.error || `HTTP ${response.status}`);
+                    }
+
+                    showAlert('🗑️ Permission removed successfully!', 'success');
+                    loadRolePermissions();
+
+                } catch (error) {
+                    console.error('Error deleting permission:', error);
+                    showAlert('❌ Error deleting permission: ' + error.message, 'error');
+                }
+            } else if (!permission) {
+                console.error('❌ Permission not found:', permissionId);
+                showAlert('❌ Permission not found!', 'error');
+            }
+        }
+
+        // Populate role select dropdown
+        function populateRoleSelect() {
+            const select = document.getElementById('selectedRole');
+            select.innerHTML = '<option value="">Select a role</option>';
+
+            roles.forEach(role => {
+                const option = document.createElement('option');
+                option.value = role.id;
+                option.textContent = role.name;
+                select.appendChild(option);
+            });
+        }
+
+        // Refresh all data
+        function refreshAll() {
+            loadRoles();
+            loadRolePermissions();
+        }
+
+        // Show alert notification
+        function showAlert(message, type = 'info') {
+            const alertContainer = document.getElementById('alertContainer');
+
+            const alert = document.createElement('div');
+            alert.className = `alert ${type}`;
+
+            const icon = type === 'success' ? 'fa-check-circle' :
+                type === 'error' ? 'fa-exclamation-circle' :
+                type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
+
+            alert.innerHTML = `
             <i class="fas ${icon}"></i>
             <span>${message}</span>
         `;
-        
-        alertContainer.appendChild(alert);
-        
-        // Auto remove after 3 seconds
-        setTimeout(() => {
-            if (alert.parentNode) {
-                alert.style.animation = 'slideOutRight 0.4s ease';
-                setTimeout(() => {
-                    if (alert.parentNode) {
-                        alert.parentNode.removeChild(alert);
-                    }
-                }, 400);
+
+            alertContainer.appendChild(alert);
+
+            // Auto remove after 3 seconds
+            setTimeout(() => {
+                if (alert.parentNode) {
+                    alert.style.animation = 'slideOutRight 0.4s ease';
+                    setTimeout(() => {
+                        if (alert.parentNode) {
+                            alert.parentNode.removeChild(alert);
+                        }
+                    }, 400);
+                }
+            }, 3000);
+        }
+
+        // Make functions globally accessible for HTML onclick attributes
+        window.switchTab = switchTab;
+        window.showAddRoleModal = showAddRoleModal;
+        window.showAddPermissionModal = showAddPermissionModal;
+        window.closeRoleModal = closeRoleModal;
+        window.closePermissionModal = closePermissionModal;
+        window.refreshAll = refreshAll;
+
+        // Modal click outside to close
+        document.getElementById('roleModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeRoleModal();
             }
-        }, 3000);
-    }
+        });
 
-    // Make functions globally accessible for HTML onclick attributes
-    window.switchTab = switchTab;
-    window.showAddRoleModal = showAddRoleModal;
-    window.showAddPermissionModal = showAddPermissionModal;
-    window.closeRoleModal = closeRoleModal;
-    window.closePermissionModal = closePermissionModal;
-    window.refreshAll = refreshAll;
+        document.getElementById('permissionModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePermissionModal();
+            }
+        });
 
-    // Modal click outside to close
-    document.getElementById('roleModal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeRoleModal();
-        }
-    });
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeRoleModal();
+                closePermissionModal();
+            }
+        });
 
-    document.getElementById('permissionModal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closePermissionModal();
-        }
-    });
-
-    // Keyboard shortcuts
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeRoleModal();
-            closePermissionModal();
-        }
-    });
-
-    // Initialize
-    console.log('👥 MSICT Role Management System Initialized');
-    console.log('🔗 API Base URL:', API_BASE_URL);
-    console.log('🔑 JWT Token Status:', token ? 'Present' : 'Missing');
-</script>
+        // Initialize
+        console.log('👥 MSICT Role Management System Initialized');
+        console.log('🔗 API Base URL:', API_BASE_URL);
+        console.log('🔑 JWT Token Status:', token ? 'Present' : 'Missing');
+    </script>
 </body>
+
 </html>

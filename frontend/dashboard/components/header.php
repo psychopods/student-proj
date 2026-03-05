@@ -64,7 +64,7 @@ if (strpos($current_file, '/modules/') !== false) {
                 <div class="notification-header">
                     <i class="fas fa-bell"></i> Notifications (3)
                 </div>
-                
+
                 <div class="notification-item unread">
                     <div class="notification-content">
                         <div class="notification-icon success">
@@ -141,9 +141,9 @@ if (strpos($current_file, '/modules/') !== false) {
                         <i class="fas fa-question-circle"></i>
                         <span>Help & Support</span>
                     </a>
-                    
+
                     <div class="dropdown-divider"></div>
-                    
+
                     <button class="dropdown-item logout-item" onclick="logout()">
                         <i class="fas fa-sign-out-alt"></i>
                         <span>Logout</span>
@@ -156,133 +156,133 @@ if (strpos($current_file, '/modules/') !== false) {
 
 <!-- Hidden logout URL for JavaScript -->
 <script>
-const LOGOUT_URL = '<?php echo $header_base_url; ?>auth/logout.php';
+    const LOGOUT_URL = '<?php echo $header_base_url; ?>auth/logout.php';
 </script>
 
 <script>
-// Header JavaScript Functions
-function toggleNotifications() {
-    const dropdown = document.getElementById('notificationDropdown');
-    const userDropdown = document.getElementById('userDropdown');
-    
-    // Close user dropdown if open
-    userDropdown.classList.remove('show');
-    document.querySelector('.user-menu').classList.remove('active');
-    
-    // Toggle notifications
-    dropdown.classList.toggle('show');
-}
+    // Header JavaScript Functions
+    function toggleNotifications() {
+        const dropdown = document.getElementById('notificationDropdown');
+        const userDropdown = document.getElementById('userDropdown');
 
-function toggleUserMenu() {
-    const dropdown = document.getElementById('userDropdown');
-    const notificationDropdown = document.getElementById('notificationDropdown');
-    const userMenu = document.querySelector('.user-menu');
-    
-    // Close notification dropdown if open
-    notificationDropdown.classList.remove('show');
-    
-    // Toggle user menu
-    dropdown.classList.toggle('show');
-    userMenu.classList.toggle('active');
-}
+        // Close user dropdown if open
+        userDropdown.classList.remove('show');
+        document.querySelector('.user-menu').classList.remove('active');
 
-function handleSearch(event) {
-    if (event.key === 'Enter') {
-        const query = event.target.value.trim();
-        if (query) {
-            console.log('Searching for:', query);
-            // Add your search functionality here
-            alert('Searching for: ' + query);
+        // Toggle notifications
+        dropdown.classList.toggle('show');
+    }
+
+    function toggleUserMenu() {
+        const dropdown = document.getElementById('userDropdown');
+        const notificationDropdown = document.getElementById('notificationDropdown');
+        const userMenu = document.querySelector('.user-menu');
+
+        // Close notification dropdown if open
+        notificationDropdown.classList.remove('show');
+
+        // Toggle user menu
+        dropdown.classList.toggle('show');
+        userMenu.classList.toggle('active');
+    }
+
+    function handleSearch(event) {
+        if (event.key === 'Enter') {
+            const query = event.target.value.trim();
+            if (query) {
+                console.log('Searching for:', query);
+                // Add your search functionality here
+                alert('Searching for: ' + query);
+            }
         }
     }
-}
 
-// FIXED LOGOUT FUNCTION with Smart Path Detection
-function logout() {
-    if (confirm('🔐 Are you sure you want to logout?\n\nThis will end your current session and redirect you to the login page.')) {
-        // Show loading state
-        const logoutBtn = document.querySelector('.logout-item');
-        if (logoutBtn) {
-            logoutBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Logging out...</span>';
-            logoutBtn.disabled = true;
-        }
-        
-        // Clear browser storage
-        try {
-            localStorage.clear();
-            sessionStorage.clear();
-            
-            // Clear any cached data
-            if ('caches' in window) {
-                caches.keys().then(names => {
-                    names.forEach(name => {
-                        caches.delete(name);
-                    });
-                });
+    // FIXED LOGOUT FUNCTION with Smart Path Detection
+    function logout() {
+        if (confirm('🔐 Are you sure you want to logout?\n\nThis will end your current session and redirect you to the login page.')) {
+            // Show loading state
+            const logoutBtn = document.querySelector('.logout-item');
+            if (logoutBtn) {
+                logoutBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Logging out...</span>';
+                logoutBtn.disabled = true;
             }
-        } catch (e) {
-            console.log('Storage clear error:', e);
-        }
-        
-        // Show logout message
-        showLogoutAlert();
-        
-        // Use the correct logout URL based on current location
-        setTimeout(() => {
-            console.log('🔄 Redirecting to logout:', LOGOUT_URL);
-            
-            // Try multiple logout strategies
+
+            // Clear browser storage
             try {
-                // First try: Use the detected logout URL
-                window.location.replace(LOGOUT_URL);
-            } catch (e) {
-                console.log('Primary logout failed, trying alternatives...');
-                
-                // Fallback strategies
-                const alternativeUrls = [
-                    '../../auth/logout.php',  // For modules
-                    '../auth/logout.php',     // For dashboard
-                    './auth/logout.php',      // For root
-                    '/auth/logout.php',       // Absolute
-                    'logout.php'              // Same directory
-                ];
-                
-                // Try each alternative
-                for (let i = 0; i < alternativeUrls.length; i++) {
-                    setTimeout(() => {
-                        try {
-                            window.location.replace(alternativeUrls[i]);
-                        } catch (e2) {
-                            console.log(`Logout attempt ${i+1} failed:`, e2);
-                            
-                            // Last resort: Manual session destruction
-                            if (i === alternativeUrls.length - 1) {
-                                // Create a form to submit logout request
-                                const form = document.createElement('form');
-                                form.method = 'POST';
-                                form.action = LOGOUT_URL || '../auth/logout.php';
-                                
-                                const input = document.createElement('input');
-                                input.type = 'hidden';
-                                input.name = 'logout';
-                                input.value = '1';
-                                form.appendChild(input);
-                                
-                                document.body.appendChild(form);
-                                form.submit();
-                            }
-                        }
-                    }, i * 500);
-                }
-            }
-        }, 1500);
-    }
-}
+                localStorage.clear();
+                sessionStorage.clear();
 
-// Show logout alert
-function showLogoutAlert() {
-    const alert = document.createElement('div');
-    alert.style.cssText = `
+                // Clear any cached data
+                if ('caches' in window) {
+                    caches.keys().then(names => {
+                        names.forEach(name => {
+                            caches.delete(name);
+                        });
+                    });
+                }
+            } catch (e) {
+                console.log('Storage clear error:', e);
+            }
+
+            // Show logout message
+            showLogoutAlert();
+
+            // Use the correct logout URL based on current location
+            setTimeout(() => {
+                console.log('🔄 Redirecting to logout:', LOGOUT_URL);
+
+                // Try multiple logout strategies
+                try {
+                    // First try: Use the detected logout URL
+                    window.location.replace(LOGOUT_URL);
+                } catch (e) {
+                    console.log('Primary logout failed, trying alternatives...');
+
+                    // Fallback strategies
+                    const alternativeUrls = [
+                        '../../auth/logout.php', // For modules
+                        '../auth/logout.php', // For dashboard
+                        './auth/logout.php', // For root
+                        '/auth/logout.php', // Absolute
+                        'logout.php' // Same directory
+                    ];
+
+                    // Try each alternative
+                    for (let i = 0; i < alternativeUrls.length; i++) {
+                        setTimeout(() => {
+                            try {
+                                window.location.replace(alternativeUrls[i]);
+                            } catch (e2) {
+                                console.log(`Logout attempt ${i+1} failed:`, e2);
+
+                                // Last resort: Manual session destruction
+                                if (i === alternativeUrls.length - 1) {
+                                    // Create a form to submit logout request
+                                    const form = document.createElement('form');
+                                    form.method = 'POST';
+                                    form.action = LOGOUT_URL || '../auth/logout.php';
+
+                                    const input = document.createElement('input');
+                                    input.type = 'hidden';
+                                    input.name = 'logout';
+                                    input.value = '1';
+                                    form.appendChild(input);
+
+                                    document.body.appendChild(form);
+                                    form.submit();
+                                }
+                            }
+                        }, i * 500);
+                    }
+                }
+            }, 1500);
+        }
+    }
+
+    // Show logout alert
+    function showLogoutAlert() {
+        const alert = document.createElement('div');
+        alert.style.cssText = `
         position: fixed;
         top: 50%;
         left: 50%;
@@ -297,8 +297,8 @@ function showLogoutAlert() {
         animation: fadeInScale 0.5s ease;
         min-width: 300px;
     `;
-    
-    alert.innerHTML = `
+
+        alert.innerHTML = `
         <div style="margin-bottom: 1rem;">
             <i class="fas fa-sign-out-alt" style="font-size: 2rem; color: #FFD700;"></i>
         </div>
@@ -314,12 +314,12 @@ function showLogoutAlert() {
             </div>
         </div>
     `;
-    
-    document.body.appendChild(alert);
-    
-    // Add overlay
-    const overlay = document.createElement('div');
-    overlay.style.cssText = `
+
+        document.body.appendChild(alert);
+
+        // Add overlay
+        const overlay = document.createElement('div');
+        overlay.style.cssText = `
         position: fixed;
         top: 0;
         left: 0;
@@ -329,70 +329,70 @@ function showLogoutAlert() {
         z-index: 9998;
         backdrop-filter: blur(3px);
     `;
-    document.body.appendChild(overlay);
-}
+        document.body.appendChild(overlay);
+    }
 
-// Alternative logout function if regular logout fails
-function forceLogout() {
-    // Clear all possible session data
-    document.cookie.split(";").forEach(function(c) { 
-        document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
-    });
-    
-    // Clear storage
-    localStorage.clear();
-    sessionStorage.clear();
-    
-    // Redirect to login page
-    const loginUrls = [
-        '../../auth/login.php',
-        '../auth/login.php', 
-        './auth/login.php',
-        '/auth/login.php',
-        'login.php'
-    ];
-    
-    // Try to redirect to login
-    for (let url of loginUrls) {
-        try {
-            window.location.replace(url);
-            break;
-        } catch (e) {
-            continue;
+    // Alternative logout function if regular logout fails
+    function forceLogout() {
+        // Clear all possible session data
+        document.cookie.split(";").forEach(function(c) {
+            document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+        });
+
+        // Clear storage
+        localStorage.clear();
+        sessionStorage.clear();
+
+        // Redirect to login page
+        const loginUrls = [
+            '../../auth/login.php',
+            '../auth/login.php',
+            './auth/login.php',
+            '/auth/login.php',
+            'login.php'
+        ];
+
+        // Try to redirect to login
+        for (let url of loginUrls) {
+            try {
+                window.location.replace(url);
+                break;
+            } catch (e) {
+                continue;
+            }
         }
     }
-}
 
-// Close dropdowns when clicking outside
-document.addEventListener('click', function(event) {
-    const notificationDropdown = document.getElementById('notificationDropdown');
-    const userDropdown = document.getElementById('userDropdown');
-    const userMenu = document.querySelector('.user-menu');
-    
-    // Check if click is outside notification area
-    if (!event.target.closest('.notifications')) {
-        notificationDropdown?.classList.remove('show');
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(event) {
+        const notificationDropdown = document.getElementById('notificationDropdown');
+        const userDropdown = document.getElementById('userDropdown');
+        const userMenu = document.querySelector('.user-menu');
+
+        // Check if click is outside notification area
+        if (!event.target.closest('.notifications')) {
+            notificationDropdown?.classList.remove('show');
+        }
+
+        // Check if click is outside user menu area
+        if (!event.target.closest('.user-menu')) {
+            userDropdown?.classList.remove('show');
+            userMenu?.classList.remove('active');
+        }
+    });
+
+    // Debug function to check current paths
+    function debugPaths() {
+        console.log('🔍 Debug Info:');
+        console.log('Current URL:', window.location.href);
+        console.log('Current pathname:', window.location.pathname);
+        console.log('Logout URL:', LOGOUT_URL);
+        console.log('Base URL from PHP:', '<?php echo $header_base_url; ?>');
     }
-    
-    // Check if click is outside user menu area
-    if (!event.target.closest('.user-menu')) {
-        userDropdown?.classList.remove('show');
-        userMenu?.classList.remove('active');
-    }
-});
 
-// Debug function to check current paths
-function debugPaths() {
-    console.log('🔍 Debug Info:');
-    console.log('Current URL:', window.location.href);
-    console.log('Current pathname:', window.location.pathname);
-    console.log('Logout URL:', LOGOUT_URL);
-    console.log('Base URL from PHP:', '<?php echo $header_base_url; ?>');
-}
-
-// Add logout animations CSS
-const logoutStyles = document.createElement('style');
-logoutStyles.textContent = `
+    // Add logout animations CSS
+    const logoutStyles = document.createElement('style');
+    logoutStyles.textContent = `
     @keyframes fadeInScale {
         from {
             opacity: 0;
@@ -413,18 +413,18 @@ logoutStyles.textContent = `
         }
     }
 `;
-document.head.appendChild(logoutStyles);
+    document.head.appendChild(logoutStyles);
 
-// Initialize header
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('📋 Header initialized with logout URL:', LOGOUT_URL);
-    
-    // Optional: Add keyboard shortcut for logout (Ctrl+Shift+L)
-    document.addEventListener('keydown', function(e) {
-        if (e.ctrlKey && e.shiftKey && e.key === 'L') {
-            e.preventDefault();
-            logout();
-        }
+    // Initialize header
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('📋 Header initialized with logout URL:', LOGOUT_URL);
+
+        // Optional: Add keyboard shortcut for logout (Ctrl+Shift+L)
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.shiftKey && e.key === 'L') {
+                e.preventDefault();
+                logout();
+            }
+        });
     });
-});
 </script>
